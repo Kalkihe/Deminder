@@ -271,28 +271,51 @@ Using the functions of the app should feel instantanious for the user.
 
 \[This section indicates any requirements that will enhance the supportability or maintainability of the system being built, including coding standards, naming conventions, class libraries, maintenance access, maintenance utilities.\]
 
-### 3.5.1 Naming conventions
+### 3.5.1 Conventions
 
-
+The code should follow the Java Naming Conventions and using speaking variable and function names
 
 3.6 Design Constraints
 ----------------------
 
 \[This section should indicate any design constraints on the system being built. Design constraints represent design decisions that have been mandated and must be adhered to. Examples include software languages, software process requirements, prescribed use of developmental tools, architectural and design constraints, purchased components, class libraries, etc.\]
 
-### 3.6.1 <Design Constraint One>
+### 3.6.1 Java
+
+Java is the software language of this project.
+
+### 3.6.3 Android Studio
+
+Due to the fact that Deminder will be an Android app, Android Studio will serve as IDE.
+
+### 3.6.4 Git
+
+Git will serve as tool for version control and team development
+
+### 3.6.5 YouTrack
+
+YouTrack serves as project management tool.
+
+### 3.6.6 Wordpress
+
+There is a wordpress blog for realising news on the project state.
+
+
+
+
+
 
 \[The requirement description goes here.\]
 
 3.7 On-line User Documentation and Help System Requirements
 -----------------------------------------------------------
 
-\[Describes the requirements, if any, for on-line user documentation, help systems, help about notices, etc.\]
+n.a.
 
 3.8 Purchased Components
 ------------------------
 
-\[This section describes any purchased components to be used with the system, any applicable licensing or usage restrictions, and any associated compatibility and interoperability or interface standards.\]
+n.a.
 
 3.9 Interfaces
 --------------
@@ -301,19 +324,19 @@ Using the functions of the app should feel instantanious for the user.
 
 ### 3.9.1 User Interfaces
 
-\[Describe the user interfaces that are to be implemented by the software.\]
+Two Application interfaces (Overview and managing deadline) and one widget view.
 
 ### 3.9.2 Hardware Interfaces
 
-\[This section defines any hardware interfaces that are to be supported by the software, including logical structure, physical addresses, expected behavior, etc. \]
+n.a.
 
 ### 3.9.3 Software Interfaces
 
-\[This section describes software interfaces to other components of the software system. These may be purchased components, components reused from another application or components being developed for subsystems outside of the scope of this **SRS** but with which this software application must interact.\]
+n.a.
 
 ### 3.9.4 Communications Interfaces
 
-\[Describe any communications interfaces to other systems or devices such as local area networks, remote serial devices, etc.\]
+Connection a server for exchanging data regarding deadlines (import and export) has to be possible. 
 
 3.10 Licensing Requirements
 ---------------------------
