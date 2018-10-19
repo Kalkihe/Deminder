@@ -6,8 +6,6 @@ For <Deminder>
 
 Version <1.0>
 
-\[Note: The following template is provided for use with the Rational Unified Process. Text enclosed in square brackets and displayed in blue italics (style=InfoBlue) is included to provide guidance to the author and should be deleted before publishing the document. A paragraph entered following this style will automatically be set to normal (style=Body Text).\]
-
   
 
 Revision History
@@ -95,44 +93,37 @@ Table of Contents
   
 Software Requirements Specification
 
-1. Introduction
+# 1. Introduction
 ===============
 
-\[The introduction of the **Software Requirements Specification (SRS)** should provide an overview of the entire **SRS**. It should include the purpose, scope, definitions, acronyms, abbreviations, references, and overview of the **SRS**.\]
 
-\[Note: The Software Requirements Specification (**SRS**) captures the complete software requirements for the system, or a portion of the system.  Following is a typical **SRS** outline for a project using only traditional natural-language style requirements – with **no use-case modeling.** It captures all requirements in a single document, with applicable sections inserted from the Supplementary Specifications (which would no longer be needed). For a template of an **SRS** using use-case modeling, which consists of a package containing Use-Cases of the use-case model and applicable Supplementary Specifications and other supporting information, see rup\_**SRS**\-uc.dot.\]
-
-\[Many different arrangements of an **SRS** are possible. Refer to \[IEEE830-1998\] for further elaboration of these explanations, as well as other options for **SRS** organization.\]
-
-1.1 Purpose
+## 1.1 Purpose
 -----------
 
-\[Specify the purpose of this **SRS**. The **SRS** should fully describe the external behavior of the application or subsystem identified. It also describes nonfunctional requirements, design constraints and other factors necessary to provide a complete and comprehensive description of the requirements for the software.\]
 This SRS describes the Android App Deminder. It contains a comprehensive list of all it's behavior and its requirements. This includes both requirements for the listed functionalitys but also internal, nonfunctional requirements of the project. 
 
-1.2 Scope
+## 1.2 Scope
 ---------
 
-\[A brief description of the software application that the **SRS** applies to; the feature or other subsystem grouping; what Use-Case model(s) it is associated with; and anything else that is affected or influenced by this document.\]
 Deminder is an Android App that will remind the user of upcoming deadlines such as exams. The app also uses a widget to show the user an overview of their deadlines outside of the app. 
 
-1.3 Definitions, Acronyms and Abbreviations
+## 1.3 Definitions, Acronyms and Abbreviations
 -------------------------------------------
 
-\[This subsection should provide the definitions of all terms, acronyms, and abbreviations required to properly interpret the **SRS**.  This information may be provided by reference to the project Glossary.\]
+n.a.
 
-1.4 References
+## 1.4 References
 --------------
 
-\[This subsection should provide a complete list of all documents referenced elsewhere in the **SRS**. Each document should be identified by title, report number (if applicable), date, and publishing organization. Specify the sources from which the references can be obtained. This information may be provided by reference to an appendix or to another document.\]
+n.a.
 
-1.5 Overview
+## 1.5 Overview
 ------------
 
-\[This subsection should describe what the rest of the **SRS** contains and explain how the document is organized.\]
-
-2. Overall Description
+# 2. Overall Description
 ======================
+
+TODO: ADD THIS
 
 \[This section of the **SRS** should describe the general factors that affect the product and its requirements. This section does not state specific requirements. Instead, it provides a background for those requirements, which are defined in detail in Section 3, and makes them easier to understand. Include such items as:
 
@@ -152,55 +143,40 @@ Deminder is an Android App that will remind the user of upcoming deadlines such 
 # 3. Specific Requirements
 ========================
 
-\[This section of the **SRS** should contain all the software requirements to a level of detail sufficient to enable designers to design a system to satisfy those requirements, and testers to test that the system satisfies those requirements.   When using use-case modeling, these requirements are captured in the Use-Cases and the applicable supplementary specifications. If use-case modeling is not used, the outline for supplementary specifications may be inserted directly into this section, as shown below.\]
-
 
 ## 3.1 Functionality
 --------------------
 
-\[This section describes the functional requirements of the system for those requirements which are expressed in the natural language style. For many applications, this may constitute the bulk of the **SRS** Package and thought should be given to the organization of this section. This section is typically organized by feature, but alternative organization methods may also be appropriate, for example, organization by user or organization by subsystem. Functional requirements may include feature sets, capabilities, and security.
-
-Where application development tools, such as requirements tools, modeling tools, etc., are employed to capture the functionality, this section document will refer to the availability of that data, indicating the location and name of the tool that is used to capture the data.\]
-
 ### 3.1.1 Create deadline
 
-\Create a new deadline with a title, due date, an optional description, optional substasks and check if it is a reacurring deadling . Then save the new deadline on the users phone.
+Create a new deadline with a title, due date, an optional description, optional substasks and check if it is a reacurring deadling . Then save the new deadline on the users phone.
 
 ### 3.1.2 Edit deadline
 
-\Edit an existing deadline. Change the title, due date, the description, add, delete or check substasks as finished and edit if it is a reacurring deadling. Or completely delete the deadline. Then save the edited deadline on the users phone or delete the deadline. 
+Edit an existing deadline. Change the title, due date, the description, add, delete or check substasks as finished and edit if it is a reacurring deadling. Or completely delete the deadline. Then save the edited deadline on the users phone or delete the deadline. 
 
 ### 3.1.3 Show subtasks
 
-\Show the subtasks of one deadline.
+Show the subtasks of one deadline.
 
 ### 3.1.4 Mark subtask as finished
 
-\Mark one subtask of a deadline as finished.
+Mark one subtask of a deadline as finished.
 
 ### 3.1.5 Change settings
 
-\ 
+Manage options. 
 
 ### 3.1.6 Change list order
 
-\Order list by due date or number of open subtasks.
+Order list by due date or number of open subtasks.
 
 
-3.2 Usability
--------------
-
-\[This section should include all of those requirements that affect usability. For example,
-
-• specify the required training time for a normal users and a power user to become productive at particular operations
-
-• specify measurable task times for typical tasks or base the new system’s usability requirements on other systems that the users know and like
-
-• specify requirement to conform to common usability standards, such as IBM’s CUA standards Microsoft’s GUI standards\]
+## 3.2 Usability
+----------------
 
 ### 3.2.1 Intuitiv UI
 
-\[The requirement description goes here.\]
 The user should be able to use the app with all its functions from scratch.
 
 ### 3.2.2 Fast acces to all functions
@@ -208,22 +184,8 @@ The user should be able to use the app with all its functions from scratch.
 The user should be able to perform every action as fast as possible.
 
 
-3.3 Reliability
----------------
-
-\[Requirements for reliability of the system should be specified here. Some suggestions follow:
-
-• Availability—specify the percentage of time available ( xx.xx%), hours of use, maintenance access, degraded mode operations, etc.
-
-• Mean Time Between Failures (MTBF) — this is usually specified in hours, but it could also be specified in terms of days, months or years.
-
-• Mean Time To Repair (MTTR)—how long is the system allowed to be out of operation after it has failed?
-
-• Accuracy—specify precision (resolution) and accuracy (by some known standard) that is required in the system’s output.
-
-• Maximum Bugs or Defect Rate—usually expressed in terms of bugs per thousand of lines of code (bugs/KLOC) or bugs per function-point( bugs/function-point).
-
-• Bugs or Defect Rate—categorized in terms of minor, significant, and critical bugs: the requirement(s) must define what is meant by a “critical” bug; for example, complete loss of data or a complete inability to use certain parts of the system’s functionality.\]
+## 3.3 Reliability
+------------------
 
 ### 3.3.1 Data is never lost or corrupted
 
@@ -238,20 +200,8 @@ Time is constantly synchronised to insure correct due dates.
 Make sure the app is not killed by the android system.
 
 
-3.4 Performance
----------------
-
-\[The system’s performance characteristics should be outlined in this section. Include specific response times. Where applicable, reference related Use Cases by name.
-
-• response time for a transaction (average, maximum)
-
-• throughput, for example, transactions per second
-
-• capacity, for example, the number of customers or transactions the system can accommodate
-
-• degradation modes (what is the acceptable mode of operation when the system has been degraded in some manner)
-
-• resource utilization, such as memory, disk, communications, etc.
+## 3.4 Performance
+------------------
 
 ### 3.4.1 Fast loading
 
@@ -266,51 +216,49 @@ The user interface should not be blocked by deadlines that are beeing saved (use
 Using the functions of the app should feel instantanious for the user.
  
 
-3.5 Supportability
-------------------
-
-\[This section indicates any requirements that will enhance the supportability or maintainability of the system being built, including coding standards, naming conventions, class libraries, maintenance access, maintenance utilities.\]
+## 3.5 Supportability
+--------------------
 
 ### 3.5.1 Conventions
 
 The code should follow the Java Naming Conventions and using speaking variable and function names
 
-3.6 Design Constraints
-----------------------
+### 3.5.2 Clear programm structure supporting modularity
+Every class should have one clear purpose. This means the code should be contained of many easily maintainable modules/classes. If a class hast more then one purpose, consider to split it up into multiple classes.
 
-\[This section should indicate any design constraints on the system being built. Design constraints represent design decisions that have been mandated and must be adhered to. Examples include software languages, software process requirements, prescribed use of developmental tools, architectural and design constraints, purchased components, class libraries, etc.\]
+### 3.5.3 Clean code
+Review code by another developer before pushing it into the main branch. Make sure there are no code dublicates or bad practices. It should always be clear what the code does, even without comments.
+
+### 3.5.4 Clean commits
+All commits should follow conventions set up for this project. Every commit should clearly describe what it does. Link commits to their YouTrack tasks so it is clear where the task was implemented.
+
+## 3.6 Design Constraints
+----------------------
 
 ### 3.6.1 Java
 
 Java is the software language of this project.
 
-### 3.6.3 Android Studio
+### 3.6.2 Android Studio
 
 Due to the fact that Deminder will be an Android app, Android Studio will serve as IDE.
 
-### 3.6.4 Git
+### 3.6.3 Git
 
 Git will serve as tool for version control and team development
 
-### 3.6.5 YouTrack
+### 3.6.4 YouTrack
 
 YouTrack serves as project management tool.
 
-### 3.6.6 Wordpress
+### 3.6.5 Wordpress
 
 There is a wordpress blog for realising news on the project state.
-
-
-
-
-
-
-\[The requirement description goes here.\]
 
 3.7 On-line User Documentation and Help System Requirements
 -----------------------------------------------------------
 
-n.a.
+Minimal description in the app store entry. It should describe all features and give one example. It has to contain screenshots of the app.
 
 3.8 Purchased Components
 ------------------------
@@ -320,11 +268,12 @@ n.a.
 3.9 Interfaces
 --------------
 
-\[This section defines the interfaces that must be supported by the application. It should contain adequate specificity, protocols, ports and logical addresses, etc. so that the software can be developed and verified against the interface requirements.\]
-
 ### 3.9.1 User Interfaces
 
-Two Application interfaces (Overview and managing deadline) and one widget view.
+- App view with a list of deadlines.
+- Settings view.
+- Create/edit deadline view.
+- Widget view.
 
 ### 3.9.2 Hardware Interfaces
 
@@ -332,36 +281,28 @@ n.a.
 
 ### 3.9.3 Software Interfaces
 
-n.a.
+Interface to manage the local savefile(s) of deadlines and settings.
 
 ### 3.9.4 Communications Interfaces
 
 Connection a server for exchanging data regarding deadlines (import and export) has to be possible. 
 
-3.10 Licensing Requirements
+## 3.10 Licensing Requirements
 ---------------------------
 
-\[Defines any licensing enforcement requirements or other usage restriction requirements that are to be exhibited by the software.\]
+n.a.
 
-3.11 Legal, Copyright, and Other Notices
+## 3.11 Legal, Copyright, and Other Notices
 ----------------------------------------
 
-\[This section describes any necessary legal disclaimers, warranties, copyright notices, patent notice, wordmark, trademark, or logo compliance issues for the software.\]
+n.a.
 
-3.12 Applicable Standards
+## 3.12 Applicable Standards
 -------------------------
 
-\[This section describes by reference any applicable standard and the specific sections of any such standards which apply to the system being described. For example, this could include legal, quality and regulatory standards, industry standards for usability, interoperability, internationalization, operating system compliance, etc.\]
+n.a.
 
-4. Supporting Information
-=========================
+# 4. Supporting Information
+===========================
 
-\[The supporting information makes the **SRS** easier to use. It includes:
-
-• Table of contents
-
-• Index
-
-• Appendices
-
-These may include use-case storyboards or user-interface prototypes. When appendices are included, the **SRS** should explicitly state whether or not the appendices are to be considered part of the requirements.\]
+n.a.
