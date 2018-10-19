@@ -1,6 +1,6 @@
 <Deminder>
 
-Software Requirements Specification
+# Software Requirements Specification
 
 For <Deminder>
 
@@ -8,153 +8,104 @@ Version <1.0>
 
   
 
-Revision History
+## Revision History
 
-**Date**
+| Date     | Version     | Description       | Author                 |
+|----------|-------------|-------------------|------------------------|
+|18/10/2018|1.0          |First entry        | Deminder Team          |
 
-**Version**
 
-**Description**
 
-**Author**
+## Table of Contents
 
-18/10/2018
-
-1.0
-
-Ersteintrag
-
-Deminder Team
-
-Table of Contents
-
-[1.  Introduction](#1.                  Introduction)         
-
-[1.1  Purpose](#1.1     Purpose)     
-
-[1.2  Scope](#1.2     Scope)     
-
-[1.3  Definitions, Acronyms and Abbreviations](#1.3     Definitions, Acronyms and Abbreviations)     
-
-[1.4  References](#1.4     References)     
-
-[1.5  Overview](#1.5     Overview)     
-
-[2.  Overall Description](#2.                  Overall Description)    
-
-[3.  Specific Requirements](#3.                  Specific Requirements)
-
-[3.1  Functionality](#3.1     Functionality)
-
-[3.1.1  <Functional Requirement One>](#3.1.1     <Functional Requirement One>)        
-
-[3.2  Usability  ](#3.2               Usability)   
-
-[3.2.1  <Usability Requirement One>](#3.2.1          <Usability Requirement One>)
-
-[3.3  Reliability](#3.3     Reliability)     
-
-[3.3.1  <Reliability Requirement One>](#3.3.1          <Reliability Requirement One>)
-
-[3.4  Performance](#3.4     Performance)     
-
-[3.4.1  <Performance Requirement One>](#3.4.1          <Performance Requirement One>)
-
-[3.5  Supportability](#3.5     Supportability)     
-
-[3.5.1  <Supportability Requirement One>](#3.5.1          <Supportability Requirement One>)
-
-[3.6  Design Constraints](#3.6     Design Constraints)     
-
-[3.6.1  <Design Constraint One>](#3.6.1          <Design Constraint One>)
-
-[3.7  Online User Documentation and Help System Requirements](#3.7     On-line User Documentation and Help System Requirements)     
-
-[3.8 Purchased Components](#3.8     Purchased Components)     
-
-[3.9  Interfaces](#3.9     Interfaces)     
-
-[3.9.1  User Interfaces ](#3.9.1          User Interfaces)          
-
-[3.9.2  Hardware Interfaces](#3.9.2          Hardware Interfaces)           
-
-[3.9.3  Software Interfaces](#3.9.3          Software Interfaces)           
-
-[3.9.4  Communications Interfaces](#3.9.4          Communications Interfaces)           
-
-[3.10  Licensing Requirements ](#3.10     Licensing Requirements)    
-
-[3.11  Legal, Copyright and Other Notices](#3.11     Legal, Copyright, and Other Notices)     
-
-[3.12  Applicable Standards](#3.12     Applicable Standards)     
-
-[4.  Supporting Information](#4.                  Supporting Information)    
-
-  
-Software Requirements Specification
+### 1. Introduction
+#### 1.1 Purpose
+#### 1.2 Scope
+#### 1.3 Definitions, Acronyms and Abbreviations
+#### 1.4 References
+#### 1.5 Overview
+### 2. Overall Description
+### 3. Specific Requirements
+#### 3.1 Functionality
+##### 3.1.1 Create deadline
+##### 3.1.2 Edit deadline
+##### 3.1.3 Show subtasks
+##### 3.1.4 Mark subtasks as finished
+##### 3.1.5 Change settings
+##### 3.1.6 Change list order
+##### 3.1.7 Share deadline
+##### 3.1.8 Import deadline
+#### 3.2 Usability
+##### 3.2.1 Intuitiv ui 
+##### 3.2.2 Fast access to all functions
+#### 3.3. Reliability
+##### 3.3.1 Data is never lost or corrupted
+##### 3.3.2 Accurate time
+##### 3.3.3 Always active
+#### 3.4 Performance
+##### 3.4.1 Fast loading
+##### 3.4.2 Asynchronus saving
+##### 3.4.3 Low response time
+#### 3.5 Supportability
+##### 3.5.1 Conventions
+##### 3.5.2 Clear programm structure supporting modularity
+##### 3.5.3 Clean code
+##### 3.5.4 Clean commits
+#### 3.6 Design Constraints
+##### 3.6.1 Java
+##### 3.6.2 Android Studio
+##### 3.6.3 Git
+##### 3.6.4 YouTrack
+##### 3.6.5 Wordpress
+#### 3.7 On-line User Documentation and Help System Requirements
+#### 3.8 Purchased Components
+#### 3.9 Interfaces
+##### 3.9.1 User Interfaces
+##### 3.9.2 Hardware Interfaces
+##### 3.9.3 Software Interfaces
+##### 3.9.4 Communications Interfaces
+#### 3.10 Licensing Requirements
+#### 3.11 Legal, Copyright, and Other Notices
+#### 3.12 Applicable Standards
+### 4. Supporting Information 
 
 # 1. Introduction
-===============
-
 
 ## 1.1 Purpose
------------
 
 This SRS describes the Android App Deminder. It contains a comprehensive list of all it's behavior and its requirements. This includes both requirements for the listed functionalitys but also internal, nonfunctional requirements of the project. 
 
 ## 1.2 Scope
----------
 
 Deminder is an Android App that will remind the user of upcoming deadlines such as exams. The app also uses a widget to show the user an overview of their deadlines outside of the app. 
 
 ## 1.3 Definitions, Acronyms and Abbreviations
--------------------------------------------
 
 n.a.: Not applicable
-app Store: Google play store
+App Store: Google play store
 
 ## 1.4 References
---------------
 
-Android studio: https://developer.android.com/studio/
+Android Studio: https://developer.android.com/studio/
 Git: https://git-scm.com/
 GitHub: https://github.com/
-Google play store: https://play.google.com/store
+Google Play Store: https://play.google.com/store
 
 ## 1.5 Overview
-------------
+
 The following chapters describe our vision for the project, the requirements for it, the conventions we want to develop it with  and the technical realization of this project.
 
 # 2. Overall Description
-======================
 
-TODO: ADD THIS
-
-\[This section of the **SRS** should describe the general factors that affect the product and its requirements. This section does not state specific requirements. Instead, it provides a background for those requirements, which are defined in detail in Section 3, and makes them easier to understand. Include such items as:
-
-• product perspective
-
-• product functions
-
-• user characteristics
-
-• constraints
-
-• assumptions and dependencies
-
-• requirements subsets\]
- 
+Deminder will be a an Android app which focuses on creating deadlines, assigning subtasks to them and keeping track of the progress of the tasks that are to do until the deadline occurs. There will be a possibility to create recurring deadlines as well. Also, there will be possibilities to show deadlines on a andoid widget and to share them on a server.
 
 # 3. Specific Requirements
-========================
-
 
 ## 3.1 Functionality
---------------------
 
 ### 3.1.1 Create deadline
 
-Create a new deadline with a title, due date, an optional description, optional substasks and check if it is a reacurring deadling . Then save the new deadline on the users phone.
+Create a new deadline with a title, due date, an optional description, optional substasks and check if it is a recurring deadline. Then save the new deadline on the users phone.
 
 ### 3.1.2 Edit deadline
 
@@ -166,7 +117,7 @@ Show the subtasks of one deadline.
 
 ### 3.1.4 Mark subtask as finished
 
-Mark one subtask of a deadline as finished.
+Mark one subtask of a deadline as done.
 
 ### 3.1.5 Change settings
 
@@ -176,21 +127,27 @@ Manage options.
 
 Order list by due date or number of open subtasks.
 
+### 3.1.7 Share deadline
+
+Share deadline on a server.
+
+### 3.1.8 Import deadline
+
+Import a new deadline from a server.
+
 
 ## 3.2 Usability
-----------------
 
 ### 3.2.1 Intuitiv UI
 
 The user should be able to use the app with all its functions from scratch.
 
-### 3.2.2 Fast acces to all functions
+### 3.2.2 Fast access to all functions
 
 The user should be able to perform every action as fast as possible.
 
 
 ## 3.3 Reliability
-------------------
 
 ### 3.3.1 Data is never lost or corrupted
 
@@ -206,7 +163,6 @@ Make sure the app is not killed by the android system.
 
 
 ## 3.4 Performance
-------------------
 
 ### 3.4.1 Fast loading
 
@@ -222,23 +178,24 @@ Using the functions of the app should feel instantanious for the user.
  
 
 ## 3.5 Supportability
---------------------
 
 ### 3.5.1 Conventions
 
 The code should follow the Java Naming Conventions and using speaking variable and function names
 
 ### 3.5.2 Clear programm structure supporting modularity
+
 Every class should have one clear purpose. This means the code should be contained of many easily maintainable modules/classes. If a class hast more then one purpose, consider to split it up into multiple classes.
 
 ### 3.5.3 Clean code
+
 Review code by another developer before pushing it into the main branch. Make sure there are no code dublicates or bad practices. It should always be clear what the code does, even without comments.
 
 ### 3.5.4 Clean commits
+
 All commits should follow conventions set up for this project. Every commit should clearly describe what it does. Link commits to their YouTrack tasks so it is clear where the task was implemented.
 
 ## 3.6 Design Constraints
-----------------------
 
 ### 3.6.1 Java
 
@@ -260,18 +217,15 @@ YouTrack serves as project management tool.
 
 There is a wordpress blog for realising news on the project state.
 
-3.7 On-line User Documentation and Help System Requirements
------------------------------------------------------------
+## 3.7 On-line User Documentation and Help System Requirements
 
 Minimal description in the app store entry. It should describe all features and give one example. It has to contain screenshots of the app.
 
-3.8 Purchased Components
-------------------------
+## 3.8 Purchased Components
 
 n.a.
 
-3.9 Interfaces
---------------
+## 3.9 Interfaces
 
 ### 3.9.1 User Interfaces
 
@@ -293,21 +247,17 @@ Interface to manage the local savefile(s) of deadlines and settings.
 Connection a server for exchanging data regarding deadlines (import and export) has to be possible. 
 
 ## 3.10 Licensing Requirements
----------------------------
 
 n.a.
 
 ## 3.11 Legal, Copyright, and Other Notices
-----------------------------------------
 
 n.a.
 
 ## 3.12 Applicable Standards
--------------------------
 
 n.a.
 
 # 4. Supporting Information
-===========================
 
 n.a.
