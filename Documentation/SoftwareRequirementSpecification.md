@@ -16,58 +16,12 @@ Version <1.0>
 
 
 
-## Table of Contents
+## Table of Contents (Overview)
 
-1. Introduction
-1.1 Purpose
-1.2 Scope
-1.3 Definitions, Acronyms and Abbreviations
-1.4 References
-1.5 Overview
-2. Overall Description
-3. Specific Requirements
-3.1 Functionality
-3.1.1 Create deadline
-3.1.2 Edit deadline
-3.1.3 Show subtasks
-3.1.4 Mark subtasks as finished
-3.1.5 Change settings
-3.1.6 Change list order
-3.1.7 Share deadline
-3.1.8 Import deadline
-3.2 Usability
-3.2.1 Intuitiv ui 
-3.2.2 Fast access to all functions
-3.3. Reliability
-3.3.1 Data is never lost or corrupted
-3.3.2 Accurate time
-3.3.3 Always active
-3.4 Performance
-3.4.1 Fast loading
-3.4.2 Asynchronus saving
-3.4.3 Low response time
-3.5 Supportability
-3.5.1 Conventions
-3.5.2 Clear programm structure supporting modularity
-3.5.3 Clean code
-3.5.4 Clean commits
-3.6 Design Constraints
-3.6.1 Java
-3.6.2 Android Studio
-3.6.3 Git
-3.6.4 YouTrack
-3.6.5 Wordpress
-3.7 On-line User Documentation and Help System Requirements
-3.8 Purchased Components
-3.9 Interfaces
-3.9.1 User Interfaces
-3.9.2 Hardware Interfaces
-3.9.3 Software Interfaces
-3.9.4 Communications Interfaces
-3.10 Licensing Requirements
-3.11 Legal, Copyright, and Other Notices
-3.12 Applicable Standards
-4. Supporting Information 
+1. [Introduction](#1. introduction)
+2. [Overall Description](#2. overall description)
+3. [Specific Requirements](#3. specific requirements)
+4. [Supporting Information](#4. supporting information)
 
 # 1. Introduction
 
