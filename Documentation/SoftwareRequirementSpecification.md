@@ -4,7 +4,7 @@
 
 | Date     | Version     | Description       | Author                 |
 |----------|-------------|-------------------|------------------------|
-|18/10/2018|1.0          |First entry        | Deminder Team          |
+|19/10/2018|1.0          |First entry        | Deminder Team          |
 
 # 1. Introduction
 
