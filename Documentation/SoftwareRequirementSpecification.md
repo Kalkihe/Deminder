@@ -149,14 +149,14 @@ Deminder is an Android App that will remind the user of upcoming deadlines such 
 • requirements subsets\]
  
 
-3. Specific Requirements
+# 3. Specific Requirements
 ========================
 
 \[This section of the **SRS** should contain all the software requirements to a level of detail sufficient to enable designers to design a system to satisfy those requirements, and testers to test that the system satisfies those requirements.   When using use-case modeling, these requirements are captured in the Use-Cases and the applicable supplementary specifications. If use-case modeling is not used, the outline for supplementary specifications may be inserted directly into this section, as shown below.\]
 
 
-3.1 Functionality
------------------
+## 3.1 Functionality
+--------------------
 
 \[This section describes the functional requirements of the system for those requirements which are expressed in the natural language style. For many applications, this may constitute the bulk of the **SRS** Package and thought should be given to the organization of this section. This section is typically organized by feature, but alternative organization methods may also be appropriate, for example, organization by user or organization by subsystem. Functional requirements may include feature sets, capabilities, and security.
 
@@ -164,7 +164,7 @@ Where application development tools, such as requirements tools, modeling tools,
 
 ### 3.1.1 Create deadline
 
-\Create a new deadline with a title, due date, an optional description, optional substasks and check if it is a reacurring deadling . Then save the new deadline on the users phone. 
+\Create a new deadline with a title, due date, an optional description, optional substasks and check if it is a reacurring deadling . Then save the new deadline on the users phone.
 
 ### 3.1.2 Edit deadline
 
