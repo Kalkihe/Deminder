@@ -6,22 +6,11 @@ For <Deminder>
 
 Version <1.0>
 
-  
-
 ## Revision History
 
 | Date     | Version     | Description       | Author                 |
 |----------|-------------|-------------------|------------------------|
 |18/10/2018|1.0          |First entry        | Deminder Team          |
-
-
-
-## Table of Contents (Overview)
-
-1. [Introduction](#1. introduction)
-2. [Overall Description](#2. overall description)
-3. [Specific Requirements](#3. specific requirements)
-4. [Supporting Information](#4. supporting information)
 
 # 1. Introduction
 
