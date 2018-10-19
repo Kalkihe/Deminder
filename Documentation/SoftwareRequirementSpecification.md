@@ -110,15 +110,20 @@ Deminder is an Android App that will remind the user of upcoming deadlines such 
 ## 1.3 Definitions, Acronyms and Abbreviations
 -------------------------------------------
 
-n.a.
+n.a.: Not applicable
+app Store: Google play store
 
 ## 1.4 References
 --------------
 
-n.a.
+Android studio: https://developer.android.com/studio/
+Git: https://git-scm.com/
+GitHub: https://github.com/
+Google play store: https://play.google.com/store
 
 ## 1.5 Overview
 ------------
+The following chapters describe our vision for the project, the requirements for it, the conventions we want to develop it with  and the technical realization of this project.
 
 # 2. Overall Description
 ======================
