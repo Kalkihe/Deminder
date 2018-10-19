@@ -1,10 +1,4 @@
-<Deminder>
-
 # Software Requirements Specification
-
-For <Deminder>
-
-Version <1.0>
 
 ## Revision History
 
