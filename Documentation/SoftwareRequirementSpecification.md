@@ -272,7 +272,16 @@ Using the functions of the app should feel instantanious for the user.
 \[This section indicates any requirements that will enhance the supportability or maintainability of the system being built, including coding standards, naming conventions, class libraries, maintenance access, maintenance utilities.\]
 
 ### 3.5.1 Naming conventions
+Names of classes, methods and variables should follow standard Java conventions and conventions set up for this project.
 
+### 3.5.2 Clear programm structure supporting modularity
+Every class should have one clear purpose. This means the code should be contained of many easily maintainable modules/classes. If a class hast more then one purpose, consider to split it up into multiple classes.
+
+### 3.5.3 Clean code
+Review code by another developer before pushing it into the main branch. Make sure there are no code dublicates or bad practices. It should always be clear what the code does, even without comments.
+
+### 3.5.4 Clean commits
+All commits should follow conventions set up for this project. Every commit should clearly describe what it does. Link commits to their YouTrack tasks so it is clear where the task was implemented.
 
 
 3.6 Design Constraints
@@ -288,6 +297,7 @@ Using the functions of the app should feel instantanious for the user.
 -----------------------------------------------------------
 
 \[Describes the requirements, if any, for on-line user documentation, help systems, help about notices, etc.\]
+Minimal description in the app store entry. It should describe all features and maybe a demonstration for one or two.
 
 3.8 Purchased Components
 ------------------------
@@ -303,9 +313,14 @@ Using the functions of the app should feel instantanious for the user.
 
 \[Describe the user interfaces that are to be implemented by the software.\]
 
+Front page with a list of deadlines.
+Settings page.
+Create/edit deadline page.
+
 ### 3.9.2 Hardware Interfaces
 
 \[This section defines any hardware interfaces that are to be supported by the software, including logical structure, physical addresses, expected behavior, etc. \]
+Interface to manage the local savefile(s) of deadlines and settings.
 
 ### 3.9.3 Software Interfaces
 
