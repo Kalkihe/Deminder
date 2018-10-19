@@ -164,19 +164,19 @@ Where application development tools, such as requirements tools, modeling tools,
 
 ### 3.1.1 Create deadline
 
-\ Create a new deadline with a title, due date, an optional description, optional substasks and check if it is a reacurring deadling . Then save the new deadline on the users phone. 
+\Create a new deadline with a title, due date, an optional description, optional substasks and check if it is a reacurring deadling . Then save the new deadline on the users phone. 
 
 ### 3.1.2 Edit deadline
 
-\ Edit an existing deadline. Change the title, due date, the description, add, delete or check substasks as finished and edit if it is a reacurring deadling. Or completely delete the deadline. Then save the edited deadline on the users phone or delete the deadline. 
+\Edit an existing deadline. Change the title, due date, the description, add, delete or check substasks as finished and edit if it is a reacurring deadling. Or completely delete the deadline. Then save the edited deadline on the users phone or delete the deadline. 
 
 ### 3.1.3 Show subtasks
 
-\ Show the subtasks of one deadline.
+\Show the subtasks of one deadline.
 
 ### 3.1.4 Mark subtask as finished
 
-\ Mark one subtask of a deadline as finished.
+\Mark one subtask of a deadline as finished.
 
 ### 3.1.5 Change settings
 
@@ -184,7 +184,7 @@ Where application development tools, such as requirements tools, modeling tools,
 
 ### 3.1.6 Change list order
 
-\ Order list by due date or number of open subtasks.
+\Order list by due date or number of open subtasks.
 
 
 3.2 Usability
