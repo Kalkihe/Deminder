@@ -33,8 +33,6 @@ To add a new deadline the app must be running and open on the screen.
 
 # 5. Postconditions
 
-\[A postcondition of a use case is a list of possible states the system can be in immediately after a use case has finished.\]
-
 ## 5.1 Creation succesful
 Creation view is closed and the list of deadlines, containing the newly created deadline is shown.
 
