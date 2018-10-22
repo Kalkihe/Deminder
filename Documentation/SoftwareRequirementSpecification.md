@@ -21,6 +21,7 @@ Android Studio: https://developer.android.com/studio/
 Git: https://git-scm.com/
 GitHub: https://github.com/
 Google Play Store: https://play.google.com/store
+YouTrack: https://www.jetbrains.com/youtrack/
 
 ## 1.5 Overview
 
@@ -116,7 +117,7 @@ The code should follow the Java Naming Conventions and using speaking variable a
 
 ### 3.5.2 Clear programm structure supporting modularity
 
-Every class should have one clear purpose. This means the code should be contained of many easily maintainable modules/classes. If a class hast more then one purpose, consider to split it up into multiple classes.
+Every class should have one clear purpose. This means the code should be contained of many easily maintainable modules/classes. If a class has more then one purpose, consider to split it up into multiple classes.
 
 ### 3.5.3 Clean code
 
