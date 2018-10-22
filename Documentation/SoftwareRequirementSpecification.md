@@ -31,6 +31,8 @@ The following chapters describe our vision for the project, the requirements for
 
 Deminder will be a an Android app which focuses on creating deadlines, assigning subtasks to them and keeping track of the progress of the tasks that are to do until the deadline occurs. There will be a possibility to create recurring deadlines as well. Also, there will be possibilities to show deadlines on a andoid widget and to share them on a server.
 
+![Use-Case Diagram](./Use-Cases/Use-Cases.jpg)
+
 # 3. Specific Requirements
 
 ## 3.1 Functionality
