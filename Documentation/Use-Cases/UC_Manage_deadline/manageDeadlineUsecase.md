@@ -10,7 +10,8 @@ This use case allows the user to manage an already created deadline. He can edit
 
 ## 2.1 Basic Flow
 
-
+![Flow-Diagram](./flowDiagram.png)
+![Mockup-Diagram](./mockup.jpg)
 
 ## 2.2 Alternative Flows
 
