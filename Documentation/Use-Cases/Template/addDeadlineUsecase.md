@@ -22,6 +22,12 @@ Simple alternatives may be presented within the text of the use case. If it only
 
 A picture is sometimes worth a thousand words, though there is no substitute for clean, clear prose. If it improves clarity, feel free to paste graphical depictions of user interfaces, process flows or other figures into the use case. If a flow chart is useful to present a complex decision process, by all means use it! Similarly for state-dependent behavior, a state-transition diagram often clarifies the behavior of a system better than pages upon pages of text. Use the right presentation medium for your problem, but be wary of using terminology, notations or figures that your audience may not understand. Remember that your purpose is to clarify, not obscure.\]
 
+### 2.1.1 Activity Diagram
+
+### 2.1.2 Mock-Up
+
+### 2.1.3 Feature
+
 ## 2.2 Alternative Flows
 
 ### 2.2.1 < First Alternative Flow >
