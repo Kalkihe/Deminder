@@ -21,6 +21,7 @@ This use case allows the user to manage an already created deadline. He can edit
 ### 2.1.3 Feature
 
 [Feature](/app/src/androidTest/assets/manageDeadline.feature)
+![Feature](./feature.png)
 
 ## 2.2 Alternative Flows
 
