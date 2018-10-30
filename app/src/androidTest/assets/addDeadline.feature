@@ -25,8 +25,8 @@ Feature: A user creates a new deadline
     Then the create deadline view is closed
 
   Scenario: The user clicks on the save button and mandatory fields filled out
-    Given title textfield is filled out
-    And datefield is filled out
+    Given title textfield is not empty
+    And datefield is not empty
     When the user clicks on the save button
     Then the create view is closed
     And the deadline object is saved
