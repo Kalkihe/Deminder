@@ -10,8 +10,17 @@ This use case allows the user to manage an already created deadline. He can edit
 
 ## 2.1 Basic Flow
 
+### 2.1.1 Activity Diagram
+
 ![Flow-Diagram](./flowDiagram.png)
+
+### 2.1.2 Mock-Up
+
 ![Mockup-Diagram](./mockup.jpg)
+
+### 2.1.3 Feature
+
+[Feature](/app/src/androidTest/assets/manageDeadline.feature)
 
 ## 2.2 Alternative Flows
 

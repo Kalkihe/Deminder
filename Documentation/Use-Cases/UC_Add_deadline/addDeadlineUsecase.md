@@ -20,7 +20,7 @@ Some of the fields are mandatory, some are optional. The user can also choose to
 
 ### 2.1.3 Feature
 
-[Feature](~/app/src/androidTest/assets/addDeadline.feature)
+[Feature](../../../app/src/androidTest/assets/addDeadline.feature)
 
 ## 2.2 Alternative Flows
 n.a.
