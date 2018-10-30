@@ -13,10 +13,10 @@ The user can add or remove as many subtasks for the deadline as he wants.
 ## 2.1 Basic Flow
 
 ### 2.1.1 Activity Diagram
-![Use case specification](addSubtaskUsecase.png)
+![Use case specification](addSubtasksUsecase.png)
 
 ### 2.1.2 Mock-Up
-![Use case specification mock up](mockup.jpg)
+![Use case specification mock up](mockup.JPG)
 
 ### 2.1.3 Feature
 
