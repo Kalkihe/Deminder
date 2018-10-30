@@ -43,7 +43,7 @@ Create a new deadline with a title, due date, an optional description, optional 
 
 [Here](./Use-Cases/UC_Add_deadline/addDeadlineUsecase.md) you can find the use-case specification for creating a deadline.
 
-[Here](./Use-Cases/UC_Add_subtask/addSubtasksUsecase.md) you can find the use-case specification for creating a subtask.
+[Here](./Use-Cases/UC_Add_subtasks/addSubtasksUsecase.md) you can find the use-case specification for creating a subtask.
 
 [Here](./Use-Cases/UC_Manage_subtask/manageSubtaskUsecase.md) you can find the use-case specification for managing a subtask.
 
@@ -53,7 +53,7 @@ Edit an existing deadline. Change the title, due date, the description, add, del
 
 [Here](./Use-Cases/UC_Manage_deadline/manageDeadlineUsecase.md) you can find the use-case specification.
 
-[Here](./Use-Cases/UC_Add_subtask/addSubtasksUsecase.md) you can find the use-case specification for creating a subtask.
+[Here](./Use-Cases/UC_Add_subtasks/addSubtasksUsecase.md) you can find the use-case specification for creating a subtask.
 
 [Here](./Use-Cases/UC_Manage_subtask/manageSubtaskUsecase.md) you can find the use-case specification for managing a subtask.
 
