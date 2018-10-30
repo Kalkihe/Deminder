@@ -12,7 +12,7 @@ This use case is responsible for displaying the created deadlines.
 
 ### 2.1.1 Activity Diagram
 
-![Flow-Diagram](./showDeadlineList.graphml)
+![Flow-Diagram](./showDeadlineList.png)
 
 ### 2.1.2 Mock-Up
 
