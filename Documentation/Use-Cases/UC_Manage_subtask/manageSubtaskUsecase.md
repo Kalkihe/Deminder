@@ -4,7 +4,7 @@
 
 # 1.1 Brief Description
 
-This use case allows the user to manage an already created deadline. He can edit poperties of the deadline such as name, due date and description or delete the deadline. It is also possible to add subtasks or mark them as done. 
+This use case allows the user to manage a subtask, containing the name, if it is already done and the option to delete it.
 
 # 2. Flow of Events
 
@@ -12,11 +12,11 @@ This use case allows the user to manage an already created deadline. He can edit
 
 ### 2.1.1 Activity Diagram
 
-![Flow-Diagram](./flowDiagram.png)
+![Flow-Diagram](./flowDiagram.JPG)
 
 ### 2.1.2 Mock-Up
 
-![Mockup-Diagram](./mockup.jpg)
+![Mockup-Diagram](./mockup.JPG)
 
 ### 2.1.3 Feature
 
@@ -36,21 +36,20 @@ Since the app can be used on every android phone, there will be many different s
 
 ## 4.1 App opened on screen
 
-To manage a deadline the app must be running and opened on the screen. 
+To manage a subtask the app must be running and opened on the screen. 
 
 ## 4.2 The deadline to be managed is already created
 
-To manage a deadline, it has to exist. 
+To manage a subtask, it has to exist. 
 
 # 5. Postconditions
 
 ## 5.1 Managing success
-
-Managing view is shown and the screen with all (including the edited or without the deleted) deadlines is shown. 
+Subtask can be shown in the deadline overview. 
 
 ## 5.2 Managing failure
 
-Display a notification, saying that and why (if possible) the editing or deleting of the deadline failed.
+Display a notification, saying that and why (if possible) the managing failed.
 
 # 6. Extension Points
 
