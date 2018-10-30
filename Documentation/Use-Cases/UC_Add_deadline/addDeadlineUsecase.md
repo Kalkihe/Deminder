@@ -11,10 +11,16 @@ Some of the fields are mandatory, some are optional. The user can also choose to
 
 ## 2.1 Basic Flow
 
+### 2.1.1 Activity Diagram
+
 ![Use case specification](createDeadlineUsecase.png)
 
-Mock up:
+### 2.1.2 Mock up
 ![Use case specification mock up](mockup.jpg)
+
+### 2.1.3 Feature
+
+[Feature](app/src/androidTest/assets/addDeadline.feature)
 
 ## 2.2 Alternative Flows
 n.a.
