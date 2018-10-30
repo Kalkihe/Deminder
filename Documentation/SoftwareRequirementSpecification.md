@@ -41,27 +41,27 @@ Deminder will be a an Android app which focuses on creating deadlines, assigning
 
 Create a new deadline with a title, due date, an optional description, optional substasks and check if it is a recurring deadline. Then save the new deadline on the users phone.
 
-[Here](/Use-Cases/UC_Add_Deadline/addDeadlineUsecase.md) you can find the use-case specification for creating a deadline.
+[Here](./Use-Cases/UC_Add_Deadline/addDeadlineUsecase.md) you can find the use-case specification for creating a deadline.
 
-[Here](/Use-Cases/UC_Add_Subtask/addSubtaskUsecase.md) you can find the use-case specification for creating a subtask.
+[Here](./Use-Cases/UC_Add_Subtask/addSubtaskUsecase.md) you can find the use-case specification for creating a subtask.
 
-[Here](/Use-Cases/UC_Manage_subtask/manageSubtaskUsecase.md) you can find the use-case specification for managing a subtask.
+[Here](./Use-Cases/UC_Manage_subtask/manageSubtaskUsecase.md) you can find the use-case specification for managing a subtask.
 
 ### 3.1.2 Edit deadline
 
 Edit an existing deadline. Change the title, due date, the description, add, delete or check substasks as finished and edit if it is a reacurring deadling. Or completely delete the deadline. Then save the edited deadline on the users phone or delete the deadline. 
 
-[Here](/Use-Cases/UC_Manage_Deadline/manageDeadlineUsecase.md) you can find the use-case specification.
+[Here](./Use-Cases/UC_Manage_Deadline/manageDeadlineUsecase.md) you can find the use-case specification.
 
-[Here](/Use-Cases/UC_Add_Subtask/addSubtaskUsecase.md) you can find the use-case specification for creating a subtask.
+[Here](./Use-Cases/UC_Add_Subtask/addSubtaskUsecase.md) you can find the use-case specification for creating a subtask.
 
-[Here](/Use-Cases/UC_Manage_Subtask/manageSubtaskUsecase.md) you can find the use-case specification for managing a subtask.
+[Here](./Use-Cases/UC_Manage_Subtask/manageSubtaskUsecase.md) you can find the use-case specification for managing a subtask.
 
 ### 3.1.3 Show deadlines
 
 Show a list of all deadlines.
 
-[Here](/Use-Cases/UC_Show_deadline_list/showDeadlineListUsecase.md) you can find the use-case specification for showing the list of de
+[Here](./Use-Cases/UC_Show_deadline_list/showDeadlineListUsecase.md) you can find the use-case specification for showing the list of de
 
 ### 3.1.4 Show subtasks
 
