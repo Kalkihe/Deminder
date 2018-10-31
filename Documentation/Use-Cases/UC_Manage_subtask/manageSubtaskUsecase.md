@@ -1,4 +1,4 @@
-# Use-Case Specification: Manage deadline
+# Use-Case Specification: Manage Subtask
 
 # 1. Use-Case Name
 
