@@ -1,4 +1,4 @@
-# Use-Case Specification: Manage deadline
+# Use-Case Specification: Manage deadline usecase
 
 # 1. Use-Case Name
 
