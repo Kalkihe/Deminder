@@ -1,4 +1,4 @@
-# Use-Case Specification: add deadline usecase
+# Use-Case Specification: add subtask usecase
 
 # 1. Use-Case Name
 
