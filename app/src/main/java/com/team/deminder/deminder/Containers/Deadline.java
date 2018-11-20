@@ -10,9 +10,6 @@ public class Deadline {
     private String notes;
     private ArrayList subtaskList;
 
-    public Deadline() {
-    }
-
     public Deadline(String deadlineName, Date deadlineDate, boolean reacurring, String notes, ArrayList subtaskList) {
         this.deadlineName = deadlineName;
         this.deadlineDate = deadlineDate;
