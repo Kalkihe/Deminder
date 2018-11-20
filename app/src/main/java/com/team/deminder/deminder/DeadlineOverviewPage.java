@@ -9,7 +9,7 @@ import com.team.deminder.deminder.customLayoutComponents.DeadlineLayoutWidget;
 import com.team.deminder.deminder.Containers.Deadline;
 import java.util.ArrayList;
 
-public class DeadlineOverviewPage {
+public class DeadlineOverviewPage extends AppCompatActivity {
     private ArrayList deadlineList;
     private SettingsPage settingsPage;
     private StorageManager storageManager;
@@ -22,6 +22,6 @@ public class DeadlineOverviewPage {
     private void buildLayout(){
 
         // nach drücken des buttons zur Erstellung einer neuen Deadline
-        // oder beim drücken auf eine deadline
+        // oder beim drücken auf eine deadline muss die ManageDeadlinePage aufgerufen werden
     }
 }
