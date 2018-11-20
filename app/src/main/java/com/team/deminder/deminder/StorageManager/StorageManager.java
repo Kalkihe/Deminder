@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class StorageManager {
+    private HashMap settingsList;
+    private ArrayList deadlineList;
 
     public StorageManager() {
     }
@@ -23,6 +25,7 @@ public class StorageManager {
     }
 
     public void updateSettings(HashMap settingslist) {
+        this.settingsList = settingslist;
 
     }
 
