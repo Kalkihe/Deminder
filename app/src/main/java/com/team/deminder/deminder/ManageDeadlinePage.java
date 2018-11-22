@@ -14,7 +14,7 @@ import com.team.deminder.deminder.customLayoutComponents.SubtaskLayoutWidget;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-
+// This will soon be an fragment instead of an activity
 public class ManageDeadlinePage extends AppCompatActivity {
     private Deadline deadline;
     private StorageManager storageManager;
