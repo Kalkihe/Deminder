@@ -4,7 +4,7 @@ Feature: A user creates a new deadline
     Given app is open on the screen
     When the user clicks on the "plus button"
     Then it should open the "ManageDeadlinePage"
-    And it should contain a "title lable"
+    And it should contain a "title"
     And it should contain a "title textfield"
     And it should contain a "date lable"
     And it should contain a "datefield"
