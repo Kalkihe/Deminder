@@ -11,6 +11,9 @@ public class StorageManager {
     private ArrayList<Deadline> deadlineList;
 
     public StorageManager() {
+        this.settingsList = new HashMap();
+        this.deadlineList = new ArrayList<Deadline>();
+
         // Wird ausgeführt, wenn man den Button "StorageManager Test" drückt
         // Hieraus bitte alle Tests ausführen
 
@@ -30,7 +33,7 @@ public class StorageManager {
 
     public void saveDeadline(Deadline deadline) {
         // Nimmt eine Deadline, fügt diese in die deadlineList ein.
-
+        this.deadlineList.add(deadline);
         // In seperater Methode:
         // Konvertiert die deadline liste in das Kalender format und speichert diese auf dem Handy ab.
         // Threads benutzen beim Speichern!
