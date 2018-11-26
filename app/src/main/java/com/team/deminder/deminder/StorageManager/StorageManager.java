@@ -38,21 +38,43 @@ public class StorageManager {
 
     public void saveDeadline(Deadline deadline) {
         // Nimmt eine Deadline, fügt diese in die deadlineList ein.
-        this.deadlineList.add(deadline);
+        if (! (this.deadlineList.contains(deadline)))
+        {
+            this.deadlineList.add(deadline);
+        }
+        else
+        {
+            // Fehlermeldung?
+        }
         // In seperater Methode:
         // Konvertiert die deadline liste in das Kalender format und speichert diese auf dem Handy ab.
         // Threads benutzen beim Speichern!
+        this.saveDeadlineListToDisk();
     }
 
     public void deleteDeadline(Deadline deadline) {
         // Nimmt eine Deadline, löscht diese aus der deadlineList
+        if (this.deadlineList.contains(deadline))
+        {
+            this.deadlineList.remove(deadline);
+        }
+        else
+        {
+           // Fehlermeldung?
+        }
 
         // In seperater Methode (am Besten gleiche wie bei saveDeadline()):
         // Konvertiert die deadline liste in das Kalender format und speichert diese auf dem Handy ab.
         // Threads benutzen beim Speichern!
+        this.saveDeadlineListToDisk();
     }
 
-    
+    private void saveDeadlineListToDisk()
+    {
+        
+    }
+
+
 
 
 }
