@@ -26,6 +26,11 @@ public class StorageManager {
         return settingsList;
     }
 
+    public void updateSettings(HashMap settingslist) {
+        //TODO irellevant bis Settings feststehen
+        this.settingsList = settingslist;
+    }
+
     public ArrayList loadDeadlines() {
         // Soll eine Liste von allen Deadline objekten zurückgeben
         return deadlineList;
@@ -37,14 +42,6 @@ public class StorageManager {
         // In seperater Methode:
         // Konvertiert die deadline liste in das Kalender format und speichert diese auf dem Handy ab.
         // Threads benutzen beim Speichern!
-
-
-    }
-
-    public void updateSettings(HashMap settingslist) {
-        //TODO irellevant bis Settings feststehen
-        this.settingsList = settingslist;
-
     }
 
     public void deleteDeadline(Deadline deadline) {
@@ -54,6 +51,8 @@ public class StorageManager {
         // Konvertiert die deadline liste in das Kalender format und speichert diese auf dem Handy ab.
         // Threads benutzen beim Speichern!
     }
+
+    
 
 
 }
