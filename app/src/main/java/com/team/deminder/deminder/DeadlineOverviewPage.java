@@ -12,6 +12,7 @@ import com.team.deminder.deminder.StorageManager.StorageManager;
 import com.team.deminder.deminder.customLayoutComponents.DeadlineLayoutWidget;
 import com.team.deminder.deminder.Containers.Deadline;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class DeadlineOverviewPage extends AppCompatActivity {
     private ArrayList deadlineList;
@@ -34,8 +35,9 @@ public class DeadlineOverviewPage extends AppCompatActivity {
         openManagePageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO Fragments benutzen und dafür sorgen dass ein deadline object übergeben werden kann.
+                Deadline testDeadline = new Deadline("Test",new Date(),false,"notes",new ArrayList());
                 Intent intent = new Intent(DeadlineOverviewPage.this, ManageDeadlinePage.class);
+                intent.putExtra("deadline",testDeadline);
                 startActivity(intent);
             }
         });

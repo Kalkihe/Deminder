@@ -1,9 +1,10 @@
 package com.team.deminder.deminder.Containers;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Deadline {
+public class Deadline implements Serializable {
     private String deadlineName;
     private Date deadlineDate;
     private boolean reacurring;
