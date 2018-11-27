@@ -1,5 +1,6 @@
 package com.team.deminder.deminder;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.icu.util.RangeValueIterator;
 import android.os.Bundle;
@@ -38,7 +39,7 @@ public class DeadlineOverviewPage extends AppCompatActivity {
                 Deadline testDeadline = new Deadline("Test",new Date(),false,"notes",new ArrayList());
                 Intent intent = new Intent(DeadlineOverviewPage.this, ManageDeadlinePage.class);
                 intent.putExtra("deadline",testDeadline);
-                startActivity(intent);
+                startActivityForResult(intent,1);
             }
         });
 
@@ -49,5 +50,23 @@ public class DeadlineOverviewPage extends AppCompatActivity {
                 StorageManager storageManager = new StorageManager();
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent resultIntent) {
+        if(resultCode == Activity.RESULT_OK){
+            if (resultIntent.getBooleanExtra("deleted",false)) {
+                // TODO Delete edited deadline widget and remove from the deadline list
+            } else {
+                if (resultIntent.getBooleanExtra("isNewDeadline",false)){
+                    // TODO Create new deadline widget and show it in the deadline list
+                } else {
+                    // TODO Update existing deadline widget
+                }
+            }
+        }
+        if (resultCode == Activity.RESULT_CANCELED) {
+            // TODO or do nothing if the user caceled the creation of a new deadline
+        }
     }
 }
