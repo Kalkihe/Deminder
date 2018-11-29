@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.team.deminder.deminder.Containers.Deadline;
@@ -21,6 +24,13 @@ public class ManageDeadlinePage extends AppCompatActivity {
     private SubtaskLayoutWidget subtaskLayoutWidget;
     private Intent intent;
     private Boolean isNewDeadline;
+    private TextView textTaskName;
+    private TextView textDeadline;
+    private CheckBox checkBoxRecurring;
+    private TextView textNotes;
+    private Button buttonAddSubtask;
+    private Button buttonSave;
+    private Button buttonDelete;
 
     // Is called when a new ManageDeadlinePage is called
     @Override
