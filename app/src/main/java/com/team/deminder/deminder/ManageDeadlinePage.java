@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,6 +57,26 @@ public class ManageDeadlinePage extends AppCompatActivity {
 
     private void initialiseLayoutComponents() {
         //TODO use findElementByViewID to bind all layout components to fields
+        textTaskName = this.findViewById(R.id.textTaskName);
+        textDeadline = this.findViewById(R.id.textDeadline);
+        checkBoxRecurring = this.findViewById(R.id.checkBoxRecurring);
+        textNotes = this.findViewById(R.id.textNotes);
+        buttonAddSubtask = this.findViewById(R.id.buttonAddSubtask);
+        buttonSave = this.findViewById(R.id.buttonAddSubtask);
+        buttonDelete = this.findViewById(R.id.buttonDelete);
+
+        buttonSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveDeadline();
+            }
+        });
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteDeadline();
+            }
+        });
     }
 
     private void fillLayoutComonents() {
