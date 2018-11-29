@@ -9,7 +9,7 @@ public class Deadline implements Serializable {
     private Date deadlineDate;
     private boolean reacurring;
     private String notes;
-    private ArrayList subtaskList;
+    private ArrayList<Subtask> subtaskList;
 
     public Deadline(String deadlineName, Date deadlineDate, boolean reacurring, String notes, ArrayList subtaskList) {
         this.deadlineName = deadlineName;
