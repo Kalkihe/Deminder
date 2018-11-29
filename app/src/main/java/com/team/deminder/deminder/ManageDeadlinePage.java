@@ -45,7 +45,7 @@ public class ManageDeadlinePage extends AppCompatActivity {
 
         if (deadline != null) {
             // Wenn eine deadline mitgeschickt wurde fülle alle componenten mit dessen Daten
-            fillLayoutComonents();
+            fillLayoutComponents();
             isNewDeadline = false;
         }
 
@@ -57,8 +57,19 @@ public class ManageDeadlinePage extends AppCompatActivity {
         //TODO use findElementByViewID to bind all layout components to fields
     }
 
-    private void fillLayoutComonents() {
+    private void fillLayoutComponents() {
         //TODO fill in all the layou components with data from the existing deadline
+
+        textTaskName.setText(deadline.getDeadlineName());
+        textDeadline.setText(deadline.getDeadlineDate().toString());
+        if (deadline.isReacurring()){
+            checkBoxRecurring.isChecked();
+        }
+        textNotes.setText(deadline.getNotes());
+        ArrayList<Subtask> subtasks = deadline.getSubtaskList();
+        for(Subtask subtask:subtasks){
+         //  new SubtaskLayoutWidget(subtask.getSubtaskName(),subtask.isCompleted());
+        }
     }
 
     private void saveDeadline() {
