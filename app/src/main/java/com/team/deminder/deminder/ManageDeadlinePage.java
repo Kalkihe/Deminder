@@ -12,14 +12,12 @@ import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.team.deminder.deminder.Containers.Deadline;
 import com.team.deminder.deminder.Containers.Subtask;
 import com.team.deminder.deminder.StorageManager.StorageManager;
 import com.team.deminder.deminder.customLayoutComponents.SubtaskLayoutWidget;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 // This will soon be an fragment instead of an activity
 public class ManageDeadlinePage extends AppCompatActivity {
@@ -35,6 +33,7 @@ public class ManageDeadlinePage extends AppCompatActivity {
     private Button buttonAddSubtask;
     private ImageButton buttonSave;
     private ImageButton buttonDelete;
+    private LinearLayout subtaskList;
 
     // Is called when a new ManageDeadlinePage is called
     @Override
@@ -46,7 +45,7 @@ public class ManageDeadlinePage extends AppCompatActivity {
 
         intent = getIntent();
         deadline = (Deadline) intent.getSerializableExtra("deadline");
-
+        subtaskLayoutWidget = new SubtaskLayoutWidget("ASD",false,this);
         initialiseLayoutComponents();
 
         if (deadline != null) {
@@ -61,6 +60,7 @@ public class ManageDeadlinePage extends AppCompatActivity {
     @SuppressLint("CutPasteId")
     private void initialiseLayoutComponents() {
         //TODO use findElementByViewID to bind all layout components to fields
+        subtaskList = this.findViewById(R.id.subtaskList);
         textTaskName = this.findViewById(R.id.textTaskName);
         textDeadline = this.findViewById(R.id.textDeadline);
         checkBoxRecurring = this.findViewById(R.id.checkBoxRecurring);
@@ -93,9 +93,12 @@ public class ManageDeadlinePage extends AppCompatActivity {
         }
         textNotes.setText(deadline.getNotes());
         ArrayList<Subtask> subtasks = deadline.getSubtaskList();
-        for(Subtask subtask:subtasks){
-         new SubtaskLayoutWidget(subtask.getSubtaskName(),subtask.isCompleted());
-        }
+        //for(Subtask subtask:subtasks){
+         //new SubtaskLayoutWidget(subtask.getSubtaskName(),subtask.isCompleted());
+        //}
+        SubtaskLayoutWidget subtaskLayoutWidget = new SubtaskLayoutWidget("TastName",  true, this);
+        subtaskList.addView(subtaskLayoutWidget.getLayout());
+
     }
 
     private void saveDeadline() {
