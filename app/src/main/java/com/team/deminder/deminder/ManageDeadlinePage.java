@@ -94,7 +94,7 @@ public class ManageDeadlinePage extends AppCompatActivity {
         textNotes.setText(deadline.getNotes());
         ArrayList<Subtask> subtasks = deadline.getSubtaskList();
         for(Subtask subtask:subtasks){
-         //  new SubtaskLayoutWidget(subtask.getSubtaskName(),subtask.isCompleted());
+         new SubtaskLayoutWidget(subtask.getSubtaskName(),subtask.isCompleted());
         }
     }
 
