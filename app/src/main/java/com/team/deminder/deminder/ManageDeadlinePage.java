@@ -1,5 +1,6 @@
 package com.team.deminder.deminder;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,8 +33,8 @@ public class ManageDeadlinePage extends AppCompatActivity {
     private CheckBox checkBoxRecurring;
     private TextView textNotes;
     private Button buttonAddSubtask;
-    private Button buttonSave;
-    private Button buttonDelete;
+    private ImageButton buttonSave;
+    private ImageButton buttonDelete;
 
     // Is called when a new ManageDeadlinePage is called
     @Override
@@ -45,16 +47,18 @@ public class ManageDeadlinePage extends AppCompatActivity {
         intent = getIntent();
         deadline = (Deadline) intent.getSerializableExtra("deadline");
 
+        initialiseLayoutComponents();
+
         if (deadline != null) {
             // Wenn eine deadline mitgeschickt wurde fülle alle componenten mit dessen Daten
             fillLayoutComponents();
             isNewDeadline = false;
         }
 
-        initialiseLayoutComponents();
     }
 
 
+    @SuppressLint("CutPasteId")
     private void initialiseLayoutComponents() {
         //TODO use findElementByViewID to bind all layout components to fields
         textTaskName = this.findViewById(R.id.textTaskName);
@@ -62,8 +66,8 @@ public class ManageDeadlinePage extends AppCompatActivity {
         checkBoxRecurring = this.findViewById(R.id.checkBoxRecurring);
         textNotes = this.findViewById(R.id.textNotes);
         buttonAddSubtask = this.findViewById(R.id.buttonAddSubtask);
-        buttonSave = this.findViewById(R.id.buttonAddSubtask);
         buttonDelete = this.findViewById(R.id.buttonDelete);
+        buttonSave = this.findViewById(R.id.buttonSave);
 
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +102,7 @@ public class ManageDeadlinePage extends AppCompatActivity {
         //TODO Auslesung aller layout komponenten und speichern in einer deadline
         storageManager.saveDeadline(deadline);
 
+        // fill in
         Intent returnIntent = new Intent();
         returnIntent.putExtra("deadline",deadline);
         returnIntent.putExtra("isNewDeadline",isNewDeadline);
