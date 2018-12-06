@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.icu.util.RangeValueIterator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -48,6 +49,15 @@ public class DeadlineOverviewPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 StorageManager storageManager = new StorageManager();
+            }
+        });
+
+        FloatingActionButton newDeadlineButton = findViewById(R.id.newDeadlineButton);
+        newDeadlineButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DeadlineOverviewPage.this, ManageDeadlinePage.class);
+                startActivityForResult(intent,1);
             }
         });
     }
