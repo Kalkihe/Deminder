@@ -102,7 +102,8 @@ public class ManageDeadlinePage extends AppCompatActivity {
         //TODO Auslesung aller layout komponenten und speichern in einer deadline
         storageManager.saveDeadline(deadline);
 
-        // fill in
+        //deadline.setDeadlineName();
+
         Intent returnIntent = new Intent();
         returnIntent.putExtra("deadline",deadline);
         returnIntent.putExtra("isNewDeadline",isNewDeadline);
