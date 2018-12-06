@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.icu.util.RangeValueIterator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -50,6 +51,33 @@ public class DeadlineOverviewPage extends AppCompatActivity {
                 StorageManager storageManager = new StorageManager();
             }
         });
+
+        FloatingActionButton newDeadlineButton = findViewById(R.id.newDeadlineButton);
+        newDeadlineButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DeadlineOverviewPage.this, ManageDeadlinePage.class);
+                startActivityForResult(intent,1);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent resultIntent) {
+        if(resultCode == Activity.RESULT_OK){
+            if (resultIntent.getBooleanExtra("deleted",false)) {
+                // TODO Delete edited deadline widget and remove from the deadline list
+            } else {
+                if (resultIntent.getBooleanExtra("isNewDeadline",false)){
+                    // TODO Create new deadline widget and show it in the deadline list
+                } else {
+                    // TODO Update existing deadline widget
+                }
+            }
+        }
+        if (resultCode == Activity.RESULT_CANCELED) {
+            // TODO or do nothing if the user caceled the creation of a new deadline
+        }
     }
 
     @Override
