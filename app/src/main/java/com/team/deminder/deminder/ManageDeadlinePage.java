@@ -12,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.team.deminder.deminder.Containers.Deadline;
 import com.team.deminder.deminder.Containers.Subtask;
@@ -34,6 +35,7 @@ public class ManageDeadlinePage extends AppCompatActivity {
     private ImageButton buttonSave;
     private ImageButton buttonDelete;
     private LinearLayout subtaskList;
+    ArrayList<SubtaskLayoutWidget> subtaskLayoutWidgets;
 
     // Is called when a new ManageDeadlinePage is called
     @Override
@@ -42,6 +44,7 @@ public class ManageDeadlinePage extends AppCompatActivity {
         setContentView(R.layout.manage_deadline_page);
         storageManager = new StorageManager();
         isNewDeadline = true;
+        subtaskLayoutWidgets = new ArrayList<>();
 
         intent = getIntent();
         deadline = (Deadline) intent.getSerializableExtra("deadline");
@@ -81,6 +84,25 @@ public class ManageDeadlinePage extends AppCompatActivity {
                 deleteDeadline();
             }
         });
+
+        buttonAddSubtask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final SubtaskLayoutWidget subtaskLayoutWidget = new SubtaskLayoutWidget("",false,ManageDeadlinePage.this);
+                final View subtaskLayoutWidgetObject = subtaskLayoutWidget.getLayout();
+                subtaskList.addView(subtaskLayoutWidgetObject);
+                subtaskLayoutWidgets.add(subtaskLayoutWidget);
+
+                ImageButton buttonDelete = subtaskLayoutWidget.getDeleteButton();
+                buttonDelete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        subtaskList.removeView(subtaskLayoutWidgetObject);
+                        subtaskLayoutWidgets.remove(subtaskLayoutWidget);
+                    }
+                });
+            }
+        });
     }
 
     private void fillLayoutComponents() {
@@ -93,25 +115,36 @@ public class ManageDeadlinePage extends AppCompatActivity {
         }
         textNotes.setText(deadline.getNotes());
         ArrayList<Subtask> subtasks = deadline.getSubtaskList();
-        //for(Subtask subtask:subtasks){
-         //new SubtaskLayoutWidget(subtask.getSubtaskName(),subtask.isCompleted());
-        //}
-        SubtaskLayoutWidget subtaskLayoutWidget = new SubtaskLayoutWidget("TastName",  true, this);
-        subtaskList.addView(subtaskLayoutWidget.getLayout());
+        for(Subtask subtask:subtasks){
+            SubtaskLayoutWidget subtaskLayoutWidget = new SubtaskLayoutWidget(subtask.getSubtaskName(),subtask.isCompleted(),this);
+            subtaskList.addView(subtaskLayoutWidget.getLayout());
+            subtaskLayoutWidgets.add(subtaskLayoutWidget);
+        }
 
     }
 
     private void saveDeadline() {
         //TODO Auslesung aller layout komponenten und speichern in einer deadline
         storageManager.saveDeadline(deadline);
+        String test = textTaskName.getText().toString();
+        String test2 = textDeadline.getText().toString();
 
-        //deadline.setDeadlineName();
+        if (textTaskName.getText().toString().equals("") | textDeadline.getText().toString().equals("")) {
+            Toast.makeText(this,"Die Felder Titel und Datum dürfen nicht leer sein",Toast.LENGTH_LONG).show();
+        } else {
+            ArrayList<Subtask> subtasks = new ArrayList<>();
+            for (SubtaskLayoutWidget subtaskLayoutWidget:subtaskLayoutWidgets) {
+                subtasks.add(new Subtask(subtaskLayoutWidget.getSubtaskName(),subtaskLayoutWidget.isCompleted()));
+            }
 
-        Intent returnIntent = new Intent();
-        returnIntent.putExtra("deadline",deadline);
-        returnIntent.putExtra("isNewDeadline",isNewDeadline);
-        setResult(Activity.RESULT_OK,returnIntent);
-        finish();
+            deadline.setSubtaskList(subtasks);
+
+            Intent returnIntent = new Intent();
+            returnIntent.putExtra("deadline",deadline);
+            returnIntent.putExtra("isNewDeadline",isNewDeadline);
+            setResult(Activity.RESULT_OK,returnIntent);
+            finish();
+        }
     }
 
     private void deleteDeadline() {
