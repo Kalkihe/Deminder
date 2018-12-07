@@ -31,17 +31,17 @@ public class StorageManager {
         //Deadline testDeadline = new Deadline("TestDeadline",new Date(),false,"Notizen",new ArrayList());
         //saveDeadline(testDeadline);
 
-        Deadline testDeadline = new Deadline("TestDeadline",new Date(),false,"Notizen",new ArrayList());
-        Deadline testDeadline2 = new Deadline("TestDeadline2",new Date(),true,"Hallo",new ArrayList());
-        Deadline testDeadline3 = new Deadline("TestDeadline3",new Date(),false,"Notizen",new ArrayList());
+        //Deadline testDeadline = new Deadline("TestDeadline",new Date(),false,"Notizen",new ArrayList());
+        //Deadline testDeadline2 = new Deadline("TestDeadline2",new Date(),true,"Hallo",new ArrayList());
+        //Deadline testDeadline3 = new Deadline("TestDeadline3",new Date(),false,"Notizen",new ArrayList());
 
-        saveDeadline(testDeadline);
-        saveDeadline(testDeadline2);
-        saveDeadline(testDeadline3);
+        //saveDeadline(testDeadline);
+        //saveDeadline(testDeadline2);
+        //saveDeadline(testDeadline3);
 
-        deleteDeadline(testDeadline2);
+        //deleteDeadline(testDeadline2);
 
-        writeDeadlineListToDisk();
+        // writeDeadlineListToDisk();
 
         this.deadlineList = new ArrayList<Deadline>();
 
@@ -114,13 +114,17 @@ public class StorageManager {
         for (int index = 0; index < fileNames.length; index++)
         {
             // TODO: Prüfen, ob aktuelle Datei auch eine Kalenderdatei (und nicht Settings etc. ist)
-            Deadline deadline = readDeadlineFromDisk(fileNames[index]);
-            // Prüfe, ob bei Einlesen der Deadline ein Fehler vorlag
-            if (deadline != null)
-            {
-                // Füge Deadline zur Liste hinzu, falls kein Fehler auftrat
-                deadlines.add(deadline);
+            if (!fileNames[index].equals("instant-run")) {
+                Deadline deadline = readDeadlineFromDisk(fileNames[index]);
+
+                if (deadline != null)
+                {
+                    // Füge Deadline zur Liste hinzu, falls kein Fehler auftrat
+                    deadlines.add(deadline);
+                }
             }
+            // Prüfe, ob bei Einlesen der Deadline ein Fehler vorlag
+
         }
         return deadlines;
     }

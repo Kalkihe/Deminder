@@ -56,7 +56,7 @@ public class DeadlineOverviewPage extends AppCompatActivity {
         });
 
 
-      for(final Deadline deadline: deadlineList){
+      for(Deadline deadline: deadlineList){
           String deadlineDate= deadline.getDeadlineDate().toString();
           DeadlineLayoutWidget deadlineLayoutWidget = new DeadlineLayoutWidget(deadline.getDeadlineName(),  deadlineDate, this);
             LinearLayout linearLayout =deadlineLayoutWidget.getLayout();

@@ -33,7 +33,7 @@ public class ManageDeadlinePage extends AppCompatActivity {
     private TextView textDeadline;
     private CheckBox checkBoxRecurring;
     private TextView textNotes;
-    private ImageButton buttonAddSubtask;
+    private Button buttonAddSubtask;
     private ImageButton buttonSave;
     private ImageButton buttonDelete;
     private LinearLayout subtaskList;

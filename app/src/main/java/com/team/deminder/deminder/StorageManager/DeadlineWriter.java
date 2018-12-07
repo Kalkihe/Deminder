@@ -23,7 +23,7 @@ public class DeadlineWriter extends Thread {
     {
         int index = 0;
         String fileNamePrefix = "deadline_";
-        for(Deadline deadline: this.deadlines)
+        for(Deadline deadline: deadlines)
         {
             writeDeadlineToDisk(deadline, fileNamePrefix + Integer.toString(index) + ".txt");
             index++;
