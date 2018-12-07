@@ -20,6 +20,8 @@ import com.team.deminder.deminder.StorageManager.StorageManager;
 import com.team.deminder.deminder.customLayoutComponents.SubtaskLayoutWidget;
 
 import java.util.ArrayList;
+import java.util.Date;
+
 // This will soon be an fragment instead of an activity
 public class ManageDeadlinePage extends AppCompatActivity {
     private Deadline deadline;
@@ -55,6 +57,8 @@ public class ManageDeadlinePage extends AppCompatActivity {
             // Wenn eine deadline mitgeschickt wurde fülle alle componenten mit dessen Daten
             fillLayoutComponents();
             isNewDeadline = false;
+        } else {
+            deadline = new Deadline();
         }
 
     }
@@ -126,8 +130,6 @@ public class ManageDeadlinePage extends AppCompatActivity {
     private void saveDeadline() {
         //TODO Auslesung aller layout komponenten und speichern in einer deadline
         storageManager.saveDeadline(deadline);
-        String test = textTaskName.getText().toString();
-        String test2 = textDeadline.getText().toString();
 
         if (textTaskName.getText().toString().equals("") | textDeadline.getText().toString().equals("")) {
             Toast.makeText(this,"Die Felder Titel und Datum dürfen nicht leer sein",Toast.LENGTH_LONG).show();
@@ -136,7 +138,9 @@ public class ManageDeadlinePage extends AppCompatActivity {
             for (SubtaskLayoutWidget subtaskLayoutWidget:subtaskLayoutWidgets) {
                 subtasks.add(new Subtask(subtaskLayoutWidget.getSubtaskName(),subtaskLayoutWidget.isCompleted()));
             }
-
+            deadline.setDeadlineName(textTaskName.getText().toString());
+            deadline.setDeadlineDate(new Date());
+            deadline.setNotes(textNotes.getText().toString());
             deadline.setSubtaskList(subtasks);
 
             Intent returnIntent = new Intent();

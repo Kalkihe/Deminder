@@ -35,6 +35,7 @@ public class SubtaskLayoutWidget {
 
         buttonDelete = new ImageButton(context);
         linearLayout.addView(buttonDelete);
+        linearLayout.setId(R.id.subtaskLayoutWidget);
         buttonDelete.setImageResource(android.R.drawable.ic_delete);
         buttonDelete.setBackgroundColor(0);
 

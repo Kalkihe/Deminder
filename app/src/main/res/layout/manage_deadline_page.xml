@@ -24,8 +24,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="10px"
             android:ems="12"
+            android:hint="Name"
             android:inputType="text"
-            android:text="Name"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="16dp" />
 
@@ -55,8 +55,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="10px"
             android:ems="12"
+            android:hint="Notitzen"
             android:inputType="textMultiLine"
-            android:text="Notes"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="185dp" />
 
