@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.team.deminder.deminder</OriginalElement>
+  <nodes>
+    <node x="0.0" y="508.5">com.team.deminder.deminder.ManageDeadlinePage</node>
+    <node x="459.3955627705627" y="692.0">com.team.deminder.deminder.DeadlineOverviewPage</node>
+    <node x="67.00865800865796" y="312.0">com.team.deminder.deminder.customLayoutComponents.SubtaskLayoutWidget</node>
+    <node x="441.32413419913416" y="219.0">com.team.deminder.deminder.StorageManager.StorageManager</node>
+    <node x="326.49080086580085" y="0.0">com.team.deminder.deminder.Containers.Deadline</node>
+    <node x="701.0" y="543.5">com.team.deminder.deminder.customLayoutComponents.DeadlineLayoutWidget</node>
+    <node x="0.0" y="929.0">com.team.deminder.deminder.Containers.Subtask</node>
+    <node x="374.99999999999994" y="508.0">com.team.deminder.deminder.SettingsPage</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.team.deminder.deminder.StorageManager.StorageManager" target="com.team.deminder.deminder.Containers.Deadline">
+      <point x="-72.25" y="-119.5" />
+      <point x="513.5741341991342" y="194.0" />
+      <point x="520.9908008658008" y="194.0" />
+      <point x="0.0" y="84.5" />
+    </edge>
+    <edge source="com.team.deminder.deminder.DeadlineOverviewPage" target="com.team.deminder.deminder.customLayoutComponents.DeadlineLayoutWidget">
+      <point x="156.8571428571429" y="-96.0" />
+      <point x="799.2527056277056" y="672.0" />
+      <point x="816.0" y="672.0" />
+      <point x="0.0" y="26.5" />
+    </edge>
+    <edge source="com.team.deminder.deminder.ManageDeadlinePage" target="com.team.deminder.deminder.StorageManager.StorageManager">
+      <point x="118.33333333333337" y="-61.5" />
+      <point x="295.83333333333337" y="478.0" />
+      <point x="465.40746753246754" y="478.0" />
+      <point x="-120.41666666666663" y="119.5" />
+    </edge>
+    <edge source="com.team.deminder.deminder.ManageDeadlinePage" target="com.team.deminder.deminder.customLayoutComponents.SubtaskLayoutWidget">
+      <point x="0.0" y="-61.5" />
+      <point x="177.5" y="488.0" />
+      <point x="179.00865800865796" y="488.0" />
+      <point x="0.0" y="26.5" />
+    </edge>
+    <edge source="com.team.deminder.deminder.DeadlineOverviewPage" target="com.team.deminder.deminder.StorageManager.StorageManager">
+      <point x="52.28571428571422" y="-96.0" />
+      <point x="694.6812770562769" y="672.0" />
+      <point x="679.5" y="672.0" />
+      <point x="679.5" y="478.0" />
+      <point x="658.0741341991342" y="478.0" />
+      <point x="72.24999999999999" y="119.5" />
+    </edge>
+    <edge source="com.team.deminder.deminder.DeadlineOverviewPage" target="com.team.deminder.deminder.SettingsPage">
+      <point x="-52.285714285714334" y="-96.0" />
+      <point x="590.1098484848484" y="652.0" />
+      <point x="516.5" y="652.0" />
+      <point x="0.0" y="62.0" />
+    </edge>
+    <edge source="com.team.deminder.deminder.ManageDeadlinePage" target="com.team.deminder.deminder.Containers.Deadline">
+      <point x="-118.33333333333331" y="-61.5" />
+      <point x="59.166666666666686" y="488.0" />
+      <point x="56.50865800865796" y="488.0" />
+      <point x="56.50865800865796" y="194.0" />
+      <point x="391.3241341991342" y="194.0" />
+      <point x="-129.66666666666663" y="84.5" />
+    </edge>
+    <edge source="com.team.deminder.deminder.DeadlineOverviewPage" target="com.team.deminder.deminder.ManageDeadlinePage">
+      <point x="-156.8571428571429" y="-96.0" />
+      <point x="485.53841991341983" y="672.0" />
+      <point x="88.75" y="672.0" />
+      <point x="-88.75" y="61.5" />
+    </edge>
+    <edge source="com.team.deminder.deminder.SettingsPage" target="com.team.deminder.deminder.StorageManager.StorageManager">
+      <point x="-70.75" y="-62.0" />
+      <point x="445.74999999999994" y="488.0" />
+      <point x="513.5741341991342" y="488.0" />
+      <point x="-72.25" y="119.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.3854881266490764" x="1107.6134173104947" y="778.338822011649" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
