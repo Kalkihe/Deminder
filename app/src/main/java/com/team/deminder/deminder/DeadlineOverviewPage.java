@@ -76,7 +76,7 @@ public class DeadlineOverviewPage extends AppCompatActivity {
             }
         }
         if (resultCode == Activity.RESULT_CANCELED) {
-            // TODO or do nothing if the user caceled the creation of a new deadline
+            // TODO or do nothing if the user canceled the creation of a new deadline
         }
     }
 }
