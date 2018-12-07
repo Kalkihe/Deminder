@@ -2,6 +2,7 @@ package com.team.deminder.deminder.customLayoutComponents;
 
 import android.content.Context;
 import android.content.Intent;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -12,30 +13,43 @@ import com.team.deminder.deminder.DeadlineOverviewPage;
 import com.team.deminder.deminder.ManageDeadlinePage;
 import com.team.deminder.deminder.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class DeadlineLayoutWidget {
     private Context context;
-    private String deadlineName;
-    private String deadlineDate;
     private LinearLayout linearLayout;
+    private Deadline deadline;
 
-    public DeadlineLayoutWidget(String deadlineName, String deadlineDate, Context context) {
-        this.deadlineName=deadlineName;
-        this.deadlineDate=deadlineDate;
+    public DeadlineLayoutWidget(Deadline deadline, Context context) {
+        this.deadline = deadline;
         this.context = context;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+
+        linearLayout=  new LinearLayout(context);
+        linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        layoutParams.setMargins(5, 0, 60, 40);
+        TextView textDeadlineName = new TextView(context);
+        textDeadlineName.setText(deadline.getDeadlineName());
+        textDeadlineName.setTextSize(20);
+        linearLayout.addView(textDeadlineName, layoutParams);
+
+        TextView textDeadlineDate = new TextView(context);
+        textDeadlineDate.setText(dateFormat.format(deadline.getDeadlineDate().getTime()));
+        textDeadlineDate.setTextSize(20);
+        linearLayout.addView(textDeadlineDate, layoutParams);
     }
 
     public LinearLayout getLayout(){
-        LinearLayout linearLayout= new LinearLayout(context);
-        linearLayout.setOrientation(LinearLayout.HORIZONTAL);
-        TextView textDeadlineName = new TextView(context);
-        textDeadlineName.setText(deadlineName);
-        linearLayout.addView(textDeadlineName);
-        TextView textDeadlineDate = new TextView(context);
-        textDeadlineDate.setText(deadlineDate);
-        linearLayout.addView(textDeadlineDate);
         return linearLayout;
+    }
+
+    public Deadline getDeadline() {
+        return deadline;
     }
 }

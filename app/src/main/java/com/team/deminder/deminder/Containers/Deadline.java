@@ -2,16 +2,17 @@ package com.team.deminder.deminder.Containers;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Deadline implements Serializable {
     private String deadlineName;
-    private Date deadlineDate;
+    private Calendar deadlineDate;
     private boolean reacurring;
     private String notes;
     private ArrayList<Subtask> subtaskList;
 
-    public Deadline(String deadlineName, Date deadlineDate, boolean reacurring, String notes, ArrayList subtaskList) {
+    public Deadline(String deadlineName, Calendar deadlineDate, boolean reacurring, String notes, ArrayList subtaskList) {
         this.deadlineName = deadlineName;
         this.deadlineDate = deadlineDate;
         this.reacurring = reacurring;
@@ -31,11 +32,11 @@ public class Deadline implements Serializable {
         this.deadlineName = deadlineName;
     }
 
-    public Date getDeadlineDate() {
+    public Calendar getDeadlineDate() {
         return deadlineDate;
     }
 
-    public void setDeadlineDate(Date deadlineDate) {
+    public void setDeadlineDate(Calendar deadlineDate) {
         this.deadlineDate = deadlineDate;
     }
 

@@ -35,6 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10px"
             android:ems="12"
+            android:focusable="false"
             android:inputType="datetime|date|time"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="79dp"

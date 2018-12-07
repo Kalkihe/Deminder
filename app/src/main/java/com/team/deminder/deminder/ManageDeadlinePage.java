@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -17,15 +18,18 @@ import android.widget.Toast;
 import com.team.deminder.deminder.Containers.Deadline;
 import com.team.deminder.deminder.Containers.Subtask;
 import com.team.deminder.deminder.StorageManager.StorageManager;
+import com.team.deminder.deminder.customLayoutComponents.DatePickerFragment;
 import com.team.deminder.deminder.customLayoutComponents.SubtaskLayoutWidget;
 
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 // This will soon be an fragment instead of an activity
 public class ManageDeadlinePage extends AppCompatActivity {
     private Deadline deadline;
-    private StorageManager storageManager;
     private SubtaskLayoutWidget subtaskLayoutWidget;
     private Intent intent;
     private Boolean isNewDeadline;
@@ -38,13 +42,14 @@ public class ManageDeadlinePage extends AppCompatActivity {
     private ImageButton buttonDelete;
     private LinearLayout subtaskList;
     ArrayList<SubtaskLayoutWidget> subtaskLayoutWidgets;
+    Calendar calendar;
+    SimpleDateFormat dateFormat;
 
     // Is called when a new ManageDeadlinePage is called
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manage_deadline_page);
-        storageManager = new StorageManager(this);
         isNewDeadline = true;
         subtaskLayoutWidgets = new ArrayList<>();
 
@@ -52,13 +57,17 @@ public class ManageDeadlinePage extends AppCompatActivity {
         deadline = (Deadline) intent.getSerializableExtra("deadline");
         subtaskLayoutWidget = new SubtaskLayoutWidget("ASD",false,this);
         initialiseLayoutComponents();
+        dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
         if (deadline != null) {
             // Wenn eine deadline mitgeschickt wurde fülle alle componenten mit dessen Daten
             fillLayoutComponents();
             isNewDeadline = false;
+            calendar = deadline.getDeadlineDate();
         } else {
             deadline = new Deadline();
+            calendar = Calendar.getInstance();
+            textDeadline.setText(dateFormat.format(calendar.getTime()));
         }
 
     }
@@ -89,6 +98,14 @@ public class ManageDeadlinePage extends AppCompatActivity {
             }
         });
 
+        textDeadline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment newFragment = new DatePickerFragment();
+                newFragment.show(getSupportFragmentManager(), "datePicker");
+            }
+        });
+
         buttonAddSubtask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,9 +130,9 @@ public class ManageDeadlinePage extends AppCompatActivity {
         //TODO fill in all the layou components with data from the existing deadline
 
         textTaskName.setText(deadline.getDeadlineName());
-        textDeadline.setText(deadline.getDeadlineDate().toString());
+        textDeadline.setText(dateFormat.format(deadline.getDeadlineDate().getTime()));
         if (deadline.isReacurring()){
-            checkBoxRecurring.isChecked();
+            checkBoxRecurring.setChecked(true);
         }
         textNotes.setText(deadline.getNotes());
         ArrayList<Subtask> subtasks = deadline.getSubtaskList();
@@ -129,8 +146,6 @@ public class ManageDeadlinePage extends AppCompatActivity {
 
     private void saveDeadline() {
         //TODO Auslesung aller layout komponenten und speichern in einer deadline
-        storageManager.saveDeadline(deadline);
-
         if (textTaskName.getText().toString().equals("") | textDeadline.getText().toString().equals("")) {
             Toast.makeText(this,"Die Felder Titel und Datum dürfen nicht leer sein",Toast.LENGTH_LONG).show();
         } else {
@@ -139,8 +154,9 @@ public class ManageDeadlinePage extends AppCompatActivity {
                 subtasks.add(new Subtask(subtaskLayoutWidget.getSubtaskName(),subtaskLayoutWidget.isCompleted()));
             }
             deadline.setDeadlineName(textTaskName.getText().toString());
-            deadline.setDeadlineDate(new Date());
+            deadline.setDeadlineDate(calendar);
             deadline.setNotes(textNotes.getText().toString());
+            deadline.setReacurring(checkBoxRecurring.isChecked());
             deadline.setSubtaskList(subtasks);
 
             Intent returnIntent = new Intent();
@@ -155,13 +171,17 @@ public class ManageDeadlinePage extends AppCompatActivity {
         if (isNewDeadline) {
             finish();
         } else {
-            storageManager.deleteDeadline(deadline);
             Intent returnIntent = new Intent();
             returnIntent.putExtra("deleted",true);
             returnIntent.putExtra("deadline",deadline);
             setResult(Activity.RESULT_OK,returnIntent);
             finish();
         }
+    }
+
+    public void updateDate(int day, int month, int year){
+        textDeadline.setText(day + ". " + month + ". " + year + ".");
+        calendar.set(year,month,day);
     }
 
     @Override

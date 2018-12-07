@@ -1,6 +1,8 @@
 package com.team.deminder.deminder.Containers;
 
-public class Subtask {
+import java.io.Serializable;
+
+public class Subtask implements Serializable {
     private String subtaskName;
     private boolean completed;
 

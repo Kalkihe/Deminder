@@ -17,19 +17,21 @@ public class SubtaskLayoutWidget {
     private boolean completed;
     private Context context;
     private ImageButton buttonDelete;
+    private EditText textSubtaskName;
+    private CheckBox checkBoxCompleted;
 
     public LinearLayout getLayout(){
         LinearLayout linearLayout= new LinearLayout(context);
         linearLayout.setOrientation(LinearLayout.HORIZONTAL);
 
-        EditText textSubtaskName = new EditText(context);
+        textSubtaskName = new EditText(context);
         textSubtaskName.setText(subtaskName);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         params.width = 600;
         textSubtaskName.setLayoutParams(params);
         linearLayout.addView(textSubtaskName);
 
-        CheckBox checkBoxCompleted = new CheckBox(context);
+        checkBoxCompleted = new CheckBox(context);
         checkBoxCompleted.setChecked(completed);
         linearLayout.addView(checkBoxCompleted);
 
@@ -54,7 +56,7 @@ public class SubtaskLayoutWidget {
     }
 
     public String getSubtaskName() {
-        return subtaskName;
+        return textSubtaskName.getText().toString();
     }
 
     public void setSubtaskName(String subtaskName) {
@@ -62,7 +64,7 @@ public class SubtaskLayoutWidget {
     }
 
     public boolean isCompleted() {
-        return completed;
+        return checkBoxCompleted.isChecked();
     }
 
     public void setCompleted(boolean completed) {
