@@ -19,6 +19,10 @@ public class Deadline implements Serializable {
         this.subtaskList = subtaskList;
     }
 
+    public Deadline() {
+
+    }
+
     public String getDeadlineName() {
         return deadlineName;
     }
