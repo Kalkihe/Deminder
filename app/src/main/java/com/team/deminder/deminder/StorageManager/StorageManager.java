@@ -8,18 +8,21 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 import static android.content.Context.MODE_PRIVATE;
-
+import android.content.Context;
 
 public class StorageManager {
     private HashMap settingsList;
     private ArrayList<Deadline> deadlineList;
+    private Context context;
 
-    public StorageManager() {
+    public StorageManager(Context context) {
         this.settingsList = new HashMap();
         this.deadlineList = new ArrayList<Deadline>();
+        this.context = context;
 
         // Wird ausgeführt, wenn man den Button "StorageManager Test" drückt
         // Hieraus bitte alle Tests ausführen
@@ -27,6 +30,22 @@ public class StorageManager {
         // z.B. so:
         //Deadline testDeadline = new Deadline("TestDeadline",new Date(),false,"Notizen",new ArrayList());
         //saveDeadline(testDeadline);
+
+        Deadline testDeadline = new Deadline("TestDeadline",new Date(),false,"Notizen",new ArrayList());
+        Deadline testDeadline2 = new Deadline("TestDeadline2",new Date(),true,"Hallo",new ArrayList());
+        Deadline testDeadline3 = new Deadline("TestDeadline3",new Date(),false,"Notizen",new ArrayList());
+
+        saveDeadline(testDeadline);
+        saveDeadline(testDeadline2);
+        saveDeadline(testDeadline3);
+
+        deleteDeadline(testDeadline2);
+
+        writeDeadlineListToDisk();
+
+        this.deadlineList = new ArrayList<Deadline>();
+
+        this.deadlineList = this.readDeadlineListFromDisk();
     }
 
     public HashMap loadSettings() {
@@ -77,15 +96,12 @@ public class StorageManager {
         this.writeDeadlineListToDisk();
     }
 
-    private void writeDeadlineListToDisk(ArrayList<Deadline> deadlines)
+    private void writeDeadlineListToDisk()
     {
-        int index = 0;
-        String fileNamePrefix = "deadline_";
-        for(Deadline deadline: deadlines)
-        {
-            writeDeadlineToDisk(deadline, fileNamePrefix + Integer.toString(index));
-            index++;
-        }
+        // Neuen DeadlineWriter (Thread) erzeugen und zu speichernde Liste übergeben
+        DeadlineWriter deadlineWriter = new DeadlineWriter(this.deadlineList);
+        // Thread starten
+        deadlineWriter.start();
     }
 
     private ArrayList<Deadline> readDeadlineListFromDisk()
@@ -107,20 +123,6 @@ public class StorageManager {
             }
         }
         return deadlines;
-    }
-
-    private void writeDeadlineToDisk(Deadline deadline, String fileName)
-    {
-        FileOutputStream fileOutputStream = context.openFileOutput(fileName, MODE_PRIVATE);
-        try {
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutPutStream);
-            objectOutputStream.writeObject(deadline);
-            objectOutputStream.close();
-            fileOutputStream.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     private Deadline readDeadlineFromDisk(String fileName)
