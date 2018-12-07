@@ -99,7 +99,7 @@ public class StorageManager {
     private void writeDeadlineListToDisk()
     {
         // Neuen DeadlineWriter (Thread) erzeugen und zu speichernde Liste übergeben
-        DeadlineWriter deadlineWriter = new DeadlineWriter(this.deadlineList);
+        DeadlineWriter deadlineWriter = new DeadlineWriter(this.deadlineList,context);
         // Thread starten
         deadlineWriter.start();
     }
@@ -114,7 +114,7 @@ public class StorageManager {
         for (int index = 0; index < fileNames.length; index++)
         {
             // TODO: Prüfen, ob aktuelle Datei auch eine Kalenderdatei (und nicht Settings etc. ist)
-            Deadline deadline = readDeadlineFromDisk(fileNames[i]);
+            Deadline deadline = readDeadlineFromDisk(fileNames[index]);
             // Prüfe, ob bei Einlesen der Deadline ein Fehler vorlag
             if (deadline != null)
             {

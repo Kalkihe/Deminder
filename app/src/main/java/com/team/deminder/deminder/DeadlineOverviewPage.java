@@ -42,7 +42,7 @@ public class DeadlineOverviewPage extends AppCompatActivity {
         createStorageManagerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StorageManager storageManager = new StorageManager();
+                StorageManager storageManager = new StorageManager(DeadlineOverviewPage.this);
             }
         });
 

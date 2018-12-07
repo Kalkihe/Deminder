@@ -44,7 +44,7 @@ public class ManageDeadlinePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manage_deadline_page);
-        storageManager = new StorageManager();
+        storageManager = new StorageManager(this);
         isNewDeadline = true;
         subtaskLayoutWidgets = new ArrayList<>();
 
