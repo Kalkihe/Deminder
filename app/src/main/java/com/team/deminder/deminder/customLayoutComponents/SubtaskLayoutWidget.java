@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.team.deminder.deminder.Containers.Subtask;
 import com.team.deminder.deminder.ManageDeadlinePage;
+import com.team.deminder.deminder.R;
 
 public class SubtaskLayoutWidget {
     private String subtaskName;
@@ -34,6 +35,9 @@ public class SubtaskLayoutWidget {
 
         buttonDelete = new ImageButton(context);
         linearLayout.addView(buttonDelete);
+        buttonDelete.setImageResource(android.R.drawable.ic_delete);
+        buttonDelete.setBackgroundColor(0);
+
     return linearLayout;
     }
 
