@@ -1,7 +1,8 @@
+package com.team.deminder.deminder;
+
 import com.mauriciotogneri.greencoffee.GreenCoffeeConfig;
 import com.mauriciotogneri.greencoffee.GreenCoffeeTest;
 import com.mauriciotogneri.greencoffee.ScenarioConfig;
-import com.team.deminder.deminder.ManageDeadlinePage;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -10,13 +11,16 @@ import org.junit.runners.Parameterized;
 
 import java.io.IOException;
 
-import androidx.test.rule.ActivityTestRule;
+import android.support.test.rule.ActivityTestRule;
 
 @RunWith(Parameterized.class)
 public class addDeadlineTestLauncher extends GreenCoffeeTest {
 
     @Rule
     public ActivityTestRule<ManageDeadlinePage> activity = new ActivityTestRule<>(ManageDeadlinePage.class);
+
+    @Rule
+    public final ActivityTestRule<DeadlineOverviewPage> overview = new ActivityTestRule<>(DeadlineOverviewPage.class);
 
     public addDeadlineTestLauncher(ScenarioConfig scenario) {
         super(scenario);
