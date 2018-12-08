@@ -11,8 +11,6 @@ import com.mauriciotogneri.greencoffee.annotations.When;
 import org.junit.Rule;
 
 class AddDeadlineStepDefinitions extends GreenCoffeeSteps {
-    @Rule
-    public final ActivityTestRule<DeadlineOverviewPage> overview = new ActivityTestRule<>(DeadlineOverviewPage.class);
 
     @Rule
     public final ActivityTestRule<ManageDeadlinePage> main = new ActivityTestRule<>(ManageDeadlinePage.class);
@@ -49,6 +47,7 @@ class AddDeadlineStepDefinitions extends GreenCoffeeSteps {
 
     @And("^it should contain a save button$")
     public void itShouldContainASaveButton() throws Throwable {
+        closeKeyboard();
         onViewWithId(R.id.buttonSave).isDisplayed();
     }
 
@@ -80,11 +79,12 @@ class AddDeadlineStepDefinitions extends GreenCoffeeSteps {
     @Given("^title textfield is not empty$")
     public void titleTextfieldIsNotEmpty() throws Throwable {
         onViewWithId(R.id.textTaskName).type("TestTitle");
+        closeKeyboard();
     }
 
     @And("^datefield is not empty$")
     public void datefieldIsNotEmpty() throws Throwable {
-        onViewWithId(R.id.textDeadline).type("TestNotes");
+        onViewWithId(R.id.textDeadline).isNotEmpty();
     }
 
     @When("^the user clicks on the save button$")
@@ -108,7 +108,6 @@ class AddDeadlineStepDefinitions extends GreenCoffeeSteps {
     @Given("^title textfield or date field are empty$")
     public void titleTextfieldOrDateFieldAreEmpty() throws Throwable {
         onViewWithId(R.id.textTaskName).isEmpty();
-        onViewWithId(R.id.textDeadline).isEmpty();
     }
 
     @When("^the user clicks on save button$")
@@ -118,5 +117,6 @@ class AddDeadlineStepDefinitions extends GreenCoffeeSteps {
 
     @Then("^toast with error message is shown$")
     public void toastWithErrorMessageIsShown() throws Throwable {
+        onViewWithId(R.id.rootLayout).isDisplayed();
     }
 }
