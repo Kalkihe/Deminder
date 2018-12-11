@@ -21,27 +21,7 @@ public class StorageManager {
 
     public StorageManager(Context context) {
         this.settingsList = new HashMap();
-        this.deadlineList = new ArrayList<Deadline>();
         this.context = context;
-
-        // Wird ausgeführt, wenn man den Button "StorageManager Test" drückt
-        // Hieraus bitte alle Tests ausführen
-
-        // z.B. so:
-        //Deadline testDeadline = new Deadline("TestDeadline",new Date(),false,"Notizen",new ArrayList());
-        //saveDeadline(testDeadline);
-
-        //Deadline testDeadline = new Deadline("TestDeadline",new Date(),false,"Notizen",new ArrayList());
-        //Deadline testDeadline2 = new Deadline("TestDeadline2",new Date(),true,"Hallo",new ArrayList());
-        //Deadline testDeadline3 = new Deadline("TestDeadline3",new Date(),false,"Notizen",new ArrayList());
-
-        //saveDeadline(testDeadline);
-        //saveDeadline(testDeadline2);
-        //saveDeadline(testDeadline3);
-
-        //deleteDeadline(testDeadline2);
-
-        // writeDeadlineListToDisk();
 
         this.deadlineList = new ArrayList<Deadline>();
 
