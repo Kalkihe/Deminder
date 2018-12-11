@@ -74,11 +74,8 @@ public class DeadlineWriter extends Thread {
         for (int index = startIndex; index < fileNames.length; index++)
         {
            try{
-                File file = new File(this.context.getFilesDir(), this.getFileName(index));
-                if (file.exists())
-                {
-                    file.delete();
-                }
+               this.context.deleteFile(this.getFileName(index));
+
            }
            catch (Exception ex) {
                ex.printStackTrace();

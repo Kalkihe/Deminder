@@ -63,14 +63,14 @@ public class StorageManager {
 
     public void deleteDeadline(Deadline deadline) {
         // Nimmt eine Deadline, löscht diese aus der deadlineList
-        if (this.deadlineList.contains(deadline))
-        {
+        //if (this.deadlineList.contains(deadline))
+        //{
             this.deadlineList.remove(deadline);
-        }
-        else
-        {
+        //}
+        //else
+        //{
            // Fehlermeldung?
-        }
+        //}
 
         // In seperater Methode (am Besten gleiche wie bei saveDeadline()):
         // Konvertiert die deadline liste in das Kalender format und speichert diese auf dem Handy ab.
@@ -92,7 +92,7 @@ public class StorageManager {
             }
         }
         // Neuen DeadlineWriter (Thread) erzeugen und zu speichernde Liste übergeben
-        this.deadlineWriter = new DeadlineWriter(this.deadlineList,context);
+        this.deadlineWriter = new DeadlineWriter(this.deadlineList, this.context);
         deadlineWriter.start();
     }
 
