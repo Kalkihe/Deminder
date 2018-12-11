@@ -31,7 +31,7 @@ public class DeadlineWriter extends Thread {
             index++;
         }
         //Lösche alle nicht benötigten Dateien
-        this.deleteUnnecessaryDeadlinesFromDisk(index + 1);
+        this.deleteUnnecessaryDeadlinesFromDisk(index);
     }
 
     private void writeDeadlineToDisk(Deadline deadline, String fileName)
