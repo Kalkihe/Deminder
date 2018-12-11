@@ -19,6 +19,8 @@ public class StorageManager {
     private ArrayList<Deadline> deadlineList;
     private Context context;
 
+    private DeadlineWriter deadlineWriter;
+
     public StorageManager(Context context) {
         this.settingsList = new HashMap();
         this.context = context;
@@ -78,9 +80,19 @@ public class StorageManager {
 
     private void writeDeadlineListToDisk()
     {
+        // Prüfe, ob bereits ein DeadlineWriter erzeugt wurde
+        if (this.deadlineWriter != null)
+        {
+            // Falls bereits ein deadlineWriter exisitiert und gerade arbeitet
+            if (this.deadlineWriter.isAlive())
+            {
+                // Alten Speicherthread abbrechen
+                this.deadlineWriter.interrupt();
+                this.deadlineWriter = null;
+            }
+        }
         // Neuen DeadlineWriter (Thread) erzeugen und zu speichernde Liste übergeben
-        DeadlineWriter deadlineWriter = new DeadlineWriter(this.deadlineList,context);
-        // Thread starten
+        this.deadlineWriter = new DeadlineWriter(this.deadlineList,context);
         deadlineWriter.start();
     }
 

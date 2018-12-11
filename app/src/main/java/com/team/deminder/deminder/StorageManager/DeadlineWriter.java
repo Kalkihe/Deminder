@@ -4,7 +4,6 @@ import com.team.deminder.deminder.Containers.Deadline;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
@@ -37,15 +36,34 @@ public class DeadlineWriter extends Thread {
 
     private void writeDeadlineToDisk(Deadline deadline, String fileName)
     {
+        // Deklariere Streams
+        FileOutputStream fileOutputStream = null;
+        ObjectOutputStream objectOutputStream = null;
         try {
-            FileOutputStream fileOutputStream = context.openFileOutput(fileName, MODE_PRIVATE);
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            // Initialisiere Streams
+            fileOutputStream = context.openFileOutput(fileName, MODE_PRIVATE);
+            objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            // Speichere Deadline
             objectOutputStream.writeObject(deadline);
-            objectOutputStream.close();
-            fileOutputStream.close();
-
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+        }
+        finally {
+            // Schließe Streams, egal ob schreiben erfolgreich war oder nicht
+            try {
+               if (fileOutputStream != null)
+               {
+                   fileOutputStream.close();
+               }
+               if (objectOutputStream != null)
+               {
+                   objectOutputStream.close();
+               }
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
         }
     }
 
