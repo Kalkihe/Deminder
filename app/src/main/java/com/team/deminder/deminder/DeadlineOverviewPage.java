@@ -43,14 +43,6 @@ public class DeadlineOverviewPage extends AppCompatActivity {
         }
 
     private void buildLayout(){
-        Button createStorageManagerButton = findViewById(R.id.createStorageManagerButton);
-        createStorageManagerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                StorageManager storageManager = new StorageManager(DeadlineOverviewPage.this);
-            }
-        });
-
         FloatingActionButton newDeadlineButton = findViewById(R.id.newDeadlineButton);
         newDeadlineButton.setOnClickListener(new View.OnClickListener() {
             @Override
