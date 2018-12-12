@@ -62,16 +62,16 @@ public class StorageManager {
     }
 
     public void deleteDeadline(Deadline deadline) {
-        // Nimmt eine Deadline, löscht diese aus der deadlineList
-        //if (this.deadlineList.contains(deadline))
-        //{
-            this.deadlineList.remove(deadline);
-        //}
-        //else
-        //{
-           // Fehlermeldung?
-        //}
-
+        for (int index = 0; index < this.deadlineList.size(); index++)
+        {
+            Deadline currentDeadline = this.deadlineList.get(index);
+            if (currentDeadline.equals(deadline))
+            {
+                this.deadlineList.remove(index);
+                // Index verringern, da nun eine Deadline weniger in der Collection ist
+                index--;
+            }
+        }
         // In seperater Methode (am Besten gleiche wie bei saveDeadline()):
         // Konvertiert die deadline liste in das Kalender format und speichert diese auf dem Handy ab.
         // Threads benutzen beim Speichern!
