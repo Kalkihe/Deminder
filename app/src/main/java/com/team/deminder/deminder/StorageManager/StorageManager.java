@@ -69,7 +69,7 @@ public class StorageManager {
             {
                 this.deadlineList.remove(index);
                 // Index verringern, da nun eine Deadline weniger in der Collection ist
-                return;
+                break;
             }
         }
         // In seperater Methode (am Besten gleiche wie bei saveDeadline()):
