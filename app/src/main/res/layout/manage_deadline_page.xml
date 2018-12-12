@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:ems="12"
-                android:hint="Notitzen"
+                android:hint="Notizen"
                 android:inputType="textMultiLine"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="185dp" />
