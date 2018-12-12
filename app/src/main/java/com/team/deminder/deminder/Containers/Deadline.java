@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
+import java.util.UUID;
 
 public class Deadline implements Serializable {
     private String deadlineName;
@@ -11,6 +13,7 @@ public class Deadline implements Serializable {
     private boolean reacurring;
     private String notes;
     private ArrayList<Subtask> subtaskList;
+    private UUID uuid;
 
     public Deadline(String deadlineName, Calendar deadlineDate, boolean reacurring, String notes, ArrayList subtaskList) {
         this.deadlineName = deadlineName;
@@ -18,6 +21,7 @@ public class Deadline implements Serializable {
         this.reacurring = reacurring;
         this.notes = notes;
         this.subtaskList = subtaskList;
+        this.uuid = UUID.randomUUID();
     }
 
     public Deadline() {
@@ -62,5 +66,19 @@ public class Deadline implements Serializable {
 
     public void setSubtaskList(ArrayList subtaskList) {
         this.subtaskList = subtaskList;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Deadline deadline = (Deadline) o;
+        return this.uuid.equals(deadline.uuid);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(uuid);
     }
 }
