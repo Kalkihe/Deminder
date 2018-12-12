@@ -25,7 +25,7 @@ public class Deadline implements Serializable {
     }
 
     public Deadline() {
-
+        this.uuid = UUID.randomUUID();
     }
 
     public String getDeadlineName() {
@@ -68,17 +68,20 @@ public class Deadline implements Serializable {
         this.subtaskList = subtaskList;
     }
 
+    public UUID getUuid() {
+        return this.uuid;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Deadline deadline = (Deadline) o;
-        return this.uuid.equals(deadline.uuid);
+        return this.uuid.equals(deadline.getUuid());
     }
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(uuid);
+        return this.uuid.hashCode();
     }
 }
