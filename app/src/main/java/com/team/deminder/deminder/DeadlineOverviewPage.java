@@ -53,7 +53,7 @@ public class DeadlineOverviewPage extends AppCompatActivity {
         });
 
 
-      for(Deadline deadline: deadlineList){
+      for(final Deadline deadline: deadlineList){
           DeadlineLayoutWidget deadlineLayoutWidget = new DeadlineLayoutWidget(deadline,this);
           LinearLayout linearLayout = deadlineLayoutWidget.getLayout();
           final int DeadlineID = DeadlineOverviewPage.this.deadlineID;
