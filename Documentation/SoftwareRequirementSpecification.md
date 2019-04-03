@@ -31,7 +31,8 @@ The following chapters describe our vision for the project, the requirements for
 
 Deminder will be a an Android app which focuses on creating deadlines, assigning subtasks to them and keeping track of the progress of the tasks that are to do until the deadline occurs. There will be a possibility to create recurring deadlines as well. Also, there will be possibilities to show deadlines on a andoid widget and to share them on a server.
 
-![Use-Case Diagram](./Use-Cases/Use-Cases.jpg)
+![Use-Case Diagram](./Use-Cases/Diagram/Use-Cases.jpg)
+![Use-Case Diagram for 2. Semester](./Use-Cases/Diagram/Use-Cases_2.jpg)
 
 # 3. Specific Requirements
 
@@ -66,6 +67,7 @@ Show a list of all deadlines.
 ### 3.1.4 Show subtasks
 
 Show the subtasks of one deadline.
+[Here](./Use-Cases/UC_Show_subtasks/showSubtaskUsecase.md) you can find the use-case specification for showing the subtasks of a deadline.
 
 ### 3.1.5 Mark subtask as finished
 
@@ -77,16 +79,23 @@ Manage options.
 
 ### 3.1.7 Change list order
 
-Order list by due date or number of open subtasks.
+[Here](./Use-Cases/UC_Sort_deadline_list/sortDeadlineUsecase.md) you can find the use-case specification for sorting the deadline list.
 
 ### 3.1.8 Share deadline
 
-Share deadline on a server.
+[Here](./Use-Cases/UC_Export_data/exportDataUsecase.md) you can find the use-case specification for exporting a deadline.
 
 ### 3.1.9 Import deadline
 
 Import a new deadline from a server.
-adlines.
+
+[Here](./Use-Cases/UC_Import_data/importDataUsecase.md) you can find the use-case specification for importing a deadline.
+
+### 3.1.10 Deminder widget
+
+Show a widget with all deadlines.
+
+[Here](./Use-Cases/UC_Widget/widgetUsecase.md) you can find the use-case specification for the deminder widget.
 
 ## 3.2 Usability
 
