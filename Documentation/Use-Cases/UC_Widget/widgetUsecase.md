@@ -1,10 +1,10 @@
-# Use-Case Specification: Manage Subtask
+# Use-Case Specification: Widget
 
 # 1. Use-Case Name
 
 # 1.1 Brief Description
 
-This use case allows the user to manage a subtask, containing the name, if it is already done and the option to delete it.
+This use case allows the user to display his deadlines directly on the home screen.
 
 # 2. Flow of Events
 
@@ -12,15 +12,15 @@ This use case allows the user to manage a subtask, containing the name, if it is
 
 ### 2.1.1 Activity Diagram
 
-![Flow-Diagram](./flowDiagram.JPG)
+![Flow-Diagram](./flowDiagram.jpg)
 
 ### 2.1.2 Mock-Up
 
-![Mockup-Diagram](./mockup.JPG)
+![Mockup-Diagram](./mockup.jpg)
 
 ### 2.1.3 Feature
 
-[Feature](/app/src/androidTest/assets/manageSubtask.feature)
+n.a.
 
 ## 2.2 Alternative Flows
 
@@ -34,18 +34,18 @@ Since the app can be used on every android phone, there will be many different s
 
 # 4. Preconditions
 
-## 4.1 App opened on screen
+## 4.1 App is installed
 
-To manage a subtask the app must be running and opened on the screen. 
+To see the widget, all you need to do is unlock your phone.
 
-## 4.2 The deadline to be managed is already created
+## 4.2 The deadlines are already created
 
-To manage a subtask, it has to exist. 
+For deadlines to appear in the widget, they must have already been created with the app.
 
 # 5. Postconditions
 
 ## 5.1 Managing success
-Subtask can be shown in the deadline overview. 
+The Widget, including the Deadlines, can be shown on the home screen. 
 
 ## 5.2 Managing failure
 

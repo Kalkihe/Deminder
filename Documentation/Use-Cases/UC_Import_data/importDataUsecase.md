@@ -1,4 +1,4 @@
-# Use-Case Specification: Manage Subtask
+# Use-Case Specification: Import Data
 
 # 1. Use-Case Name
 
@@ -12,15 +12,15 @@ This use case allows the user to manage a subtask, containing the name, if it is
 
 ### 2.1.1 Activity Diagram
 
-![Flow-Diagram](./flowDiagram.JPG)
+![Flow-Diagram](./flowDiagram.jpg)
 
 ### 2.1.2 Mock-Up
 
-![Mockup-Diagram](./mockup.JPG)
+![Mockup-Diagram](./mockup.jpg)
 
 ### 2.1.3 Feature
 
-[Feature](/app/src/androidTest/assets/manageSubtask.feature)
+n.a.
 
 ## 2.2 Alternative Flows
 
@@ -36,11 +36,11 @@ Since the app can be used on every android phone, there will be many different s
 
 ## 4.1 App opened on screen
 
-To manage a subtask the app must be running and opened on the screen. 
+To import a deadline, the app can be opend via the appropriate file. Alternatively, the app first have to be opend and the existing file selected to import the deadline. 
 
-## 4.2 The deadline to be managed is already created
+## 4.2 The deadline to be imported already exist
 
-To manage a subtask, it has to exist. 
+To import a deadline, it has to exist. 
 
 # 5. Postconditions
 
