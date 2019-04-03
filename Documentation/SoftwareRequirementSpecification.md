@@ -31,8 +31,7 @@ The following chapters describe our vision for the project, the requirements for
 
 Deminder will be a an Android app which focuses on creating deadlines, assigning subtasks to them and keeping track of the progress of the tasks that are to do until the deadline occurs. There will be a possibility to create recurring deadlines as well. Also, there will be possibilities to show deadlines on a andoid widget and to share them on a server.
 
-![Use-Case Diagram](./Use-Cases/Diagram/Use-Cases.jpg)
-![Use-Case Diagram for 2. Semester](./Use-Cases/Diagram/Use-Cases_2.jpg)
+![Use-Case Diagram](./Use-Cases/Diagram/Use-Cases_2.jpg)
 
 # 3. Specific Requirements
 
@@ -50,7 +49,7 @@ Create a new deadline with a title, due date, an optional description, optional 
 
 ### 3.1.2 Edit deadline
 
-Edit an existing deadline. Change the title, due date, the description, add, delete or check substasks as finished and edit if it is a reacurring deadling. Or completely delete the deadline. Then save the edited deadline on the users phone or delete the deadline. 
+Edit an existing deadline. Change the title, due date, the description, add, delete or check substasks as finished, or completely delete the deadline. Then save the edited deadline on the users phone or delete the deadline. 
 
 [Here](./Use-Cases/UC_Manage_deadline/manageDeadlineUsecase.md) you can find the use-case specification for managing a deadline.
 
