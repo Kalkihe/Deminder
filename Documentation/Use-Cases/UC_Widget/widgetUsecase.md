@@ -4,7 +4,7 @@
 
 # 1.1 Brief Description
 
-This use case allows the user to display his deadlines directly on the home screen.
+This use case allows the user to display his deadlines in a widget directly on the home screen.
 
 # 2. Flow of Events
 
@@ -34,7 +34,7 @@ Since the app can be used on every android phone, there will be many different s
 
 # 4. Preconditions
 
-## 4.1 App is installed
+## 4.1 App is installed and the widget is placed on your home screen
 
 To see the widget, all you need to do is unlock your phone.
 
@@ -49,7 +49,7 @@ The Widget, including the Deadlines, can be shown on the home screen.
 
 ## 5.2 Managing failure
 
-Display a notification, saying that and why (if possible) the managing failed.
+Display a notification, saying that and why (if possible) displaying the widget failed.
 
 # 6. Extension Points
 

@@ -4,7 +4,7 @@
 
 # 1.1 Brief Description
 
-This use case allows the user to manage a subtask, containing the name, if it is already done and the option to delete it.
+This use case allows the user to import a deadline.
 
 # 2. Flow of Events
 
@@ -45,11 +45,11 @@ To import a deadline, it has to exist.
 # 5. Postconditions
 
 ## 5.1 Managing success
-Subtask can be shown in the deadline overview. 
+Imported deadline exist now and can be shown in the deadline overview. 
 
 ## 5.2 Managing failure
 
-Display a notification, saying that and why (if possible) the managing failed.
+Display a notification, saying that and why (if possible) the import failed.
 
 # 6. Extension Points
 

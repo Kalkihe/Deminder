@@ -1,10 +1,10 @@
-# Use-Case Specification: Manage Subtask
+# Use-Case Specification: Show Subtask
 
 # 1. Use-Case Name
 
 # 1.1 Brief Description
 
-This use case allows the user to manage a subtask, containing the name, if it is already done and the option to delete it.
+This use case allows the user to show subtasks of deadlines in the overview.
 
 # 2. Flow of Events
 
@@ -12,15 +12,15 @@ This use case allows the user to manage a subtask, containing the name, if it is
 
 ### 2.1.1 Activity Diagram
 
-![Flow-Diagram](./flowDiagram.JPG)
+![Flow-Diagram](./flowDiagram.jpg)
 
 ### 2.1.2 Mock-Up
 
-![Mockup-Diagram](./mockup.JPG)
+![Mockup-Diagram](./mockup.jpg)
 
 ### 2.1.3 Feature
 
-[Feature](/app/src/androidTest/assets/manageSubtask.feature)
+n.a.
 
 ## 2.2 Alternative Flows
 
@@ -36,11 +36,11 @@ Since the app can be used on every android phone, there will be many different s
 
 ## 4.1 App opened on screen
 
-To manage a subtask the app must be running and opened on the screen. 
+To show a subtask in the deadline overview, the app must be running and opened on the screen. 
 
-## 4.2 The deadline to be managed is already created
+## 4.2 The subtask to be shown is already created
 
-To manage a subtask, it has to exist. 
+To show a subtask in the deadline overview, it has to exist. 
 
 # 5. Postconditions
 
@@ -49,7 +49,7 @@ Subtask can be shown in the deadline overview.
 
 ## 5.2 Managing failure
 
-Display a notification, saying that and why (if possible) the managing failed.
+Display a notification, saying that and why (if possible) displaying the subtask failed.
 
 # 6. Extension Points
 

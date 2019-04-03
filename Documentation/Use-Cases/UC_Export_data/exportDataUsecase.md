@@ -4,7 +4,7 @@
 
 # 1.1 Brief Description
 
-This use case allows the user to manage a subtask, containing the name, if it is already done and the option to delete it.
+This use case allows the user to export a deadline.
 
 # 2. Flow of Events
 
@@ -36,20 +36,20 @@ Since the app can be used on every android phone, there will be many different s
 
 ## 4.1 App opened on screen
 
-To manage a subtask the app must be running and opened on the screen. 
+To export a deadline, the app must be running and opened on the screen. 
 
-## 4.2 The deadline to be managed is already created
+## 4.2 The deadline to be exported is already created
 
-To manage a subtask, it has to exist. 
+To export a deadline, it has to exist. 
 
 # 5. Postconditions
 
 ## 5.1 Managing success
-Subtask can be shown in the deadline overview. 
+The export-file is created and can be imported in other calendar-tools. 
 
 ## 5.2 Managing failure
 
-Display a notification, saying that and why (if possible) the managing failed.
+Display a notification, saying that and why (if possible) the export failed.
 
 # 6. Extension Points
 

@@ -49,7 +49,7 @@ Deadlines are sorted alphabetically or by date in the deadline overview.
 
 ## 5.2 Managing failure
 
-Display a notification, saying that and why (if possible) the managing failed.
+Display a notification, saying that and why (if possible) the sorting failed.
 
 # 6. Extension Points
 
