@@ -1,4 +1,4 @@
-# Use-Case Specification: Manage Subtask
+# Use-Case Specification: Export Deadline
 
 # 1. Use-Case Name
 
@@ -12,15 +12,15 @@ This use case allows the user to manage a subtask, containing the name, if it is
 
 ### 2.1.1 Activity Diagram
 
-![Flow-Diagram](./flowDiagram.JPG)
+![Flow-Diagram](./flowDiagram.jpg)
 
 ### 2.1.2 Mock-Up
 
-![Mockup-Diagram](./mockup.JPG)
+![Mockup-Diagram](./mockup.jpg)
 
 ### 2.1.3 Feature
 
-[Feature](/app/src/androidTest/assets/manageSubtask.feature)
+n.a.
 
 ## 2.2 Alternative Flows
 
