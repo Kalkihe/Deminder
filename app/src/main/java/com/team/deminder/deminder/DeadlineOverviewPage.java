@@ -52,6 +52,13 @@ public class DeadlineOverviewPage extends AppCompatActivity {
             }
         });
 
+        FloatingActionButton importButton = findViewById(R.id.importButton);
+        importButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // To do
+            }
+        });
 
       for(final Deadline deadline: deadlineList){
           DeadlineLayoutWidget deadlineLayoutWidget = new DeadlineLayoutWidget(deadline,this);
