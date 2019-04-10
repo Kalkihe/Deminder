@@ -56,7 +56,7 @@ public class DeadlineOverviewPage extends AppCompatActivity {
         importButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // To do
+                // TODO Import Funktion
             }
         });
 
