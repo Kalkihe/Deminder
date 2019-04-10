@@ -40,6 +40,8 @@ public class ManageDeadlinePage extends AppCompatActivity {
     private ImageButton buttonAddSubtask;
     private ImageButton buttonSave;
     private ImageButton buttonDelete;
+    // Referenz zum Button für den Export
+    private ImageButton buttonExport;
     private LinearLayout subtaskList;
     ArrayList<SubtaskLayoutWidget> subtaskLayoutWidgets;
     Calendar calendar;
@@ -83,6 +85,8 @@ public class ManageDeadlinePage extends AppCompatActivity {
         buttonAddSubtask = this.findViewById(R.id.buttonAddSubtask);
         buttonDelete = this.findViewById(R.id.buttonDelete);
         buttonSave = this.findViewById(R.id.buttonSave);
+        // Export Button deklarieren
+        buttonExport = this.findViewById(R.id.buttonExport);
 
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,6 +99,12 @@ public class ManageDeadlinePage extends AppCompatActivity {
             public void onClick(View v) {
                 deleteDeadline();
             }
+        });
+
+        buttonExport.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) { exportDeadline(); }
         });
 
         textDeadline.setOnClickListener(new View.OnClickListener() {
@@ -191,5 +201,10 @@ public class ManageDeadlinePage extends AppCompatActivity {
             // without saving or deleting the deadline
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    public void exportDeadline()
+    {
+       // TODO Export deadline
     }
 }
