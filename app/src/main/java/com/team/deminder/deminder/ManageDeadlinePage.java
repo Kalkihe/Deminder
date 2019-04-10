@@ -79,7 +79,6 @@ public class ManageDeadlinePage extends AppCompatActivity {
         subtaskList = this.findViewById(R.id.subtaskList);
         textTaskName = this.findViewById(R.id.textTaskName);
         textDeadline = this.findViewById(R.id.textDeadline);
-        checkBoxRecurring = this.findViewById(R.id.checkBoxRecurring);
         textNotes = this.findViewById(R.id.textNotes);
         buttonAddSubtask = this.findViewById(R.id.buttonAddSubtask);
         buttonDelete = this.findViewById(R.id.buttonDelete);
