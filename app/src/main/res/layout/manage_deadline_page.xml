@@ -45,15 +45,6 @@
                 tools:layout_editor_absoluteY="79dp"
                 tools:text="@tools:sample/date/ddmmyy" />
 
-            <CheckBox
-                android:id="@+id/checkBoxRecurring"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="periodisch"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="138dp" />
-
             <EditText
                 android:id="@+id/textNotes"
                 android:layout_width="wrap_content"
