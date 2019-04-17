@@ -56,3 +56,14 @@ Display a notification, saying that and why (if possible) the editing or deletin
 # 6. Extension Points
 
 n.a.
+
+## 7. Function Point calculation
+|transaction|DET|RET|FTR|Complexity|
+|---|---|---|---|---|
+|external input|3|8|2|low|
+|external output|2|4|2|low|
+|external inquieries||||low|
+|internal logical files||||low|
+|external interface files||||low|
+
+This makes 30,2 FP

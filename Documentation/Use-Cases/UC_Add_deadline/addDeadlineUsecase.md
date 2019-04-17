@@ -50,3 +50,14 @@ Display a notification, showing that and why (if possible) the creation of the d
 # 6. Extension Points
 
 n.a.
+
+## 7. Function Point calculation
+|transaction|DET|RET|FTR|Complexity|
+|---|---|---|---|---|
+|external input|3|6|2|low|
+|external output||||low|
+|external inquieries||||low|
+|internal logical files||||low|
+|external interface files||||low|
+
+This makes 25,2 FP
