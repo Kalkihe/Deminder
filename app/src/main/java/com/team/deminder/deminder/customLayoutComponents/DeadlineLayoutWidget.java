@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,6 +22,7 @@ public class DeadlineLayoutWidget {
     private Context context;
     private LinearLayout linearLayout;
     private Deadline deadline;
+    private ImageButton imageButton;
 
     public DeadlineLayoutWidget(Deadline deadline, Context context) {
         this.deadline = deadline;
@@ -43,6 +45,9 @@ public class DeadlineLayoutWidget {
         textDeadlineDate.setText(dateFormat.format(deadline.getDeadlineDate().getTime()));
         textDeadlineDate.setTextSize(20);
         linearLayout.addView(textDeadlineDate, layoutParams);
+
+        imageButton = new ImageButton(context);
+        linearLayout.addView(imageButton,layoutParams);
     }
 
     public LinearLayout getLayout(){

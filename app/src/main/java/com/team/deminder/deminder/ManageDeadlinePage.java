@@ -35,7 +35,6 @@ public class ManageDeadlinePage extends AppCompatActivity {
     private Boolean isNewDeadline;
     private TextView textTaskName;
     private TextView textDeadline;
-    private CheckBox checkBoxRecurring;
     private TextView textNotes;
     private ImageButton buttonAddSubtask;
     private ImageButton buttonSave;
@@ -140,9 +139,6 @@ public class ManageDeadlinePage extends AppCompatActivity {
 
         textTaskName.setText(deadline.getDeadlineName());
         textDeadline.setText(dateFormat.format(deadline.getDeadlineDate().getTime()));
-        if (deadline.isReacurring()){
-            checkBoxRecurring.setChecked(true);
-        }
         textNotes.setText(deadline.getNotes());
         ArrayList<Subtask> subtasks = deadline.getSubtaskList();
         for(Subtask subtask:subtasks){
@@ -165,7 +161,6 @@ public class ManageDeadlinePage extends AppCompatActivity {
             deadline.setDeadlineName(textTaskName.getText().toString());
             deadline.setDeadlineDate(calendar);
             deadline.setNotes(textNotes.getText().toString());
-            deadline.setReacurring(checkBoxRecurring.isChecked());
             deadline.setSubtaskList(subtasks);
 
             Intent returnIntent = new Intent();
