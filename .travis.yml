@@ -3,8 +3,7 @@ android:
   components:
   - android-28
   - build-tools-28.0.3
-  - sys-img-x86-android-26
-  - sys-img-armeabi-v7a-android-17
+  - sys-img-armeabi-v7a-android-21
 
   env:
     global:
