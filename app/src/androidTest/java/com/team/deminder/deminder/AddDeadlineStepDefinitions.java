@@ -25,11 +25,6 @@ class AddDeadlineStepDefinitions extends GreenCoffeeSteps {
         onViewWithId(R.id.textDeadline).isDisplayed();
     }
 
-    @And("^it should contain a reacurringCheckbox for reacurring$")
-    public void itShouldContainAReacurringCheckboxForReacurring() throws Throwable {
-        onViewWithId(R.id.checkBoxRecurring).isDisplayed();
-    }
-
     @And("^it should contain a textarea for notes$")
     public void itShouldContainATextareaForNotes() throws Throwable {
         onViewWithId(R.id.textNotes).isDisplayed();
