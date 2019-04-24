@@ -25,6 +25,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    buildToolsVersion '28.0.3'
 }
 
 dependencies {
@@ -43,5 +44,4 @@ dependencies {
     //androidTestImplementation 'io.cucumber:cucumber-junit:4.2.0'
     //androidTestImplementation 'info.cukes:cucumber-android:1.2.5@jar'
     //androidTestImplementation 'info.cukes:cucumber-picocontainer:1.2.4'
-
 }
