@@ -53,8 +53,7 @@ n/a
 |Technique Objective  	| Testing of functionality with JUnit |
 |Technique 		|  Implementation of unit tests for specific use cases |
 |Oracles 		|  Test expected and unexpected user inputs. Check for correct states afterwards.  |
-|Required Tools 	|  - Android Studio
-- JUnit Test |
+|Required Tools 	| Android studi and JUnit tests |
 |Success Criteria	|    All tests pass     |
 |Special Considerations	|     n.a          |
 #### 5.1.3	Business Cycle Testing
@@ -63,10 +62,9 @@ n/a
 || |
 |---|---|
 |Technique Objective  	| Testing of UI with feature files  |
-|Technique 		|  Testing of UI with feature files  |
+|Technique 		|  Writing feature files for specific use cases   |
 |Oracles 		|  Checking if UI components on the right position and are working correctly |
-|Required Tools 	|  - Android Studio
-- Feature files |
+|Required Tools 	| Android Studio and feature files |
 |Success Criteria	|    All tests pass     |
 |Special Considerations	|     n.a          |
 #### 5.1.5	Performance Profiling 
@@ -79,8 +77,7 @@ n/a
 |Technique Objective  	| Testing how intuitive the use of our app is with people   |
 |Technique 		|  Asking random people to use our app and see how good they understand it   |
 |Oracles 		|  Give no input on how to use the app, let the user test the interface and behavior of the app.   |
-|Required Tools 	|  - People
-- Android Smartphone |
+|Required Tools 	| People with Android Smartphone |
 |Success Criteria	|    Users think the app is intuitive |
 |Special Considerations	|     n.a          |
 #### 5.1.8	Volume Testing
