@@ -54,3 +54,12 @@ dependencies {
     //androidTestImplementation 'info.cukes:cucumber-android:1.2.5@jar'
     //androidTestImplementation 'info.cukes:cucumber-picocontainer:1.2.4'
 }
+
+coveralls {
+    jacocoReportPath = "${buildDir}/reports/coverage/debug/report.xml"
+}
+
+tasks.coveralls {
+    dependsOn 'connectedAndroidTest'
+    onlyIf { System.env.'CI' }
+}
