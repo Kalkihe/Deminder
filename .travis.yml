@@ -9,7 +9,7 @@ android:
 
 script:
 - echo "starting script"
-  - ./gradlew clean build
+- ./gradlew clean build
 
 # Emulator Management: Create, Start and Wait
 before_script:
