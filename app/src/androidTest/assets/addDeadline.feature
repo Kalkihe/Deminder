@@ -9,10 +9,6 @@ Feature: A user creates a new deadline
     And it should contain a save button
     And it should contain a delete button
 
-  Scenario: The user clicks on add subtask button
-    When the user clicks on the add subtask button
-    Then a new subtaskLayoutWidget is added
-
   Scenario: The user clicks on the delete button
     When the user clicks on the delete button
     Then the create deadline view is closed

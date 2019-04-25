@@ -51,16 +51,6 @@ class AddDeadlineStepDefinitions extends GreenCoffeeSteps {
         onViewWithId(R.id.buttonDelete).isDisplayed();
     }
 
-    @When("^the user clicks on the add subtask button$")
-    public void theUserClicksOnTheAddSubtaskButton() throws Throwable {
-        onViewWithId(R.id.buttonAddSubtask).click();
-    }
-
-    @Then("^a new subtaskLayoutWidget is added$")
-    public void aNewSubtaskLayoutWidgetIsAdded() throws Throwable {
-        onViewWithId(R.id.subtaskLayoutWidget).isDisplayed();
-    }
-
     @When("^the user clicks on the delete button$")
     public void theUserClicksOnTheDeleteButton() throws Throwable {
         onViewWithId(R.id.buttonDelete).click();
