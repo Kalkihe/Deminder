@@ -6,7 +6,6 @@ Feature: A user creates a new subtask
     And it should contain a "title textfield"
     And it should contain a "date lable"
     And it should contain a "datefield"
-    And it should contain a "reacurringCheckbox" for reacurring
     And it should contain a "textarea" for notes
     And it should contain a "subtask lable"
     And it should contain a "plus button" for subtasks
