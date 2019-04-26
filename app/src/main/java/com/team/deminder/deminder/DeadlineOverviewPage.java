@@ -2,20 +2,22 @@ package com.team.deminder.deminder;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.icu.util.RangeValueIterator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.team.deminder.deminder.Containers.Deadline;
 import com.team.deminder.deminder.StorageManager.StorageManager;
 import com.team.deminder.deminder.customLayoutComponents.DeadlineLayoutWidget;
-import com.team.deminder.deminder.Containers.Deadline;
+
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 
 public class DeadlineOverviewPage extends AppCompatActivity {
@@ -27,7 +29,8 @@ public class DeadlineOverviewPage extends AppCompatActivity {
     private LinearLayout deadlineListLayout;
     private HashMap<Integer, DeadlineLayoutWidget> mapDeadlineLayout = new HashMap<>();
     private int deadlineID = 0;
-
+    //private Menu menu;
+    private Toolbar mTopToolbar;
 
     //wird beim Start des Programms aufgerufen
     @Override
@@ -37,18 +40,48 @@ public class DeadlineOverviewPage extends AppCompatActivity {
         deadlineListLayout = this.findViewById(R.id.deadlineList);
         storageManager = new StorageManager(this);
         deadlineList = storageManager.loadDeadlines();
-
+        mTopToolbar = findViewById(R.id.my_toolbar);
+        setSupportActionBar(mTopToolbar);
         buildLayout();
 
+    }
+    // Menu in toolbar
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // this.menu = menu;
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.sort_deadlines_alphabetically) {
+            Toast.makeText(DeadlineOverviewPage.this, "Sorted alphabetically", Toast.LENGTH_LONG).show();
+            return true;
+        }
+        if(id == R.id.sort_deadlines_by_date) {
+            Toast.makeText(DeadlineOverviewPage.this, "Sorted by date", Toast.LENGTH_LONG).show();
+            return true;
         }
 
-    private void buildLayout(){
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void buildLayout() {
         FloatingActionButton newDeadlineButton = findViewById(R.id.newDeadlineButton);
         newDeadlineButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DeadlineOverviewPage.this, ManageDeadlinePage.class);
-                startActivityForResult(intent,1);
+                startActivityForResult(intent, 1);
             }
         });
 
@@ -60,36 +93,37 @@ public class DeadlineOverviewPage extends AppCompatActivity {
             }
         });
 
-      for(final Deadline deadline: deadlineList){
-          DeadlineLayoutWidget deadlineLayoutWidget = new DeadlineLayoutWidget(deadline,this);
-          LinearLayout linearLayout = deadlineLayoutWidget.getLayout();
-          final int DeadlineID = DeadlineOverviewPage.this.deadlineID;
-          linearLayout.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View v) {
-                  Intent intent = new Intent(DeadlineOverviewPage.this, ManageDeadlinePage.class);
-                  intent.putExtra("deadline",deadline);
-                  startActivityForResult(intent,DeadlineID);
-              }
-          });
-          mapDeadlineLayout.put(deadlineID,deadlineLayoutWidget);
-          deadlineID++;
-          deadlineListLayout.addView(linearLayout);
+        for (final Deadline deadline : deadlineList) {
+            DeadlineLayoutWidget deadlineLayoutWidget = new DeadlineLayoutWidget(deadline, this);
+            LinearLayout linearLayout = deadlineLayoutWidget.getLayout();
+            final int DeadlineID = DeadlineOverviewPage.this.deadlineID;
+            linearLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(DeadlineOverviewPage.this, ManageDeadlinePage.class);
+                    intent.putExtra("deadline", deadline);
+                    startActivityForResult(intent, DeadlineID);
+                }
+            });
+            mapDeadlineLayout.put(deadlineID, deadlineLayoutWidget);
+            deadlineID++;
+            deadlineListLayout.addView(linearLayout);
         }
     }
 
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent resultIntent) {
-        if(resultCode == Activity.RESULT_OK){
+        if (resultCode == Activity.RESULT_OK) {
             final Deadline deadline = (Deadline) resultIntent.getSerializableExtra("deadline");
-            if (resultIntent.getBooleanExtra("deleted",false)) {
-               storageManager.deleteDeadline(deadline);
-               deadlineList.remove(deadline);
-               deadlineListLayout.removeView(mapDeadlineLayout.get(requestCode).getLayout());
-               mapDeadlineLayout.remove(requestCode);
+            if (resultIntent.getBooleanExtra("deleted", false)) {
+                storageManager.deleteDeadline(deadline);
+                deadlineList.remove(deadline);
+                deadlineListLayout.removeView(mapDeadlineLayout.get(requestCode).getLayout());
+                mapDeadlineLayout.remove(requestCode);
             } else {
                 storageManager.saveDeadline(deadline);
-                if (!resultIntent.getBooleanExtra("isNewDeadline",false)){
+                if (!resultIntent.getBooleanExtra("isNewDeadline", false)) {
                     deadlineList.remove(deadline);
                     deadlineListLayout.removeView(mapDeadlineLayout.get(requestCode).getLayout());
                     mapDeadlineLayout.remove(requestCode);
@@ -101,11 +135,11 @@ public class DeadlineOverviewPage extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(DeadlineOverviewPage.this, ManageDeadlinePage.class);
-                        intent.putExtra("deadline",deadline);
-                        startActivityForResult(intent,deadlineID);
+                        intent.putExtra("deadline", deadline);
+                        startActivityForResult(intent, deadlineID);
                     }
                 });
-                mapDeadlineLayout.put(deadlineID,deadlineLayoutWidget);
+                mapDeadlineLayout.put(deadlineID, deadlineLayoutWidget);
                 DeadlineOverviewPage.this.deadlineID++;
                 deadlineListLayout.addView(linearLayout);
             }
