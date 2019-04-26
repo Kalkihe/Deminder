@@ -2,6 +2,7 @@ package com.team.deminder.deminder;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -41,6 +42,7 @@ public class DeadlineOverviewPage extends AppCompatActivity {
         storageManager = new StorageManager(this);
         deadlineList = storageManager.loadDeadlines();
         mTopToolbar = findViewById(R.id.my_toolbar);
+        mTopToolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(mTopToolbar);
         buildLayout();
 
