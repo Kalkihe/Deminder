@@ -2,5 +2,4 @@
     <string name="app_name">Deminder</string>
     <string name="sort_alphabetically">Sort</string>
     <string name="sort_by_date">Sort</string>
-    <string name="deadlines_heading">Deadlines</string>
 </resources>
