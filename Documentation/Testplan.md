@@ -199,10 +199,11 @@ n.a
 ### 13.2 Assessing the Deliverables of this Test Plan 
 n.a 
 ### 13.3 Problem Reporting, Escalation, and Issue Resolution 
-n.a 
+- Travis CI will generate a log
+- The error gets reported by E-Mail to all group members if a test starts failing or the build is unstable
 ### 13.4 Managing Test Cycles 
 n.a 
 ### 13.5 Traceability Strategies 
 n.a 
 ### 13.6 Approval and Signoff 
-n.a 
+Thomas Malina, Tillmann Nünninghoff, Natalie Busam, Lea Wegner
