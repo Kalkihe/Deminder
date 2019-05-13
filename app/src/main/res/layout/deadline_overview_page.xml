@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        style="@style/HeaderBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="4dp"
+        app:popupTheme="@style/Widget.AppCompat.PopupMenu"
+        app:theme="@style/ThemeOverlay.AppCompat.ActionBar" tools:targetApi="lollipop" />
 
     <ScrollView
         android:id="@+id/deadlineOverviewPage"
@@ -16,18 +24,10 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingStart="20dp"
-            android:paddingTop="20dp"
+            android:paddingTop="70dp"
             android:paddingEnd="10dp"
             android:paddingBottom="10dp">
 
-            <TextView
-                android:id="@+id/textHeading"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="Deadlines"
-                android:textColor="@android:color/background_dark"
-                android:textSize="24sp" />
 
             <LinearLayout
                 android:id="@+id/deadlineList"
@@ -54,10 +54,12 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:src="@android:drawable/ic_menu_add"
+            android:src="@drawable/ic_plus"
+            app:fabSize="auto"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/importButton" />
+            app:layout_constraintStart_toEndOf="@+id/importButton"
+            app:maxImageSize="42dp" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/importButton"
@@ -68,8 +70,8 @@
             android:layout_marginBottom="8dp"
             android:src="@android:drawable/stat_sys_download"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:maxImageSize="32dp" />
     </android.support.constraint.ConstraintLayout>
-
 
 </android.support.design.widget.CoordinatorLayout>

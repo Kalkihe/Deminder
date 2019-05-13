@@ -1,22 +1,15 @@
 package com.team.deminder.deminder.customLayoutComponents;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.Gravity;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.team.deminder.deminder.Containers.Deadline;
-import com.team.deminder.deminder.DeadlineOverviewPage;
-import com.team.deminder.deminder.ManageDeadlinePage;
 import com.team.deminder.deminder.R;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 
 public class DeadlineLayoutWidget {
     private Context context;
@@ -27,7 +20,7 @@ public class DeadlineLayoutWidget {
     public DeadlineLayoutWidget(Deadline deadline, Context context) {
         this.deadline = deadline;
         this.context = context;
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
         linearLayout=  new LinearLayout(context);
         linearLayout.setOrientation(LinearLayout.HORIZONTAL);
@@ -44,9 +37,11 @@ public class DeadlineLayoutWidget {
         TextView textDeadlineDate = new TextView(context);
         textDeadlineDate.setText(dateFormat.format(deadline.getDeadlineDate().getTime()));
         textDeadlineDate.setTextSize(20);
+        textDeadlineDate.setGravity(Gravity.RIGHT);
         linearLayout.addView(textDeadlineDate, layoutParams);
 
         imageButton = new ImageButton(context);
+        imageButton.setBackgroundResource(R.drawable.ic_drop_down_grey);
         linearLayout.addView(imageButton,layoutParams);
     }
 
