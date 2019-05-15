@@ -54,3 +54,14 @@ Display a notification, saying that and why (if possible) the managing failed.
 # 6. Extension Points
 
 n.a.
+
+## 7. Function Point calculation
+|transaction|DET|RET|FTR|Complexity|
+|---|---|---|---|---|
+|external input|1|2||low|
+|external output|1|2||low|
+|external inquieries||||low|
+|internal logical files|1|||low|
+|external interface files||||low|
+
+This makes 17,64 FP

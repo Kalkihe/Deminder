@@ -54,3 +54,14 @@ Display a notification, saying that and why (if possible) the import failed.
 # 6. Extension Points
 
 n.a.
+
+## 7. Function Point calculation
+|transaction|DET|RET|FTR|Complexity|
+|---|---|---|---|---|
+|external input|1|||low|
+|external output||1|1|low|
+|external inquieries||||low|
+|internal logical files||1||low|
+|external interface files|1|||low|
+
+This makes 11,76 FP

@@ -1,6 +1,12 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.github.kt3k.coveralls'
+
 
 android {
+    lintOptions {
+        abortOnError false
+    }
+
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.team.deminder.deminder"
@@ -15,6 +21,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            testCoverageEnabled true
+        }
     }
     sourceSets {
         androidTest {
@@ -25,6 +34,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    buildToolsVersion '28.0.3'
 }
 
 dependencies {
@@ -43,5 +53,13 @@ dependencies {
     //androidTestImplementation 'io.cucumber:cucumber-junit:4.2.0'
     //androidTestImplementation 'info.cukes:cucumber-android:1.2.5@jar'
     //androidTestImplementation 'info.cukes:cucumber-picocontainer:1.2.4'
+}
 
+coveralls {
+    jacocoReportPath = "${buildDir}/reports/coverage/debug/report.xml"
+}
+
+tasks.coveralls {
+    dependsOn 'connectedAndroidTest'
+    onlyIf { System.env.'CI' }
 }

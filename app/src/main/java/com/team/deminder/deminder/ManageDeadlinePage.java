@@ -35,11 +35,12 @@ public class ManageDeadlinePage extends AppCompatActivity {
     private Boolean isNewDeadline;
     private TextView textTaskName;
     private TextView textDeadline;
-    private CheckBox checkBoxRecurring;
     private TextView textNotes;
     private ImageButton buttonAddSubtask;
     private ImageButton buttonSave;
     private ImageButton buttonDelete;
+    // Referenz zum Button für den Export
+    private ImageButton buttonExport;
     private LinearLayout subtaskList;
     ArrayList<SubtaskLayoutWidget> subtaskLayoutWidgets;
     Calendar calendar;
@@ -79,11 +80,12 @@ public class ManageDeadlinePage extends AppCompatActivity {
         subtaskList = this.findViewById(R.id.subtaskList);
         textTaskName = this.findViewById(R.id.textTaskName);
         textDeadline = this.findViewById(R.id.textDeadline);
-        checkBoxRecurring = this.findViewById(R.id.checkBoxRecurring);
         textNotes = this.findViewById(R.id.textNotes);
         buttonAddSubtask = this.findViewById(R.id.buttonAddSubtask);
         buttonDelete = this.findViewById(R.id.buttonDelete);
         buttonSave = this.findViewById(R.id.buttonSave);
+        // Export Button deklarieren
+        buttonExport = this.findViewById(R.id.buttonExport);
 
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +98,12 @@ public class ManageDeadlinePage extends AppCompatActivity {
             public void onClick(View v) {
                 deleteDeadline();
             }
+        });
+
+        buttonExport.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) { exportDeadline(); }
         });
 
         textDeadline.setOnClickListener(new View.OnClickListener() {
@@ -131,9 +139,6 @@ public class ManageDeadlinePage extends AppCompatActivity {
 
         textTaskName.setText(deadline.getDeadlineName());
         textDeadline.setText(dateFormat.format(deadline.getDeadlineDate().getTime()));
-        if (deadline.isReacurring()){
-            checkBoxRecurring.setChecked(true);
-        }
         textNotes.setText(deadline.getNotes());
         ArrayList<Subtask> subtasks = deadline.getSubtaskList();
         for(Subtask subtask:subtasks){
@@ -156,7 +161,6 @@ public class ManageDeadlinePage extends AppCompatActivity {
             deadline.setDeadlineName(textTaskName.getText().toString());
             deadline.setDeadlineDate(calendar);
             deadline.setNotes(textNotes.getText().toString());
-            deadline.setReacurring(checkBoxRecurring.isChecked());
             deadline.setSubtaskList(subtasks);
 
             Intent returnIntent = new Intent();
@@ -192,5 +196,10 @@ public class ManageDeadlinePage extends AppCompatActivity {
             // without saving or deleting the deadline
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    public void exportDeadline()
+    {
+       // TODO Export deadline
     }
 }

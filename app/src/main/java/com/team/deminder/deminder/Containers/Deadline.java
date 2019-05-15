@@ -10,15 +10,13 @@ import java.util.UUID;
 public class Deadline implements Serializable {
     private String deadlineName;
     private Calendar deadlineDate;
-    private boolean reacurring;
     private String notes;
     private ArrayList<Subtask> subtaskList;
     private UUID uuid;
 
-    public Deadline(String deadlineName, Calendar deadlineDate, boolean reacurring, String notes, ArrayList subtaskList) {
+    public Deadline(String deadlineName, Calendar deadlineDate, String notes, ArrayList subtaskList) {
         this.deadlineName = deadlineName;
         this.deadlineDate = deadlineDate;
-        this.reacurring = reacurring;
         this.notes = notes;
         this.subtaskList = subtaskList;
         this.uuid = UUID.randomUUID();
@@ -42,14 +40,6 @@ public class Deadline implements Serializable {
 
     public void setDeadlineDate(Calendar deadlineDate) {
         this.deadlineDate = deadlineDate;
-    }
-
-    public boolean isReacurring() {
-        return reacurring;
-    }
-
-    public void setReacurring(boolean reacurring) {
-        this.reacurring = reacurring;
     }
 
     public String getNotes() {

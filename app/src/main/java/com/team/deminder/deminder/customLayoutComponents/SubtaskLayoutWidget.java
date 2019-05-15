@@ -1,15 +1,11 @@
 package com.team.deminder.deminder.customLayoutComponents;
 
 import android.content.Context;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.team.deminder.deminder.Containers.Subtask;
-import com.team.deminder.deminder.ManageDeadlinePage;
 import com.team.deminder.deminder.R;
 
 public class SubtaskLayoutWidget {
@@ -20,8 +16,8 @@ public class SubtaskLayoutWidget {
     private EditText textSubtaskName;
     private CheckBox checkBoxCompleted;
 
-    public LinearLayout getLayout(){
-        LinearLayout linearLayout= new LinearLayout(context);
+    public LinearLayout getLayout() {
+        LinearLayout linearLayout = new LinearLayout(context);
         linearLayout.setOrientation(LinearLayout.HORIZONTAL);
 
         textSubtaskName = new EditText(context);
@@ -41,7 +37,7 @@ public class SubtaskLayoutWidget {
         buttonDelete.setImageResource(android.R.drawable.ic_delete);
         buttonDelete.setBackgroundColor(0);
 
-    return linearLayout;
+        return linearLayout;
     }
 
     public ImageButton getDeleteButton() {
@@ -49,8 +45,8 @@ public class SubtaskLayoutWidget {
     }
 
     public SubtaskLayoutWidget(String subtaskName, boolean completed, Context context) {
-        this.subtaskName=subtaskName;
-        this.completed=completed;
+        this.subtaskName = subtaskName;
+        this.completed = completed;
         this.context = context;
 
     }

@@ -27,7 +27,6 @@ Feature: An already existing deadline has to be managable. The user can modify t
     Given The deadline to change is already existing
     And The app is running
     When I click on the "edit button" for this specific deadline
-    And I toggle the "reacurringCheckbox"
     And I click on the "save button"
     Then the repetition of the deadline is updated corresponding to my changes
 
