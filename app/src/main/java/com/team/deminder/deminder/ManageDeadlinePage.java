@@ -201,5 +201,12 @@ public class ManageDeadlinePage extends AppCompatActivity {
     public void exportDeadline()
     {
        // TODO Export deadline
+        String uri = "";
+        Intent shareIntent = new Intent();
+        shareIntent.setAction(Intent.ACTION_SEND);
+        shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
+        shareIntent.setType("*/*");
+
+
     }
 }
