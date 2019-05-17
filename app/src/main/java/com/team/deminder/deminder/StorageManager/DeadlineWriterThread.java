@@ -10,16 +10,18 @@ import java.util.ArrayList;
 import static android.content.Context.MODE_PRIVATE;
 import android.content.Context;
 
-public class DeadlineWriter extends Thread {
+public class DeadlineWriterThread extends Thread {
     private ArrayList<Deadline> deadlines;
     private Context context;
+    private IDeadlineWritingStrategy writingStrategy;
     private final String fileNamePrefix = "deadline_";
     private final String fileFormat = ".txt";
 
-    public DeadlineWriter(ArrayList<Deadline> deadlines, Context context)
+    public DeadlineWriterThread(ArrayList<Deadline> deadlines, Context context, IDeadlineWritingStrategy writingStrategy)
     {
         this.deadlines = deadlines;
         this.context = context;
+        this.writingStrategy = writingStrategy;
     }
 
     public void run()
@@ -36,35 +38,7 @@ public class DeadlineWriter extends Thread {
 
     private void writeDeadlineToDisk(Deadline deadline, String fileName)
     {
-        // Deklariere Streams
-        FileOutputStream fileOutputStream = null;
-        ObjectOutputStream objectOutputStream = null;
-        try {
-            // Initialisiere Streams
-            fileOutputStream = context.openFileOutput(fileName, MODE_PRIVATE);
-            objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            // Speichere Deadline
-            objectOutputStream.writeObject(deadline);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        finally {
-            // Schließe Streams, egal ob schreiben erfolgreich war oder nicht
-            try {
-               if (fileOutputStream != null)
-               {
-                   fileOutputStream.close();
-               }
-               if (objectOutputStream != null)
-               {
-                   objectOutputStream.close();
-               }
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-            }
-        }
+        this.writingStrategy.writeDeadlineToDisk(deadline, fileName);
     }
 
     private void deleteUnnecessaryDeadlinesFromDisk(int startIndex)

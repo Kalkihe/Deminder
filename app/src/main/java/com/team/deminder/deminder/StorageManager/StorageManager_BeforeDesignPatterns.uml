@@ -3,13 +3,13 @@
   <ID>JAVA</ID>
   <OriginalElement>com.team.deminder.deminder.StorageManager</OriginalElement>
   <nodes>
-    <node x="8.0" y="-21.0">com.team.deminder.deminder.StorageManager.DeadlineWriter</node>
+    <node x="8.0" y="-21.0">com.team.deminder.deminder.StorageManager.DeadlineWriterThread</node>
     <node x="0.0" y="339.0">com.team.deminder.deminder.StorageManager.DeadlineReader</node>
     <node x="0.0" y="172.0">com.team.deminder.deminder.StorageManager.StorageManager</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="com.team.deminder.deminder.StorageManager.StorageManager" target="com.team.deminder.deminder.StorageManager.DeadlineWriter">
+    <edge source="com.team.deminder.deminder.StorageManager.StorageManager" target="com.team.deminder.deminder.StorageManager.DeadlineWriterThread">
       <point x="72.25" y="-61.0" />
       <point x="216.75" y="147.0" />
       <point x="212.75" y="147.0" />

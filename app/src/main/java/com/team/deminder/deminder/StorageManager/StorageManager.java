@@ -3,15 +3,10 @@ package com.team.deminder.deminder.StorageManager;
 import com.team.deminder.deminder.Containers.Deadline;
 
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 
-import static android.content.Context.MODE_PRIVATE;
 import android.content.Context;
 
 public class StorageManager {
@@ -19,7 +14,9 @@ public class StorageManager {
     private ArrayList<Deadline> deadlineList;
     private Context context;
 
-    private DeadlineWriter deadlineWriter;
+    private DeadlineWriterThread deadlineWriterThread;
+
+    private IDeadlineWritingStrategy deadlineWritingStrategy;
 
     public StorageManager(Context context) {
         this.settingsList = new HashMap();
@@ -28,6 +25,9 @@ public class StorageManager {
         this.deadlineList = new ArrayList<Deadline>();
 
         this.deadlineList = this.readDeadlineListFromDisk();
+
+        // Change Strategy for Writing HERE
+        this.deadlineWritingStrategy = new ObjectWritingStrategy(this.context);
     }
 
     public HashMap loadSettings() {
@@ -80,20 +80,20 @@ public class StorageManager {
 
     private void writeDeadlineListToDisk()
     {
-        // Prüfe, ob bereits ein DeadlineWriter erzeugt wurde
-        if (this.deadlineWriter != null)
+        // Prüfe, ob bereits ein DeadlineWriterThread erzeugt wurde
+        if (this.deadlineWriterThread != null)
         {
-            // Falls bereits ein deadlineWriter exisitiert und gerade arbeitet
-            if (this.deadlineWriter.isAlive())
+            // Falls bereits ein deadlineWriterThread exisitiert und gerade arbeitet
+            if (this.deadlineWriterThread.isAlive())
             {
                 // Alten Speicherthread abbrechen
-                this.deadlineWriter.interrupt();
-                this.deadlineWriter = null;
+                this.deadlineWriterThread.interrupt();
+                this.deadlineWriterThread = null;
             }
         }
-        // Neuen DeadlineWriter (Thread) erzeugen und zu speichernde Liste übergeben
-        this.deadlineWriter = new DeadlineWriter(this.deadlineList, this.context);
-        deadlineWriter.start();
+        // Neuen DeadlineWriterThread (Thread) erzeugen und zu speichernde Liste übergeben
+        this.deadlineWriterThread = new DeadlineWriterThread(this.deadlineList, this.context, this.deadlineWritingStrategy);
+        deadlineWriterThread.start();
     }
 
     private ArrayList<Deadline> readDeadlineListFromDisk()
