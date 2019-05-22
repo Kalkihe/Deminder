@@ -26,17 +26,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class DeadlineOverviewPage extends AppCompatActivity implements AlertPositiveListener {
-    private ArrayList<Deadline> deadlineList = new ArrayList<>();
-    private SettingsPage settingsPage;
-    private StorageManager storageManager;
-    private ManageDeadlinePage manageDeadlinePage;
-    private DeadlineLayoutWidget deadlineLayoutWidget;
-    private LinearLayout deadlineListLayout;
     private HashMap<Integer, DeadlineLayoutWidget> mapDeadlineLayout = new HashMap<>();
-    private int deadlineID = 0;
+    private ArrayList<Deadline> deadlineList = new ArrayList<>();
+    private StorageManager storageManager;
+    private LinearLayout deadlineListLayout;
     private Toolbar mTopToolbar;
+    private int deadlineID = 0;
     private int position = 0; // Stores the selected item's position
-    private Button btn;
 
     //wird beim Start des Programms aufgerufen
     @SuppressLint("ResourceType")
