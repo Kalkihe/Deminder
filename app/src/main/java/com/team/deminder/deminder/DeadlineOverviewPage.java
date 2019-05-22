@@ -38,12 +38,7 @@ public class DeadlineOverviewPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.deadline_overview_page);
-        deadlineListLayout = this.findViewById(R.id.deadlineList);
         storageManager = new StorageManager(this);
-        deadlineList = storageManager.loadDeadlines();
-        mTopToolbar = findViewById(R.id.my_toolbar);
-        mTopToolbar.setTitleTextColor(Color.WHITE);
-        setSupportActionBar(mTopToolbar);
         buildLayout();
 
     }
@@ -77,7 +72,34 @@ public class DeadlineOverviewPage extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent resultIntent) {
+        if (resultCode == Activity.RESULT_OK) {
+            final Deadline deadline = (Deadline) resultIntent.getSerializableExtra("deadline");
+            if (resultIntent.getBooleanExtra("deleted", false)) {
+                storageManager.deleteDeadline(deadline);
+                deadlineList.remove(deadline);
+                deadlineListLayout.removeView(mapDeadlineLayout.get(requestCode).getLayout());
+                mapDeadlineLayout.remove(requestCode);
+            } else {
+                storageManager.saveDeadline(deadline);
+                if (!resultIntent.getBooleanExtra("isNewDeadline", false)) {
+                    deadlineList.remove(deadline);
+                    deadlineListLayout.removeView(mapDeadlineLayout.get(requestCode).getLayout());
+                    mapDeadlineLayout.remove(requestCode);
+                }
+                addNewDeadline(deadline);
+            }
+        }
+    }
+
     private void buildLayout() {
+        deadlineListLayout = this.findViewById(R.id.deadlineList);
+        deadlineList = storageManager.loadDeadlines();
+        mTopToolbar = findViewById(R.id.my_toolbar);
+        mTopToolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(mTopToolbar);
+
         FloatingActionButton newDeadlineButton = findViewById(R.id.newDeadlineButton);
         newDeadlineButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,58 +118,15 @@ public class DeadlineOverviewPage extends AppCompatActivity {
         });
 
         for (final Deadline deadline : deadlineList) {
-            DeadlineLayoutWidget deadlineLayoutWidget = new DeadlineLayoutWidget(deadline, this);
-            LinearLayout linearLayout = deadlineLayoutWidget.getLayout();
-            final int DeadlineID = DeadlineOverviewPage.this.deadlineID;
-            linearLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(DeadlineOverviewPage.this, ManageDeadlinePage.class);
-                    intent.putExtra("deadline", deadline);
-                    startActivityForResult(intent, DeadlineID);
-                }
-            });
-            mapDeadlineLayout.put(deadlineID, deadlineLayoutWidget);
-            deadlineID++;
-            deadlineListLayout.addView(linearLayout);
+            addNewDeadline(deadline);
         }
     }
 
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent resultIntent) {
-        if (resultCode == Activity.RESULT_OK) {
-            final Deadline deadline = (Deadline) resultIntent.getSerializableExtra("deadline");
-            if (resultIntent.getBooleanExtra("deleted", false)) {
-                storageManager.deleteDeadline(deadline);
-                deadlineList.remove(deadline);
-                deadlineListLayout.removeView(mapDeadlineLayout.get(requestCode).getLayout());
-                mapDeadlineLayout.remove(requestCode);
-            } else {
-                storageManager.saveDeadline(deadline);
-                if (!resultIntent.getBooleanExtra("isNewDeadline", false)) {
-                    deadlineList.remove(deadline);
-                    deadlineListLayout.removeView(mapDeadlineLayout.get(requestCode).getLayout());
-                    mapDeadlineLayout.remove(requestCode);
-                }
-                DeadlineLayoutWidget deadlineLayoutWidget = new DeadlineLayoutWidget(deadline, this);
-                LinearLayout linearLayout = deadlineLayoutWidget.getLayout();
-                final int deadlineID = DeadlineOverviewPage.this.deadlineID;
-                linearLayout.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(DeadlineOverviewPage.this, ManageDeadlinePage.class);
-                        intent.putExtra("deadline", deadline);
-                        startActivityForResult(intent, deadlineID);
-                    }
-                });
-                mapDeadlineLayout.put(deadlineID, deadlineLayoutWidget);
-                DeadlineOverviewPage.this.deadlineID++;
-                deadlineListLayout.addView(linearLayout);
-            }
-        }
-        if (resultCode == Activity.RESULT_CANCELED) {
-            // TODO or do nothing if the user canceled the creation of a new deadline
-        }
+    private void addNewDeadline(Deadline deadline) {
+        DeadlineLayoutWidget deadlineLayoutWidget = new DeadlineLayoutWidget(deadline, this, this.deadlineID,this);
+        LinearLayout linearLayout = deadlineLayoutWidget.getLayout();
+        mapDeadlineLayout.put(deadlineID, deadlineLayoutWidget);
+        deadlineID++;
+        deadlineListLayout.addView(linearLayout);
     }
 }
