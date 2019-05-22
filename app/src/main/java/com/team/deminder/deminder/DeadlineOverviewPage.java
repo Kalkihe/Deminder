@@ -15,8 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.team.deminder.deminder.Containers.Deadline;
 import com.team.deminder.deminder.StorageManager.StorageManager;
@@ -46,12 +44,7 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.deadline_overview_page);
-        deadlineListLayout = this.findViewById(R.id.deadlineList);
         storageManager = new StorageManager(this);
-        deadlineList = storageManager.loadDeadlines();
-        mTopToolbar = findViewById(R.id.my_toolbar);
-        mTopToolbar.setTitleTextColor(Color.WHITE);
-        setSupportActionBar(mTopToolbar);
         buildLayout();
     }
     // Menu in toolbar
@@ -60,43 +53,62 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here
-
         int id = item.getItemId();
 
         if (id == R.id.sort_deadlines_by_date) {
-
-            /** Getting the fragment manager */
             FragmentManager manager = getSupportFragmentManager();
-
-            /** Instantiating the DialogFragment class */
             SortDialogFragment alert = new SortDialogFragment();
-
-            /** Creating a bundle object to store the selected item's index */
             Bundle b = new Bundle();
-
-            /** Storing the selected item's index in the bundle object */
             b.putInt("position", position);
-
-            /** Setting the bundle object to the dialog fragment object */
             alert.setArguments(b);
-
-            /** Creating the dialog fragment object, which will in turn open the alert dialog window */
             alert.show(manager, "alert_dialog_radio");
-
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onPositiveClick(int position) {
+        this.position = position;
+
+        //TODO Sort logic here
+        //SortDialogFragment.sortDeadlinesOptions[this.position]);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent resultIntent) {
+        if (resultCode == Activity.RESULT_OK) {
+            final Deadline deadline = (Deadline) resultIntent.getSerializableExtra("deadline");
+            if (resultIntent.getBooleanExtra("deleted", false)) {
+                storageManager.deleteDeadline(deadline);
+                deadlineList.remove(deadline);
+                deadlineListLayout.removeView(mapDeadlineLayout.get(requestCode).getLayout());
+                mapDeadlineLayout.remove(requestCode);
+            } else {
+                storageManager.saveDeadline(deadline);
+                if (!resultIntent.getBooleanExtra("isNewDeadline", false)) {
+                    deadlineList.remove(deadline);
+                    deadlineListLayout.removeView(mapDeadlineLayout.get(requestCode).getLayout());
+                    mapDeadlineLayout.remove(requestCode);
+                }
+                addNewDeadline(deadline);
+            }
+        }
+    }
+
     private void buildLayout() {
+        deadlineListLayout = this.findViewById(R.id.deadlineList);
+        deadlineList = storageManager.loadDeadlines();
+        mTopToolbar = findViewById(R.id.my_toolbar);
+        mTopToolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(mTopToolbar);
+
         FloatingActionButton newDeadlineButton = findViewById(R.id.newDeadlineButton);
         newDeadlineButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,71 +127,16 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
         });
 
         for (final Deadline deadline : deadlineList) {
-            DeadlineLayoutWidget deadlineLayoutWidget = new DeadlineLayoutWidget(deadline, this);
-            LinearLayout linearLayout = deadlineLayoutWidget.getLayout();
-            final int DeadlineID = DeadlineOverviewPage.this.deadlineID;
-            linearLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(DeadlineOverviewPage.this, ManageDeadlinePage.class);
-                    intent.putExtra("deadline", deadline);
-                    startActivityForResult(intent, DeadlineID);
-                }
-            });
-            mapDeadlineLayout.put(deadlineID, deadlineLayoutWidget);
-            deadlineID++;
-            deadlineListLayout.addView(linearLayout);
+            addNewDeadline(deadline);
         }
 
     }
 
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent resultIntent) {
-        if (resultCode == Activity.RESULT_OK) {
-            final Deadline deadline = (Deadline) resultIntent.getSerializableExtra("deadline");
-            if (resultIntent.getBooleanExtra("deleted", false)) {
-                storageManager.deleteDeadline(deadline);
-                deadlineList.remove(deadline);
-                deadlineListLayout.removeView(mapDeadlineLayout.get(requestCode).getLayout());
-                mapDeadlineLayout.remove(requestCode);
-            } else {
-                storageManager.saveDeadline(deadline);
-                if (!resultIntent.getBooleanExtra("isNewDeadline", false)) {
-                    deadlineList.remove(deadline);
-                    deadlineListLayout.removeView(mapDeadlineLayout.get(requestCode).getLayout());
-                    mapDeadlineLayout.remove(requestCode);
-                }
-                DeadlineLayoutWidget deadlineLayoutWidget = new DeadlineLayoutWidget(deadline, this);
-                LinearLayout linearLayout = deadlineLayoutWidget.getLayout();
-                final int deadlineID = DeadlineOverviewPage.this.deadlineID;
-                linearLayout.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(DeadlineOverviewPage.this, ManageDeadlinePage.class);
-                        intent.putExtra("deadline", deadline);
-                        startActivityForResult(intent, deadlineID);
-                    }
-                });
-                mapDeadlineLayout.put(deadlineID, deadlineLayoutWidget);
-                DeadlineOverviewPage.this.deadlineID++;
-                deadlineListLayout.addView(linearLayout);
-            }
-        }
-        if (resultCode == Activity.RESULT_CANCELED) {
-            // TODO or do nothing if the user canceled the creation of a new deadline
-        }
-    }
-
-
-    @Override
-    public void onPositiveClick(int position) {
-        this.position = position;
-
-        /** Getting the reference of the textview from the main layout */
-        TextView tv = findViewById(R.id.tv_android);
-
-        /** Setting the selected android version in the textview */
-        tv.setText("Your Choice : " + SortDialogFragment.sortDeadlinesOptions[this.position]);
+    private void addNewDeadline(Deadline deadline) {
+        DeadlineLayoutWidget deadlineLayoutWidget = new DeadlineLayoutWidget(deadline, this, this.deadlineID,this);
+        LinearLayout linearLayout = deadlineLayoutWidget.getLayout();
+        mapDeadlineLayout.put(deadlineID, deadlineLayoutWidget);
+        deadlineID++;
+        deadlineListLayout.addView(linearLayout);
     }
 }

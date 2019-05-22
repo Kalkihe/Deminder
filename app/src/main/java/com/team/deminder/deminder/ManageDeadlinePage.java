@@ -8,8 +8,6 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -17,15 +15,12 @@ import android.widget.Toast;
 
 import com.team.deminder.deminder.Containers.Deadline;
 import com.team.deminder.deminder.Containers.Subtask;
-import com.team.deminder.deminder.StorageManager.StorageManager;
 import com.team.deminder.deminder.customLayoutComponents.DatePickerFragment;
 import com.team.deminder.deminder.customLayoutComponents.SubtaskLayoutWidget;
 
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 // This will soon be an fragment instead of an activity
 public class ManageDeadlinePage extends AppCompatActivity {
