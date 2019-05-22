@@ -207,3 +207,25 @@ n.a
 n.a 
 ### 13.6 Approval and Signoff 
 Thomas Malina, Tillmann Nünninghoff, Natalie Busam, Lea Wegner
+## 14. Metrics
+We use the tool CodeMR for metrics. JetBrains offers a plugin for AndroidStudio. Through this, we are able to create metrics with one click.
+
+We have run our metrics and they show this result:
+
+![Metrics](https://raw.githubusercontent.com/Kalkihe/Deminder/master/Documentation/Screenshots/bevoremetrics.PNG)
+
+We refactored our code to better the complexity and coupling. We like to mention that our 'worst' level is "medium-high" as you can see in the screenshot. This shows that our code was pretty decent in the first place. You can see our improvement here:
+
+![Metrics](https://raw.githubusercontent.com/Kalkihe/Deminder/master/Documentation/Screenshots/aftermetrics.PNG)
+
+We achieved this improvements by putting some (mostly layout-) functions outside of the big classes into smaller classes. You may see that Lack of Cohesion now increased. The reason for this is that, while improving on our metrics, there was further work done regarding the functionality of our app. This caused the creation of some methods, which are called by android itself and not by us. This is the reason that CodeMR highlights that methods.
+
+Now we like to explain the metrics we used:
+
+Complexity: Implies how difficult to understand a class is and the number of interactions between its entities.
+
+Coupling: Describes the relationship between two classes (A and B). It has a high amount for example if A calls on services of an object B or A has a method that references B (for example as a return type).
+
+![Metrics](https://raw.githubusercontent.com/Kalkihe/Deminder/master/Documentation/Screenshots/metric_nochanges.png)
+
+As you can see, the class with the id 4 "DatePickerFragment" has a low-medium complexity and coupling. We are not going to change this because this is a library we use and didn't implement by ourselves.
