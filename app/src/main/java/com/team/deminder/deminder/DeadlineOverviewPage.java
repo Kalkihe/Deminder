@@ -15,8 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.team.deminder.deminder.Containers.Deadline;
 import com.team.deminder.deminder.StorageManager.StorageManager;
@@ -55,40 +53,32 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here
-
         int id = item.getItemId();
 
         if (id == R.id.sort_deadlines_by_date) {
-
-            /** Getting the fragment manager */
             FragmentManager manager = getSupportFragmentManager();
-
-            /** Instantiating the DialogFragment class */
             SortDialogFragment alert = new SortDialogFragment();
-
-            /** Creating a bundle object to store the selected item's index */
             Bundle b = new Bundle();
-
-            /** Storing the selected item's index in the bundle object */
             b.putInt("position", position);
-
-            /** Setting the bundle object to the dialog fragment object */
             alert.setArguments(b);
-
-            /** Creating the dialog fragment object, which will in turn open the alert dialog window */
             alert.show(manager, "alert_dialog_radio");
-
             return true;
         }
-
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onPositiveClick(int position) {
+        this.position = position;
+
+        //TODO Sort logic here
+        //SortDialogFragment.sortDeadlinesOptions[this.position]);
     }
 
     @Override
@@ -148,17 +138,5 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
         mapDeadlineLayout.put(deadlineID, deadlineLayoutWidget);
         deadlineID++;
         deadlineListLayout.addView(linearLayout);
-    }
-
-
-    @Override
-    public void onPositiveClick(int position) {
-        this.position = position;
-
-        /** Getting the reference of the textview from the main layout */
-        TextView tv = findViewById(R.id.tv_android);
-
-        /** Setting the selected android version in the textview */
-        tv.setText("Your Choice : " + SortDialogFragment.sortDeadlinesOptions[this.position]);
     }
 }
