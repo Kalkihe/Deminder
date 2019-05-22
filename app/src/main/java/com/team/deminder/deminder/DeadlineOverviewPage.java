@@ -1,27 +1,33 @@
 package com.team.deminder.deminder;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.team.deminder.deminder.Containers.Deadline;
 import com.team.deminder.deminder.StorageManager.StorageManager;
 import com.team.deminder.deminder.customLayoutComponents.DeadlineLayoutWidget;
+import com.team.deminder.deminder.customLayoutComponents.SortDialogFragment;
+import com.team.deminder.deminder.customLayoutComponents.SortDialogFragment.AlertPositiveListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class DeadlineOverviewPage extends AppCompatActivity {
+public class DeadlineOverviewPage extends AppCompatActivity implements AlertPositiveListener {
     private ArrayList<Deadline> deadlineList = new ArrayList<>();
     private SettingsPage settingsPage;
     private StorageManager storageManager;
@@ -30,42 +36,55 @@ public class DeadlineOverviewPage extends AppCompatActivity {
     private LinearLayout deadlineListLayout;
     private HashMap<Integer, DeadlineLayoutWidget> mapDeadlineLayout = new HashMap<>();
     private int deadlineID = 0;
-    //private Menu menu;
     private Toolbar mTopToolbar;
+    private int position = 0; // Stores the selected item's position
+    private Button btn;
 
     //wird beim Start des Programms aufgerufen
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.deadline_overview_page);
         storageManager = new StorageManager(this);
         buildLayout();
-
     }
     // Menu in toolbar
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // this.menu = menu;
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+        // Handle action bar item clicks here
+
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.sort_deadlines_alphabetically) {
-            Toast.makeText(DeadlineOverviewPage.this, "Sorted alphabetically", Toast.LENGTH_LONG).show();
-            return true;
-        }
-        if(id == R.id.sort_deadlines_by_date) {
-            Toast.makeText(DeadlineOverviewPage.this, "Sorted by date", Toast.LENGTH_LONG).show();
+        if (id == R.id.sort_deadlines_by_date) {
+
+            /** Getting the fragment manager */
+            FragmentManager manager = getSupportFragmentManager();
+
+            /** Instantiating the DialogFragment class */
+            SortDialogFragment alert = new SortDialogFragment();
+
+            /** Creating a bundle object to store the selected item's index */
+            Bundle b = new Bundle();
+
+            /** Storing the selected item's index in the bundle object */
+            b.putInt("position", position);
+
+            /** Setting the bundle object to the dialog fragment object */
+            alert.setArguments(b);
+
+            /** Creating the dialog fragment object, which will in turn open the alert dialog window */
+            alert.show(manager, "alert_dialog_radio");
+
             return true;
         }
 
@@ -120,6 +139,7 @@ public class DeadlineOverviewPage extends AppCompatActivity {
         for (final Deadline deadline : deadlineList) {
             addNewDeadline(deadline);
         }
+
     }
 
     private void addNewDeadline(Deadline deadline) {
@@ -128,5 +148,17 @@ public class DeadlineOverviewPage extends AppCompatActivity {
         mapDeadlineLayout.put(deadlineID, deadlineLayoutWidget);
         deadlineID++;
         deadlineListLayout.addView(linearLayout);
+    }
+
+
+    @Override
+    public void onPositiveClick(int position) {
+        this.position = position;
+
+        /** Getting the reference of the textview from the main layout */
+        TextView tv = findViewById(R.id.tv_android);
+
+        /** Setting the selected android version in the textview */
+        tv.setText("Your Choice : " + SortDialogFragment.sortDeadlinesOptions[this.position]);
     }
 }
