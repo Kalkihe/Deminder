@@ -177,6 +177,18 @@ YouTrack serves as project management tool.
 
 There is a wordpress blog for realising news on the project state.
 
+### 3.6.6 Travis CI
+
+We use the service Travis CI for deploying and building our code.
+
+### 3.6.7 CodeMR
+
+CodeMR is used for metrics on our code. 
+
+### 3.6.8 Coveralls and Jacoco
+
+Jacoco measures the test code coverage, Coveralls displays it.
+
 ## 3.7 On-line User Documentation and Help System Requirements
 
 Minimal description in the app store entry. It should describe all features and give one example. It has to contain screenshots of the app.
