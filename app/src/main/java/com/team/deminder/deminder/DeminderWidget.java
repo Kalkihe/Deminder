@@ -8,11 +8,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
 
+import com.team.deminder.deminder.Containers.Deadline;
+import com.team.deminder.deminder.StorageManager.StorageManager;
+import com.team.deminder.deminder.customLayoutComponents.DeadlineLayoutWidget;
+
+import java.util.ArrayList;
+
 public class DeminderWidget extends AppWidgetProvider {
+    private ArrayList<Deadline> deadlineList = new ArrayList<>();
+    private StorageManager storageManager;
+
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         final int N = appWidgetIds.length;
-        System.out.println("Thou am updateing");
+        deadlineList = storageManager.loadDeadlines();
+
 
         // Perform this loop procedure for each App Widget that belongs to this provider
         for (int i=0; i<N; i++) {
@@ -26,6 +36,15 @@ public class DeminderWidget extends AppWidgetProvider {
             // to the button
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.deminder_widget_page);
             views.setOnClickPendingIntent(R.id.rootLayout, pendingIntent);
+
+            views.setTextViewText(R.id.deadline1, deadlineList.get(0).getDeadlineName());
+            views.setTextViewText(R.id.deadline2, deadlineList.get(1).getDeadlineName());
+            views.setTextViewText(R.id.deadline3, deadlineList.get(2).getDeadlineName());
+            views.setTextViewText(R.id.deadline4, deadlineList.get(3).getDeadlineName());
+
+
+            //DeadlineLayoutWidget deadlineLayoutWidget = new DeadlineLayoutWidget(deadline, this, this.deadlineID,this);
+
 
             // Tell the AppWidgetManager to perform an update on the current app widget
             appWidgetManager.updateAppWidget(appWidgetId, views);
