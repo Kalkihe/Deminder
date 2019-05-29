@@ -17,6 +17,19 @@
             </intent-filter>
         </activity>
         <activity android:name=".ManageDeadlinePage" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.deminder.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <paths xmlns:android="http://schemas.android.com/apk/res/android">
+                <files-path android:name="deadlines" android:path="path"/>
+            </paths>
+        </provider>
+
+
+
     </application>
 
 </manifest>
