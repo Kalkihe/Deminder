@@ -61,7 +61,7 @@ public class SortDialogFragment extends DialogFragment {
         b.setPositiveButton("OK",positiveListener);
 
         /** Setting a cancel button and its listener */
-        b.setNegativeButton("Cancel", null);
+        b.setNegativeButton("Abbrechen", null);
 
         /** Creating the alert dialog window using the builder class */
         AlertDialog d = b.create();

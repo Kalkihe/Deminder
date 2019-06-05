@@ -9,6 +9,7 @@ import android.widget.DatePicker;
 import com.team.deminder.deminder.ManageDeadlinePage;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 public class DatePickerFragment extends DialogFragment
         implements DatePickerDialog.OnDateSetListener {
@@ -26,6 +27,6 @@ public class DatePickerFragment extends DialogFragment
     }
 
     public void onDateSet(DatePicker view, int year, int month, int day) {
-        ((ManageDeadlinePage)getActivity()).updateDate(day,month,year);
+        ((ManageDeadlinePage) getActivity()).updateDate(day, month, year);
     }
 }

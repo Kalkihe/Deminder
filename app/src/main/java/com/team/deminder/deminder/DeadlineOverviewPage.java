@@ -23,7 +23,9 @@ import com.team.deminder.deminder.customLayoutComponents.SortDialogFragment;
 import com.team.deminder.deminder.customLayoutComponents.SortDialogFragment.AlertPositiveListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Locale;
 
 public class DeadlineOverviewPage extends AppCompatActivity implements AlertPositiveListener {
     private HashMap<Integer, DeadlineLayoutWidget> mapDeadlineLayout = new HashMap<>();
@@ -32,7 +34,6 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
     private LinearLayout deadlineListLayout;
     private Toolbar mTopToolbar;
     private int deadlineID = 0;
-    private int position = 0; // Stores the selected item's position
 
     //wird beim Start des Programms aufgerufen
     @SuppressLint("ResourceType")
@@ -41,6 +42,7 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.deadline_overview_page);
         storageManager = new StorageManager(this);
+        deadlineList = storageManager.loadDeadlines();
         buildLayout();
     }
     // Menu in toolbar
@@ -61,7 +63,7 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
             FragmentManager manager = getSupportFragmentManager();
             SortDialogFragment alert = new SortDialogFragment();
             Bundle b = new Bundle();
-            b.putInt("position", position);
+            b.putInt("position", 0);
             alert.setArguments(b);
             alert.show(manager, "alert_dialog_radio");
             return true;
@@ -71,10 +73,18 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
 
     @Override
     public void onPositiveClick(int position) {
-        this.position = position;
 
-        //TODO Sort logic here
-        //SortDialogFragment.sortDeadlinesOptions[this.position]);
+        switch(position){
+            case 0:
+                Collections.sort(deadlineList, ((o1, o2) -> o1.getDeadlineName().compareTo(o2.getDeadlineName())));
+                break;
+            case 1:
+                Collections.sort(deadlineList, ((o1, o2) -> o1.getDeadlineDate().compareTo(o2.getDeadlineDate())));
+                break;
+        }
+        deadlineListLayout.removeAllViews();
+        mapDeadlineLayout.clear();
+        buildLayout();
     }
 
     @Override
@@ -100,7 +110,6 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
 
     private void buildLayout() {
         deadlineListLayout = this.findViewById(R.id.deadlineList);
-        deadlineList = storageManager.loadDeadlines();
         mTopToolbar = findViewById(R.id.my_toolbar);
         mTopToolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(mTopToolbar);
