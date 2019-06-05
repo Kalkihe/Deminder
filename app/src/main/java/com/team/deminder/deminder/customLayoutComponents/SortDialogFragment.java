@@ -12,7 +12,7 @@ public class SortDialogFragment extends DialogFragment {
 
     public static String[] sortDeadlinesOptions = new String[]{
             "Alphabet",
-            "Datum"
+            "Date"
     };
 
     /** Interface, to invoke a callback function in the implementing class */
@@ -52,7 +52,7 @@ public class SortDialogFragment extends DialogFragment {
         /** Creating a builder for the alert dialog window */
         AlertDialog.Builder b = new AlertDialog.Builder(getActivity());
 
-        b.setTitle("Sortieren nach");
+        b.setTitle("Sort by");
 
         /** Setting items to the alert dialog */
         b.setSingleChoiceItems(sortDeadlinesOptions, position, null);
@@ -61,7 +61,7 @@ public class SortDialogFragment extends DialogFragment {
         b.setPositiveButton("OK",positiveListener);
 
         /** Setting a cancel button and its listener */
-        b.setNegativeButton("Abbrechen", null);
+        b.setNegativeButton("Cancel", null);
 
         /** Creating the alert dialog window using the builder class */
         AlertDialog d = b.create();
