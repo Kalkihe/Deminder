@@ -1,6 +1,6 @@
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
-    android:minWidth="40dp"
-    android:minHeight="40dp"
+    android:minWidth="288dp"
+    android:minHeight="72dp"
     android:updatePeriodMillis="1000"
     android:initialLayout="@layout/deminder_widget_page"
     android:resizeMode="horizontal|vertical"
