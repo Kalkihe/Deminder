@@ -28,6 +28,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/deadline1Root"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -55,6 +56,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/deadline2Root"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -80,6 +82,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/deadline3Root"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -105,6 +108,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/deadline4Root"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -117,8 +121,7 @@
             android:layout_weight="1"
             android:paddingLeft="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="#000000"
-            tools:text="asd" />
+            android:textColor="#000000" />
 
         <TextView
             android:id="@+id/datum4"

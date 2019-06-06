@@ -20,6 +20,7 @@
         <receiver android:name=".DeminderWidget" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="Deminder.UPDATE_DEADLINE" />
             </intent-filter>
             <meta-data android:name="android.appwidget.provider"
                 android:resource="@xml/deminder_widget" />

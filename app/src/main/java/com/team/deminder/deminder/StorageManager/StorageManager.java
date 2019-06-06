@@ -94,6 +94,7 @@ public class StorageManager {
         // Neuen DeadlineWriterThread (Thread) erzeugen und zu speichernde Liste übergeben
         this.deadlineWriterThread = new DeadlineWriterThread(this.deadlineList, this.context, this.deadlineWritingStrategy);
         deadlineWriterThread.start();
+
     }
 
     private ArrayList<Deadline> readDeadlineListFromDisk()
