@@ -11,35 +11,29 @@ import android.support.v4.app.Fragment;
 public class SortDialogFragment extends DialogFragment {
 
     public static String[] sortDeadlinesOptions = new String[]{
-            "Alphabetically",
-            "By Date"
+            "Alphabet",
+            "Datum"
     };
 
-    /** Declaring the interface, to invoke a callback function in the implementing activity class */
+    /** Interface, to invoke a callback function in the implementing class */
     AlertPositiveListener alertPositiveListener;
 
-    /** An interface to be implemented in the hosting activity for "OK" button click listener */
+    /** Interface for "OK" button click listener */
     public interface AlertPositiveListener {
         void onPositiveClick(int position);
     }
 
-    /** This is a callback method executed when this fragment is attached to an activity.
-     *  This function ensures that, the hosting activity implements the interface AlertPositiveListener
-     * */
+    /** Ensures that the hosting activity implements AlertPositiveListener **/
     public void onAttach(Context context) {
         super.onAttach(context);
         try{
             alertPositiveListener = (AlertPositiveListener) context;
         }catch(ClassCastException e){
-            // The hosting activity does not implemented the interface AlertPositiveListener
             throw new ClassCastException(context.toString() + " must implement AlertPositiveListener");
         }
     }
 
-    /** This is the OK button listener for the alert dialog,
-     *  which in turn invokes the method onPositiveClick(position)
-     *  of the hosting activity which is supposed to implement it
-     */
+    /** OK button listener for the alert dialog **/
     DialogInterface.OnClickListener positiveListener = new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
@@ -49,20 +43,16 @@ public class SortDialogFragment extends DialogFragment {
         }
     };
 
-    /** This is a callback method which will be executed
-     *  on creating this fragment
-     */
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        /** Getting the arguments passed to this fragment */
+        /** Getting the arguments */
         Bundle bundle = getArguments();
         int position = bundle.getInt("position");
 
         /** Creating a builder for the alert dialog window */
         AlertDialog.Builder b = new AlertDialog.Builder(getActivity());
 
-        /** Setting a title for the window */
-        b.setTitle("Choose your version");
+        b.setTitle("Sortieren nach");
 
         /** Setting items to the alert dialog */
         b.setSingleChoiceItems(sortDeadlinesOptions, position, null);
@@ -70,13 +60,12 @@ public class SortDialogFragment extends DialogFragment {
         /** Setting a positive button and its listener */
         b.setPositiveButton("OK",positiveListener);
 
-        /** Setting a positive button and its listener */
+        /** Setting a cancel button and its listener */
         b.setNegativeButton("Cancel", null);
 
         /** Creating the alert dialog window using the builder class */
         AlertDialog d = b.create();
-
-        /** Return the alert dialog window */
+        
         return d;
     }
 }
