@@ -28,13 +28,12 @@ import java.util.HashMap;
 import java.util.Locale;
 
 public class DeadlineOverviewPage extends AppCompatActivity implements AlertPositiveListener {
-    private HashMap<Integer, DeadlineLayoutWidget> mapDeadlineLayout = new HashMap<>();
     private ArrayList<Deadline> deadlineList = new ArrayList<>();
     private StorageManager storageManager;
     private LinearLayout deadlineListLayout;
     private Toolbar mTopToolbar;
     private int deadlineID = 0;
-    private String sortedBy = "DATE";
+    private int sortedBy = 1;
 
     //wird beim Start des Programms aufgerufen
     @SuppressLint("ResourceType")
@@ -44,6 +43,7 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
         setContentView(R.layout.deadline_overview_page);
         storageManager = new StorageManager(this);
         deadlineList = storageManager.loadDeadlines();
+        sortDeadlines();
         buildLayout();
     }
     // Menu in toolbar
@@ -64,7 +64,7 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
             FragmentManager manager = getSupportFragmentManager();
             SortDialogFragment alert = new SortDialogFragment();
             Bundle b = new Bundle();
-            b.putInt("position", 0);
+            b.putInt("position", sortedBy);
             alert.setArguments(b);
             alert.show(manager, "alert_dialog_radio");
             return true;
@@ -74,15 +74,9 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
 
     @Override
     public void onPositiveClick(int position) {
-        switch(position){
-            case 0:
-                sortedBy = "ALPHABET";
-                break;
-            case 1:
-                sortedBy = "DATE";
-                break;
-        }
+        sortedBy = position;
         sortDeadlines();
+        buildLayout();
     }
 
     @Override
@@ -90,19 +84,18 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
         if (resultCode == Activity.RESULT_OK) {
             final Deadline deadline = (Deadline) resultIntent.getSerializableExtra("deadline");
             if (resultIntent.getBooleanExtra("deleted", false)) {
-                storageManager.deleteDeadline(deadline);
                 deadlineList.remove(deadline);
-                deadlineListLayout.removeView(mapDeadlineLayout.get(requestCode).getLayout());
-                mapDeadlineLayout.remove(requestCode);
+                sortDeadlines();
+                storageManager.deleteDeadline(deadline);
             } else {
-                storageManager.saveDeadline(deadline);
                 if (!resultIntent.getBooleanExtra("isNewDeadline", false)) {
                     deadlineList.remove(deadline);
-                    deadlineListLayout.removeView(mapDeadlineLayout.get(requestCode).getLayout());
-                    mapDeadlineLayout.remove(requestCode);
                 }
-                addNewDeadline(deadline);
+                deadlineList.add(deadline);
+                sortDeadlines();
+                storageManager.saveDeadline(deadline);
             }
+            buildLayout();
         }
     }
 
@@ -111,6 +104,8 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
         mTopToolbar = findViewById(R.id.my_toolbar);
         mTopToolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(mTopToolbar);
+
+        deadlineListLayout.removeAllViews();
 
         FloatingActionButton newDeadlineButton = findViewById(R.id.newDeadlineButton);
         newDeadlineButton.setOnClickListener(new View.OnClickListener() {
@@ -138,23 +133,19 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
     private void addNewDeadline(Deadline deadline) {
         DeadlineLayoutWidget deadlineLayoutWidget = new DeadlineLayoutWidget(deadline, this, this.deadlineID,this);
         LinearLayout linearLayout = deadlineLayoutWidget.getLayout();
-        mapDeadlineLayout.put(deadlineID, deadlineLayoutWidget);
         deadlineID++;
         deadlineListLayout.addView(linearLayout);
     }
 
     private void sortDeadlines(){
         switch(sortedBy){
-            case "ALPHABET":
+            case 0:
                 Collections.sort(deadlineList, ((o1, o2) -> o1.getDeadlineName().compareTo(o2.getDeadlineName())));
                 break;
-            case "DATE":
+            case 1:
                 Collections.sort(deadlineList, ((o1, o2) -> o1.getDeadlineDate().compareTo(o2.getDeadlineDate())));
                 break;
         }
-        deadlineListLayout.removeAllViews();
-        mapDeadlineLayout.clear();
-        buildLayout();
     }
 
 }
