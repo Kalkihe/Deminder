@@ -34,6 +34,7 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
     private LinearLayout deadlineListLayout;
     private Toolbar mTopToolbar;
     private int deadlineID = 0;
+    private String sortedBy = "DATE";
 
     //wird beim Start des Programms aufgerufen
     @SuppressLint("ResourceType")
@@ -73,18 +74,15 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
 
     @Override
     public void onPositiveClick(int position) {
-
         switch(position){
             case 0:
-                Collections.sort(deadlineList, ((o1, o2) -> o1.getDeadlineName().compareTo(o2.getDeadlineName())));
+                sortedBy = "ALPHABET";
                 break;
             case 1:
-                Collections.sort(deadlineList, ((o1, o2) -> o1.getDeadlineDate().compareTo(o2.getDeadlineDate())));
+                sortedBy = "DATE";
                 break;
         }
-        deadlineListLayout.removeAllViews();
-        mapDeadlineLayout.clear();
-        buildLayout();
+        sortDeadlines();
     }
 
     @Override
@@ -144,4 +142,19 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
         deadlineID++;
         deadlineListLayout.addView(linearLayout);
     }
+
+    private void sortDeadlines(){
+        switch(sortedBy){
+            case "ALPHABET":
+                Collections.sort(deadlineList, ((o1, o2) -> o1.getDeadlineName().compareTo(o2.getDeadlineName())));
+                break;
+            case "DATE":
+                Collections.sort(deadlineList, ((o1, o2) -> o1.getDeadlineDate().compareTo(o2.getDeadlineDate())));
+                break;
+        }
+        deadlineListLayout.removeAllViews();
+        mapDeadlineLayout.clear();
+        buildLayout();
+    }
+
 }
