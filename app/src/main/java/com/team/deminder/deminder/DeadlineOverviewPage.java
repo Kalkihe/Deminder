@@ -2,6 +2,8 @@ package com.team.deminder.deminder;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,7 +15,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.team.deminder.deminder.Containers.Deadline;
@@ -83,7 +84,8 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent resultIntent) {
         if (resultCode == Activity.RESULT_OK) {
             final Deadline deadline = (Deadline) resultIntent.getSerializableExtra("deadline");
-            if (resultIntent.getBooleanExtra("deleted", false)) {
+            final Boolean deleted = resultIntent.getBooleanExtra("deleted", false);
+            if (deleted) {
                 deadlineList.remove(deadline);
                 sortDeadlines();
                 storageManager.deleteDeadline(deadline);
@@ -96,6 +98,20 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
                 storageManager.saveDeadline(deadline);
             }
             buildLayout();
+
+            Intent intent = new Intent(this, DeminderWidget.class);
+            intent.setAction("Deminder.UPDATE_DEADLINE");
+            int[] ids = AppWidgetManager.getInstance(getApplication()).getAppWidgetIds(new ComponentName(getApplication(),DeminderWidget.class));
+            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
+
+            for (int i = 1; i < deadlineList.size()+1  ; i++) {
+                if (i <= 4){
+                    intent.putExtra("deadline" + i,deadlineList.get(i-1));
+                } else {
+                    break;
+                }
+            }
+            sendBroadcast(intent);
         }
     }
 
