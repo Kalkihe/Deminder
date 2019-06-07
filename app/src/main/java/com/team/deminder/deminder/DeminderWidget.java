@@ -108,7 +108,8 @@ public class DeminderWidget extends AppWidgetProvider {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
         long currentTime = Calendar.getInstance().getTimeInMillis();
         long milisecondsApart = deadline.getDeadlineDate().getTimeInMillis() - currentTime;
-        int daysApart = (int) (milisecondsApart / (1000*60*60*24));
+        double exactDaysApart = (double) milisecondsApart / (1000 * 60 * 60 * 24);
+        int daysApart = (int) Math.ceil(exactDaysApart);
         String shownDate;
 
         if (daysApart == 0) {
