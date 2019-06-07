@@ -98,20 +98,6 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
                 storageManager.saveDeadline(deadline);
             }
             buildLayout();
-
-            Intent intent = new Intent(this, DeminderWidget.class);
-            intent.setAction("Deminder.UPDATE_DEADLINE");
-            int[] ids = AppWidgetManager.getInstance(getApplication()).getAppWidgetIds(new ComponentName(getApplication(),DeminderWidget.class));
-            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
-
-            for (int i = 1; i < deadlineList.size()+1  ; i++) {
-                if (i <= 4){
-                    intent.putExtra("deadline" + i,deadlineList.get(i-1));
-                } else {
-                    break;
-                }
-            }
-            sendBroadcast(intent);
         }
     }
 
@@ -143,7 +129,7 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
         for (final Deadline deadline : deadlineList) {
             addNewDeadline(deadline);
         }
-
+        updateWidget();
     }
 
     private void addNewDeadline(Deadline deadline) {
@@ -162,6 +148,22 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
                 Collections.sort(deadlineList, ((o1, o2) -> o1.getDeadlineDate().compareTo(o2.getDeadlineDate())));
                 break;
         }
+    }
+
+    private void updateWidget(){
+        Intent intent = new Intent(this, DeminderWidget.class);
+        intent.setAction("Deminder.UPDATE_DEADLINE");
+        int[] ids = AppWidgetManager.getInstance(getApplication()).getAppWidgetIds(new ComponentName(getApplication(),DeminderWidget.class));
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
+
+        for (int i = 1; i < deadlineList.size()+1  ; i++) {
+            if (i <= 4){
+                intent.putExtra("deadline" + i,deadlineList.get(i-1));
+            } else {
+                break;
+            }
+        }
+        sendBroadcast(intent);
     }
 
 }
