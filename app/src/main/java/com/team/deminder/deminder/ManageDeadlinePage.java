@@ -21,6 +21,7 @@ import com.team.deminder.deminder.customLayoutComponents.SubtaskLayoutWidget;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 // This will soon be an fragment instead of an activity
 public class ManageDeadlinePage extends AppCompatActivity {
@@ -179,8 +180,15 @@ public class ManageDeadlinePage extends AppCompatActivity {
     }
 
     public void updateDate(int day, int month, int year){
-        textDeadline.setText(day + ". " + month + ". " + year + ".");
         calendar.set(year,month,day);
+        Date currentDate = Calendar.getInstance().getTime();
+
+        boolean sameDay = dateFormat.format(currentDate).equalsIgnoreCase(dateFormat.format(calendar.getTime()));
+        if (sameDay | calendar.getTime().compareTo(currentDate) > 0) {
+            textDeadline.setText(day + ". " + month + ". " + year);
+        } else {
+            Toast.makeText(this,"Das Datum darf nicht in der Vergangenheit liegen",Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
