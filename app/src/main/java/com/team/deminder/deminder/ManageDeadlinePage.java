@@ -2,9 +2,12 @@ package com.team.deminder.deminder;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.ClipData;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -18,6 +21,7 @@ import com.team.deminder.deminder.Containers.Subtask;
 import com.team.deminder.deminder.customLayoutComponents.DatePickerFragment;
 import com.team.deminder.deminder.customLayoutComponents.SubtaskLayoutWidget;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -65,7 +69,6 @@ public class ManageDeadlinePage extends AppCompatActivity {
             calendar = Calendar.getInstance();
             textDeadline.setText(dateFormat.format(calendar.getTime()));
         }
-
     }
 
 
@@ -195,14 +198,39 @@ public class ManageDeadlinePage extends AppCompatActivity {
 
     public void exportDeadline()
     {
-       // TODO Export deadline
-       /* String uri = "";
-        Intent shareIntent = new Intent();
-        shareIntent.setAction(Intent.ACTION_SEND);
-        shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
-        shareIntent.setType("*")";
-        */
+        Intent sharingIntent = new Intent();
+        sharingIntent.setAction(Intent.ACTION_SEND);
+        sharingIntent.putExtra(Intent.EXTRA_TEXT, this.getExportString());
+        sharingIntent.setType("text/plain");
+        startActivity(sharingIntent);
+    }
 
+    private String getExportString()
+    {
+        String result = "==== DEADLINE ====\n";
+        result += "Task: " + textTaskName.getText().toString() + "\n";
+        result += "Deadline: " + textDeadline.getText().toString() + "\n";
+        result += "Notes: " + textNotes.getText().toString() + "\n";
+        if (subtaskLayoutWidgets.isEmpty())
+        {
+            result += "==== END OF DEADLINE ====";
+            return result;
+        }
+        result += "Subtasks:";
+        for(SubtaskLayoutWidget widget : subtaskLayoutWidgets)
+        {
+            result += "\n";
+            if (widget.isCompleted())
+            {
+                result += "\t[X]";
+            }
+            else {
+                result += "\t[ ]";
+            }
+            result += "\t" + widget.getSubtaskName();
 
+        }
+        result += "\n==== END OF DEADLINE ====";
+        return result;
     }
 }
