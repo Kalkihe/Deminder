@@ -13,6 +13,7 @@ public class Deadline implements Serializable {
     private String notes;
     private ArrayList<Subtask> subtaskList;
     private UUID uuid;
+    private String fileNameOnStorage;
 
     public Deadline(String deadlineName, Calendar deadlineDate, String notes, ArrayList subtaskList) {
         this.deadlineName = deadlineName;
@@ -20,6 +21,7 @@ public class Deadline implements Serializable {
         this.notes = notes;
         this.subtaskList = subtaskList;
         this.uuid = UUID.randomUUID();
+        this.fileNameOnStorage = "";
     }
 
     public Deadline() {
@@ -60,6 +62,14 @@ public class Deadline implements Serializable {
 
     public UUID getUuid() {
         return this.uuid;
+    }
+
+    public String getFileNameOnStorage() {
+        return fileNameOnStorage;
+    }
+
+    public void setFileNameOnStorage(String fileNameOnStorage) {
+        this.fileNameOnStorage = fileNameOnStorage;
     }
 
     @Override

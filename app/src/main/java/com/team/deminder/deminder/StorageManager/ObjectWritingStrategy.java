@@ -23,6 +23,7 @@ public class ObjectWritingStrategy implements IDeadlineWritingStrategy {
         FileOutputStream fileOutputStream = null;
         ObjectOutputStream objectOutputStream = null;
         try {
+            deadline.setFileNameOnStorage(fileName);
             // Initialisiere Streams
             fileOutputStream = context.openFileOutput(fileName, MODE_PRIVATE);
             objectOutputStream = new ObjectOutputStream(fileOutputStream);
