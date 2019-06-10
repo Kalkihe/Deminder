@@ -207,13 +207,14 @@ public class ManageDeadlinePage extends AppCompatActivity {
 
     private String getExportString()
     {
-        String result = "==== DEADLINE ====\n";
-        result += "Task: " + textTaskName.getText().toString() + "\n";
-        result += "Deadline: " + textDeadline.getText().toString() + "\n";
-        result += "Notes: " + textNotes.getText().toString() + "\n";
+        String result = "====-DEADLINE-====\n";
+        result += "Task:" + textTaskName.getText().toString() + "\n";
+        calendar = this.deadline.getDeadlineDate();
+        result += "Deadline:" + dateFormat.format(calendar.getTime()) + "\n";
+        result += "Notes:" + textNotes.getText().toString() + "\n";
         if (subtaskLayoutWidgets.isEmpty())
         {
-            result += "==== END OF DEADLINE ====";
+            result += "====-DEADLINE-====";
             return result;
         }
         result += "Subtasks:";
@@ -230,7 +231,7 @@ public class ManageDeadlinePage extends AppCompatActivity {
             result += "\t" + widget.getSubtaskName();
 
         }
-        result += "\n==== END OF DEADLINE ====";
+        result += "\n====-DEADLINE-====";
         return result;
     }
 }
