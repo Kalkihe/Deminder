@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -42,6 +43,7 @@ import java.util.List;
 
 public class DeadlineOverviewPage extends AppCompatActivity implements AlertPositiveListener {
     private ArrayList<Deadline> deadlineList = new ArrayList<>();
+    Handler h = new Handler();
     private StorageManager storageManager;
     private LinearLayout deadlineListLayout;
     private Toolbar mTopToolbar;
@@ -86,6 +88,14 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
         else {
 
         }
+
+        //Update deadlines every 5minutes
+        h.postDelayed(new Runnable(){
+            public void run(){
+                buildLayout();
+                h.postDelayed(this, 300000);
+            }
+        }, 300000);
     }
     // Menu in toolbar
 
