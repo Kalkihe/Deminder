@@ -23,9 +23,11 @@
             android:authorities="com.deminder.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
-            <paths xmlns:android="http://schemas.android.com/apk/res/android">
-                <files-path android:name="deadlines" android:path="path"/>
-            </paths>
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+
+
         </provider>
 
 
