@@ -64,6 +64,7 @@
                 android:layout_marginBottom="10dp"
                 android:clickable="false"
                 android:text="Subtasks"
+                android:textSize="16sp"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="277dp" />
 

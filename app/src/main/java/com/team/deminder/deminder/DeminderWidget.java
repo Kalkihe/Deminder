@@ -112,14 +112,22 @@ public class DeminderWidget extends AppWidgetProvider {
         int daysApart = (int) Math.ceil(exactDaysApart);
         String shownDate;
 
-        if (daysApart == 0) {
+        if(daysApart<0){
+            shownDate = "Abgelaufen";
+            views.setTextColor( viewID,Color.rgb(184, 0, 0));
+        }
+        else if (daysApart == 0) {
             shownDate = "Heute";
-            views.setTextColor(viewID, Color.RED);
+            views.setTextColor(viewID, Color.rgb(184, 0, 0));
+        } else if (daysApart == 1) {
+            shownDate = "Morgen";
+            views.setTextColor(viewID, Color.rgb(244,131,66));
         } else if (daysApart <= 7) {
             shownDate = "In " + Integer.toString(daysApart) + " Tagen";
-            views.setTextColor(viewID, Color.YELLOW);
+
+            views.setTextColor(viewID, Color.rgb(244,199,65));
         } else {
-            shownDate = dateFormat.format(deadlineList.get(0).getDeadlineDate().getTime());
+            shownDate = dateFormat.format(deadline.getDeadlineDate().getTimeInMillis());
         }
         views.setTextViewText(viewID,shownDate);
         return;

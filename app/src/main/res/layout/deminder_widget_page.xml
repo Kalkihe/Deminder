@@ -23,6 +23,8 @@
             android:layout_weight="1"
             android:background="#B90000"
             android:paddingLeft="8dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:text="Deminder"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
     </LinearLayout>
@@ -31,7 +33,8 @@
         android:id="@+id/deadline1Root"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingBottom="3dp">
 
         <TextView
             android:id="@+id/deadline1"
@@ -59,7 +62,8 @@
         android:id="@+id/deadline2Root"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingBottom="3dp">
 
         <TextView
             android:id="@+id/deadline2"
@@ -85,7 +89,8 @@
         android:id="@+id/deadline3Root"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingBottom="3dp">
 
         <TextView
             android:id="@+id/deadline3"

@@ -3,6 +3,7 @@ package com.team.deminder.deminder.customLayoutComponents;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.view.Gravity;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.team.deminder.deminder.ManageDeadlinePage;
 import com.team.deminder.deminder.R;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class DeadlineLayoutWidget {
     private Context context;
@@ -41,7 +43,30 @@ public class DeadlineLayoutWidget {
         linearLayout.addView(textDeadlineName, layoutParams);
 
         TextView textDeadlineDate = new TextView(context);
-        textDeadlineDate.setText(dateFormat.format(deadline.getDeadlineDate().getTime()));
+        long currentTime = Calendar.getInstance().getTimeInMillis();
+        long milisecondsApart = deadline.getDeadlineDate().getTimeInMillis() - currentTime;
+        double exactDaysApart = (double) milisecondsApart / (1000 * 60 * 60 * 24);
+        int daysApart = (int) Math.ceil(exactDaysApart);
+        String shownDate;
+        if(daysApart<0){
+            shownDate = "Abgelaufen";
+            textDeadlineDate.setTextColor( Color.rgb(184, 0, 0));
+        }
+        else if (daysApart == 0) {
+            shownDate = "Heute";
+            textDeadlineDate.setTextColor( Color.rgb(184, 0, 0));
+        } else if (daysApart == 1) {
+            shownDate = "Morgen";
+            textDeadlineDate.setTextColor( Color.rgb(244,131,66));
+        } else if (daysApart <= 7) {
+            shownDate = "In " + Integer.toString(daysApart) + " Tagen";
+            textDeadlineDate.setTextColor( Color.rgb(244,199,65));
+        } else {
+            shownDate = dateFormat.format(deadline.getDeadlineDate().getTimeInMillis());
+        }
+
+
+        textDeadlineDate.setText(shownDate);
         textDeadlineDate.setTextSize(20);
         textDeadlineDate.setGravity(Gravity.RIGHT);
         linearLayout.addView(textDeadlineDate, layoutParams);
