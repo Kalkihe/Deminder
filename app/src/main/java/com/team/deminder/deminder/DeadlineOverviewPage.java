@@ -67,30 +67,23 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
         sortDeadlines();
         buildLayout();
 
-        if (Intent.ACTION_SEND.equals(action) && type != null)
-        {
-            if (type.equals("text/plain"))
-            {
+        if (Intent.ACTION_SEND.equals(action) && type != null) {
+            if (type.equals("text/plain")) {
                 String sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
-                if (sharedText != null)
-                {
+                if (sharedText != null) {
                     View contextView = findViewById(R.id.deadlineOverviewPage);
-                    if (sharedText.matches(this.regexToMatchInput))
-                    {
+                    if (sharedText.matches(this.regexToMatchInput)) {
                         importDeadline(sharedText);
                         Snackbar.make(contextView, "Importierte Deadline angelegt", Snackbar.LENGTH_SHORT)
                                 .show();
-                    }
-                    else
-                    {
+                    } else {
                         Snackbar.make(contextView, "Keine gültige Deadline", Snackbar.LENGTH_SHORT)
                                 .show();
                     }
                 }
             }
         }
-        else
-        {
+        else {
 
         }
     }
@@ -222,33 +215,25 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
         String deadlineNotes = "";
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         Calendar deadlineDate = Calendar.getInstance();
-        for (int index = 1; index < parts.length -1; index++)
-        {
-            if (index >= 1 && index <= 3)
-            {
+        for (int index = 1; index < parts.length -1; index++) {
+            if (index >= 1 && index <= 3) {
                 currentParts = parts[index].split(":");
-                if (index == 1)
-                {
+                if (index == 1) {
                     deadlineName = currentParts[1];
                 }
-                if (index == 2)
-                {
-                    try
-                    {
+                if (index == 2) {
+                    try {
                         deadlineDate.setTime(dateFormat.parse(currentParts[1]));
                     }
-                    catch (Exception ex)
-                    {
+                    catch (Exception ex) {
 
                     }
                 }
-                if (index == 3)
-                {
+                if (index == 3) {
                     deadlineNotes = currentParts[1];
                 }
             }
-            if (index > 4)
-            {
+            if (index > 4) {
                 boolean isComplete;
                 currentParts = parts[index].split("]",2);
                 isComplete = currentParts[0].contains("X");
@@ -261,34 +246,31 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
         addNewDeadline(deadline);
     }
 
-    public void showImportDialog()
-    {
+    public void showImportDialog() {
         this.importString = "";
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Paste exported deadline here:");
 
-// Set up the input
+        // Set up the input
         final EditText input = new EditText(this);
-// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+        // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
         input.setInputType(InputType.TYPE_CLASS_TEXT);
         input.setSingleLine(false);
         input.setVerticalScrollBarEnabled(true);
         builder.setView(input);
 
-// Set up the buttons
+        // Set up the buttons
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 importString = input.getText().toString();
                 View contextView = findViewById(R.id.deadlineOverviewPage);
-                if (importString.matches(regexToMatchInput))
-                {
+                if (importString.matches(regexToMatchInput)) {
                     importDeadline(importString);
                     Snackbar.make(contextView, "Importierte Deadline angelegt", Snackbar.LENGTH_SHORT)
                             .show();
                 }
-                else
-                {
+                else {
                     Snackbar.make(contextView, "Keine gültige Deadline", Snackbar.LENGTH_SHORT)
                             .show();
                 }
