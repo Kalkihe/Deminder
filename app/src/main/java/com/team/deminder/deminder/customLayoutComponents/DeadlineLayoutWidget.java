@@ -33,14 +33,18 @@ public class DeadlineLayoutWidget {
         linearLayout=  new LinearLayout(context);
         linearLayout.setOrientation(LinearLayout.HORIZONTAL);
 
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams textParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT,1f);
 
-        layoutParams.setMargins(5, 0, 60, 40);
+        LinearLayout.LayoutParams rootLayoutParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT,1f);
+
+        linearLayout.setLayoutParams(rootLayoutParams);
+
         TextView textDeadlineName = new TextView(context);
         textDeadlineName.setText(deadline.getDeadlineName());
         textDeadlineName.setTextSize(20);
-        linearLayout.addView(textDeadlineName, layoutParams);
+        linearLayout.addView(textDeadlineName, textParams);
 
         TextView textDeadlineDate = new TextView(context);
         long currentTime = Calendar.getInstance().getTimeInMillis();
@@ -69,11 +73,12 @@ public class DeadlineLayoutWidget {
         textDeadlineDate.setText(shownDate);
         textDeadlineDate.setTextSize(20);
         textDeadlineDate.setGravity(Gravity.RIGHT);
-        linearLayout.addView(textDeadlineDate, layoutParams);
+        linearLayout.addView(textDeadlineDate, textParams);
+
 
         imageButton = new ImageButton(context);
         imageButton.setBackgroundResource(R.drawable.ic_drop_down_grey);
-        linearLayout.addView(imageButton,layoutParams);
+        linearLayout.addView(imageButton);
 
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
