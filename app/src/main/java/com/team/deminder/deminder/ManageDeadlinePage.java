@@ -141,9 +141,20 @@ public class ManageDeadlinePage extends AppCompatActivity {
         textNotes.setText(deadline.getNotes());
         ArrayList<Subtask> subtasks = deadline.getSubtaskList();
         for(Subtask subtask:subtasks){
-            SubtaskLayoutWidget subtaskLayoutWidget = new SubtaskLayoutWidget(subtask.getSubtaskName(),subtask.isCompleted(),this);
-            subtaskList.addView(subtaskLayoutWidget.getLayout());
+            final SubtaskLayoutWidget subtaskLayoutWidget = new SubtaskLayoutWidget(subtask.getSubtaskName(),subtask.isCompleted(),this);
+            final View subtaskLayoutView = subtaskLayoutWidget.getLayout();
+
+            subtaskList.addView(subtaskLayoutView);
             subtaskLayoutWidgets.add(subtaskLayoutWidget);
+
+            ImageButton buttonDelete = subtaskLayoutWidget.getDeleteButton();
+            buttonDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    subtaskList.removeView(subtaskLayoutView);
+                    subtaskLayoutWidgets.remove(subtaskLayoutWidget);
+                }
+            });
         }
 
     }
