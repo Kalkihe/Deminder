@@ -259,7 +259,7 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
     public void showImportDialog() {
         this.importString = "";
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Paste exported deadline here:");
+        builder.setTitle("Exportierte Deadline hier einfügen:");
 
         // Set up the input
         final EditText input = new EditText(this);
@@ -286,7 +286,7 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
                 }
             }
         });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
