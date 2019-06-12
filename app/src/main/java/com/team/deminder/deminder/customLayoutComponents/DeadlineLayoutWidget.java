@@ -76,9 +76,11 @@ public class DeadlineLayoutWidget {
         linearLayout.addView(textDeadlineDate, textParams);
 
 
+/*
         imageButton = new ImageButton(context);
         imageButton.setBackgroundResource(R.drawable.ic_drop_down_grey);
         linearLayout.addView(imageButton);
+*/
 
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
