@@ -6,6 +6,7 @@ import android.content.ClipData;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
@@ -217,11 +218,19 @@ public class ManageDeadlinePage extends AppCompatActivity {
 
     public void exportDeadline()
     {
-        Intent sharingIntent = new Intent();
-        sharingIntent.setAction(Intent.ACTION_SEND);
-        sharingIntent.putExtra(Intent.EXTRA_TEXT, this.getExportString());
-        sharingIntent.setType("text/plain");
-        startActivity(sharingIntent);
+        if (isNewDeadline)
+        {
+            Toast.makeText(this,"Bitte die Deadline erst speichern!",Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            Intent sharingIntent = new Intent();
+            sharingIntent.setAction(Intent.ACTION_SEND);
+            sharingIntent.putExtra(Intent.EXTRA_TEXT, this.getExportString());
+            sharingIntent.setType("text/plain");
+            startActivity(sharingIntent);
+        }
+
     }
 
     private String getExportString()
