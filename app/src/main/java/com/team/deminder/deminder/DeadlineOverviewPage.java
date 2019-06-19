@@ -240,7 +240,10 @@ public class DeadlineOverviewPage extends AppCompatActivity implements AlertPosi
                     }
                 }
                 if (index == 3) {
-                    deadlineNotes = currentParts[1];
+                    if (currentParts.length > 1)
+                    {
+                        deadlineNotes = currentParts[1];
+                    }
                 }
             }
             if (index > 4) {
